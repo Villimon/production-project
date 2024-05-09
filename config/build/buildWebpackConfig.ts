@@ -19,7 +19,7 @@ export const buildWebpackConfig = (options: BuildOptions): Configuration => {
     module: {
       rules: buildLoaders(options),
     },
-    resolve: buildResolvers(),
+    resolve: buildResolvers(options),
     // Для того чтобы показывать где у нас произошла ошибка
     devtool: isDev ? "inline-source-map" : undefined,
     devServer: isDev ? buildDevServer(options) : undefined,
