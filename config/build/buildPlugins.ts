@@ -20,5 +20,6 @@ export const buildPlugins = ({
       // Создает переменные, которые мы можем использовать в проекте
       __IS_DEV__: JSON.stringify(isDev),
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ];
 };
