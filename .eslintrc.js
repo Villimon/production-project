@@ -52,11 +52,29 @@ module.exports = {
         'import/no-extraneous-dependencies': 'off',
         // Для нижних подчеркиваний в переменных
         'no-underscore-dangle': 'off',
-        'i18next/no-literal-string': ['error', { markupOnly: true }],
+
+        'i18next/no-literal-string': [
+            'error',
+            { markupOnly: true, ignoreAttribute: ['data-testid'] },
+        ],
         // Максимальная длинна комментариев
-        'max-len': ['error', { ignoreComments: true, code: 100 }],
+        'max-len': [
+            'error',
+            {
+                ignoreComments: true,
+                code: 100,
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,
     },
+    overrides: [
+        {
+            files: ['**/src/**/*.test.{ts,tsx}'],
+            rules: {
+                'i18next/no-literal-string': 'off',
+            },
+        },
+    ],
 };
