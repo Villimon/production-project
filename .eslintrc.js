@@ -62,7 +62,7 @@ module.exports = {
             'error',
             {
                 ignoreComments: true,
-                code: 115,
+                code: 120,
             },
         ],
     },
