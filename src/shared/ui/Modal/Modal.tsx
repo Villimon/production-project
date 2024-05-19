@@ -57,21 +57,20 @@ export const Modal: FC<ModalProps> = ({
     };
 
     return (
-        // Проверить после 31 урока, из-за того что он находится в боди, не работают стили как надо
-        // <Portal>
-        <div
-            className={classNames(
-                cls.Modal,
-                { [cls.opened]: isOpen, [cls.isClosing]: isClosing },
-                [className],
-            )}
-        >
-            <div className={cls.overlay} onClick={closeHandler}>
-                <div className={cls.content} onClick={onContentClick}>
-                    {children}
+        <Portal>
+            <div
+                className={classNames(
+                    cls.Modal,
+                    { [cls.opened]: isOpen, [cls.isClosing]: isClosing },
+                    [className],
+                )}
+            >
+                <div className={cls.overlay} onClick={closeHandler}>
+                    <div className={cls.content} onClick={onContentClick}>
+                        {children}
+                    </div>
                 </div>
             </div>
-        </div>
-        // </Portal>
+        </Portal>
     );
 };
