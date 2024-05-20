@@ -70,6 +70,8 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
+        // Сам добавил (потом убрать) урок 32
+        'react/prop-types': 'off',
     },
     globals: {
         __IS_DEV__: true,
