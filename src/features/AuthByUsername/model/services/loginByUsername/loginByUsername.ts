@@ -16,7 +16,7 @@ export const loginByUsername = createAsyncThunk<
     try {
         const response = await axios.post<User>(
             'http://localhost:8000/login',
-            authData
+            authData,
         );
 
         if (!response.data) {
@@ -25,7 +25,7 @@ export const loginByUsername = createAsyncThunk<
 
         localStorage.setItem(
             USER_LOCAL_STORAGE_KEY,
-            JSON.stringify(response.data)
+            JSON.stringify(response.data),
         );
         thunkAPI.dispatch(userActions.setAuthData(response.data));
 
