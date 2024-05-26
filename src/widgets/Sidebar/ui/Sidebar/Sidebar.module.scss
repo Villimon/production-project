@@ -31,21 +31,6 @@
     margin-left: 30px;
 }
 
-.item {
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-}
-
-.icon {
-    fill: var(--inverted-secondary-color);
-}
-
-.link {
-    margin-left: 10px;
-    opacity: 1;
-}
-
 .collapsed {
     width: var(--sidebar-width-collapsed);
 
@@ -56,11 +41,5 @@
 
     .lang {
         margin-left: 0;
-    }
-
-    .link {
-        opacity: 0;
-        transition: opacity 0.2s;
-        width: 0;
     }
 }
