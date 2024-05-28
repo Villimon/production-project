@@ -10,19 +10,19 @@ export const useTheme = (): UseThemeResult => {
     const { theme, setTheme } = useContext(ThemeContext);
 
     useEffect(() => {
-        document.body.classList.add(theme);
+        document.body.classList.add(theme || Theme.LIGHT);
 
         return () => {
-            document.body.classList.remove(theme);
+            document.body.classList.remove(theme || Theme.LIGHT);
         };
     }, [theme]);
 
     const toggleTheme = () => {
         const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
-        setTheme(newTheme);
+        setTheme?.(newTheme);
         document.body.className = newTheme;
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
     };
 
-    return { theme, toggleTheme };
+    return { theme: theme || Theme.LIGHT, toggleTheme };
 };

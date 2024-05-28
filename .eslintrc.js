@@ -62,7 +62,7 @@ module.exports = {
             'error',
             {
                 ignoreComments: true,
-                code: 120,
+                code: 130,
             },
         ],
         'jsx-a11y/no-static-element-interactions': 'off',
@@ -72,6 +72,7 @@ module.exports = {
         'no-param-reassign': 'off',
         // Сам добавил (потом убрать) урок 32
         'react/prop-types': 'off',
+        'no-undef': 'off',
     },
     globals: {
         __IS_DEV__: true,

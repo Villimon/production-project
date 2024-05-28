@@ -89,5 +89,5 @@ OutlineDark.decorators = [ThemeDecorator(Theme.DARK)];
 export const Disables = Template.bind({});
 Disables.args = {
     theme: ThemeButton.OUTLINE,
-    disables: true,
+    disabled: true,
 };

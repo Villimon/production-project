@@ -12,13 +12,22 @@ interface SidebarItemProps {
 export const SidebarItem: FC<SidebarItemProps> = memo(({ item, collapsed }) => {
     const { t } = useTranslation();
     return (
-        <AppLink
-            theme={AppLinkTheme.SECONDARY}
-            className={classNames(cls.item, { [cls.collapsed]: collapsed }, [])}
-            to={item.path}
-        >
-            <item.Icon className={cls.icon} />
-            <span className={cls.link}>{t(item.text)}</span>
-        </AppLink>
+        // eslint-disable-next-line
+        <>
+            {item && (
+                <AppLink
+                    theme={AppLinkTheme.SECONDARY}
+                    className={classNames(
+                        cls.item,
+                        { [cls.collapsed]: collapsed },
+                        [],
+                    )}
+                    to={item.path}
+                >
+                    <item.Icon className={cls.icon} />
+                    <span className={cls.link}>{t(item.text)}</span>
+                </AppLink>
+            )}
+        </>
     );
 });
