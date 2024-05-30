@@ -7,9 +7,9 @@ import {
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { CounterSchema } from 'entitites/Counter';
-import { ProfileSchema } from 'entitites/Profile';
 import { UserSchema } from 'entitites/User';
 import { LoginSchema } from 'features/AuthByUsername';
+import { ProfileSchema } from 'pages/ProfilePage';
 import { NavigateOptions, To } from 'react-router-dom';
 
 export interface StateSchema {
@@ -43,4 +43,5 @@ export interface ThunkExtraArg {
 export interface ThunkConfig<T> {
     rejectValue: T;
     extra: ThunkExtraArg;
+    state: StateSchema;
 }

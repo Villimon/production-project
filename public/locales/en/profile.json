@@ -2,5 +2,15 @@
     "Профиль": "Profile",
     "Ваша фамилия": "Your lastname",
     "Ваше имя": "Your name",
+    "Произошла ошибка при загрузке профиля": "An error occurred while uploading the profile",
+    "Попробуйте обновить страницу": "Try refreshing the page",
+    "Отменить": "Cancel",
+    "Сохранить": "Save",
+    "Ваш возраст": "Your age",
+    "Город": "City",
+    "Укажите валюту": "Select currency",
+    "Укажите страну": "Select country",
+    "Введите ссылку на аватар": "Enter the link to the avatar",
+    "Введите имя пользователя": "Enter the user name",
     "Редактировать": "Edit"
 }

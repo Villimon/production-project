@@ -12,16 +12,17 @@ import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
-    'value' | 'onChange'
+    'value' | 'onChange' | 'readOnly'
 >;
 
 interface InputProps extends HTMLInputProps {
     className?: string;
-    value?: string;
+    value?: string | number;
     onChange?: (value: string) => void;
     type?: string;
     placeholder: string;
     autofocus?: boolean;
+    readonly?: boolean;
 }
 
 export const Input: FC<InputProps> = memo(
@@ -32,6 +33,7 @@ export const Input: FC<InputProps> = memo(
         type = 'text',
         placeholder,
         autofocus,
+        readonly,
         ...otherProps
     }) => {
         const [isFocused, setIsFocused] = useState(false);
@@ -55,7 +57,13 @@ export const Input: FC<InputProps> = memo(
         };
 
         return (
-            <div className={classNames(cls.InputWrapper, {}, [className])}>
+            <div
+                className={classNames(
+                    cls.InputWrapper,
+                    { [cls.readonly]: readonly },
+                    [className],
+                )}
+            >
                 <Trans _translateProps={['placeholder']}>
                     <input
                         id="input"
@@ -67,10 +75,13 @@ export const Input: FC<InputProps> = memo(
                         onChange={onChangeHandler}
                         onFocus={onFocus}
                         onBlur={onBlur}
+                        readOnly={readonly}
                         {...otherProps}
                     />
                 </Trans>
-                <label htmlFor="input" className={cls.label}>{placeholder}</label>
+                <label htmlFor="input" className={cls.label}>
+                    {placeholder}
+                </label>
             </div>
         );
     },
