@@ -1,7 +1,9 @@
 import { Country } from 'entitites/Country';
 import { Currency } from 'entitites/Currency';
 import { ProfileCard } from 'entitites/Profile';
-import { FC, memo, useCallback, useEffect } from 'react';
+import {
+    FC, memo, useCallback, useEffect,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -42,7 +44,7 @@ const ProfilePage: FC<ProfilePageProps> = memo(({ className }) => {
         [ValidateProfileErrors.INCORRECT_AGE]: t('Некорректный возраст'),
         [ValidateProfileErrors.INCORRECT_COUNTRY]: t('Некорректный регион'),
         [ValidateProfileErrors.INCORRECT_USER_DATA]: t(
-            'Имя и фамилия обязательны'
+            'Имя и фамилия обязательны',
         ),
         [ValidateProfileErrors.NO_DATA]: t('Данные не указаны'),
         [ValidateProfileErrors.SERVER_ERROR]: t('Серверная ошибка'),
@@ -56,7 +58,7 @@ const ProfilePage: FC<ProfilePageProps> = memo(({ className }) => {
         (value?: string) => {
             dispatch(profileActions.updateProfile({ first: value || '' }));
         },
-        [dispatch]
+        [dispatch],
     );
 
     // Есди функцию передаем пропсом, то тогда оборачиваем ее в useCallback
@@ -64,7 +66,7 @@ const ProfilePage: FC<ProfilePageProps> = memo(({ className }) => {
         (value?: string) => {
             dispatch(profileActions.updateProfile({ lastname: value || '' }));
         },
-        [dispatch]
+        [dispatch],
     );
 
     const onChangeAge = useCallback(
@@ -73,50 +75,50 @@ const ProfilePage: FC<ProfilePageProps> = memo(({ className }) => {
                 dispatch(profileActions.updateProfile({ age: Number(value) }));
             }
         },
-        [dispatch]
+        [dispatch],
     );
 
     const onChangeCity = useCallback(
         (value?: string) => {
             dispatch(profileActions.updateProfile({ city: value || '' }));
         },
-        [dispatch]
+        [dispatch],
     );
 
     const onChangeUsername = useCallback(
         (value?: string) => {
             dispatch(profileActions.updateProfile({ username: value || '' }));
         },
-        [dispatch]
+        [dispatch],
     );
 
     const onChangeAvatar = useCallback(
         (value?: string) => {
             dispatch(profileActions.updateProfile({ avatar: value || '' }));
         },
-        [dispatch]
+        [dispatch],
     );
 
     const onChangeCurrency = useCallback(
         (currency: Currency) => {
             dispatch(profileActions.updateProfile({ currency }));
         },
-        [dispatch]
+        [dispatch],
     );
 
     const onChangeCountry = useCallback(
         (country: Country) => {
             dispatch(profileActions.updateProfile({ country }));
         },
-        [dispatch]
+        [dispatch],
     );
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div className={classNames('', {}, [className])}>
                 <ProfilePageHeader />
-                {validateErrors?.length &&
-                    validateErrors.map((error) => (
+                {validateErrors?.length
+                    && validateErrors.map((error) => (
                         <Text
                             key={error}
                             theme={TextTheme.ERROR}

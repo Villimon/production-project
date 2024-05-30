@@ -30,5 +30,5 @@ export const updateProfileData = createAsyncThunk<
             console.log(error);
             return rejectWithValue([ValidateProfileErrors.SERVER_ERROR]);
         }
-    }
+    },
 );
