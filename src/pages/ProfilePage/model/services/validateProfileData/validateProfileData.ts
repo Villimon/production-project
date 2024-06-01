@@ -19,7 +19,7 @@ export const validateProfileData = (profile?: Profile) => {
         errors.push(ValidateProfileErrors.INCORRECT_AGE);
     }
 
-    if (!username) {
+    if (!username || !country) {
         errors.push(ValidateProfileErrors.INCORRECT_COUNTRY);
     }
 
