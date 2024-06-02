@@ -1,4 +1,5 @@
 import { RuleSetRule } from 'webpack';
+import { buildBabelLoader } from './loaders/buildBabelLoader';
 import { buildCssLoader } from './loaders/buildCssLoader';
 import { BuildOptions } from './types/config';
 
@@ -13,6 +14,8 @@ export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
         use: ['@svgr/webpack'],
     };
 
+    const babelLoader = buildBabelLoader(isDev);
+
     const cssLoader = buildCssLoader(isDev);
 
     const typescriptLoader = {
@@ -21,5 +24,5 @@ export const buildLoaders = ({ isDev }: BuildOptions): RuleSetRule[] => {
         exclude: /node_modules/,
     };
 
-    return [fileLoader, svgLoader, typescriptLoader, cssLoader];
+    return [fileLoader, svgLoader, babelLoader, typescriptLoader, cssLoader];
 };
