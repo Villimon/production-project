@@ -7,6 +7,7 @@ import { classNames } from '../shared/lib/classNames/classNames';
 import { useTheme } from './providers/ThemeProvider';
 import { AppRouter } from './providers/router';
 
+// Вернуться к 45 уроку, чтобы настроить удобную штуку в проекте
 const App = () => {
     const { theme } = useTheme();
     const dispatch = useDispatch();
