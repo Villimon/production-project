@@ -1,5 +1,7 @@
 import { getUserData } from 'entitites/User';
-import { memo, Suspense, useCallback, useMemo } from 'react';
+import {
+    memo, Suspense, useCallback, useMemo,
+} from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import {
