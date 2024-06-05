@@ -6,6 +6,7 @@ import {
     ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
+import { ArticleDetailsSchema } from 'entitites/Article';
 import { CounterSchema } from 'entitites/Counter';
 import { UserSchema } from 'entitites/User';
 import { LoginSchema } from 'features/AuthByUsername';
@@ -17,6 +18,7 @@ export interface StateSchema {
     user: UserSchema;
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
+    articleDetails?: ArticleDetailsSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
