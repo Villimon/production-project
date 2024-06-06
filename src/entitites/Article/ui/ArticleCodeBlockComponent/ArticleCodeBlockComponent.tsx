@@ -1,18 +1,19 @@
-import { FC } from 'react';
+import { ArticleCodeBlock } from 'entitites/Article/model/types/article';
+import { FC, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Code } from 'shared/ui/Code/Code';
 import cls from './ArticleCodeBlockComponent.module.scss';
 
 interface ArticleCodeBlockComponentProps {
     className?: string;
+    block: ArticleCodeBlock;
 }
-export const ArticleCodeBlockComponent: FC<ArticleCodeBlockComponentProps> = ({
-    className,
-}) => (
+export const ArticleCodeBlockComponent: FC<ArticleCodeBlockComponentProps> = memo(({ className, block }) => (
     <div
         className={classNames(cls.ArticleCodeBlockComponent, {}, [
             className,
         ])}
     >
-        ArticleCodeBlockComponent
+        <Code text={block.code} />
     </div>
-);
+));
