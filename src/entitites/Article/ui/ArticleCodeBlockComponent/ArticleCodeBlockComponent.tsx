@@ -7,9 +7,8 @@ interface ArticleCodeBlockComponentProps {
     className?: string;
     block: ArticleCodeBlock;
 }
-export const ArticleCodeBlockComponent: FC<ArticleCodeBlockComponentProps> =
-    memo(({ className, block }) => (
-        <div className={classNames('', {}, [className])}>
-            <Code text={block.code} />
-        </div>
-    ));
+export const ArticleCodeBlockComponent: FC<ArticleCodeBlockComponentProps> = memo(({ className, block }) => (
+    <div className={classNames('', {}, [className])}>
+        <Code text={block.code} />
+    </div>
+));
