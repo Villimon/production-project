@@ -17,7 +17,6 @@ export const loginByUsername = createAsyncThunk<
     'login/loginByUsername',
     async (authData, { dispatch, extra, rejectWithValue }) => {
         try {
-            // @ts-ignore
             const response = await extra.api.post<User>('/login', authData);
 
             if (!response.data) {
