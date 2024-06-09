@@ -18,6 +18,7 @@ const data = {
     country: Country.Kazakhstan,
     city: 'Воронеж',
     username: 'admin',
+    id: '1',
 };
 
 describe('updateProfileData', () => {

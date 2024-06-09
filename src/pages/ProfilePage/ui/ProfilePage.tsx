@@ -6,6 +6,7 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
@@ -33,7 +34,7 @@ interface ProfilePageProps {
 const ProfilePage: FC<ProfilePageProps> = memo(({ className }) => {
     const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
-
+    const { id } = useParams<{ id: string }>();
     const formData = useSelector(getProfileForm);
     const error = useSelector(getProfileError);
     const isLoading = useSelector(getProfileIsLoading);
@@ -52,9 +53,11 @@ const ProfilePage: FC<ProfilePageProps> = memo(({ className }) => {
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
+            if (id) {
+                dispatch(fetchProfileData(id));
+            }
         }
-    }, [dispatch]);
+    }, [dispatch, id]);
 
     const onChangeFirstname = useCallback(
         (value?: string) => {

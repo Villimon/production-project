@@ -1,6 +1,9 @@
 import { ArticleDetails } from 'entitites/Article';
 import { CommentList } from 'entitites/Comment';
-import { FC, memo, useEffect } from 'react';
+import { AddCommentForm } from 'features/addCommentForm';
+import {
+    FC, memo, useCallback, useEffect,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -12,6 +15,7 @@ import {
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text } from 'shared/ui/Text/Text';
 import { getArticleCommentsIsLoading } from '../model/selectors/comments';
+import { addCommentFormArticle } from '../model/services/addCommentFormArticle/addCommentFormArticle';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import {
     articleDetailsCommentsReducer,
@@ -42,6 +46,13 @@ const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
             }
         }, [dispatch, id]);
 
+        const onSendComment = useCallback(
+            (text: string) => {
+                dispatch(addCommentFormArticle(text));
+            },
+            [dispatch],
+        );
+
         if (!id) {
             return (
                 <div className={classNames('', {}, [className])}>
@@ -58,6 +69,7 @@ const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
                         className={cls.commentTitle}
                         title={t('Комментарии')}
                     />
+                    <AddCommentForm onSendComment={onSendComment} />
                     <CommentList
                         isLoading={commentsIsLoading}
                         comments={comments}
@@ -65,7 +77,7 @@ const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
                 </div>
             </DynamicModuleLoader>
         );
-    }
+    },
 );
 
 export default ArticlesDetailsPage;

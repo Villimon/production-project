@@ -18,6 +18,8 @@
     "Выйти": "Logout",
     "Профиль": "Profile",
     "Статья": "Article",
+    "Отправить": "Send",
+    "Введите текст комментария": "Enter the comment text",
     "Вы ввели неверный логин или пароль": "You entered an incorrect username or password",
     "Пароль": "Password"
 }
