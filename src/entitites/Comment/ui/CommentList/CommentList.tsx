@@ -40,5 +40,5 @@ export const CommentList: FC<CommentListProps> = memo(
                 )}
             </div>
         );
-    }
+    },
 );
