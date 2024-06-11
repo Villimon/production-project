@@ -1,3 +1,5 @@
+import { User } from 'entitites/User';
+
 export enum ArticleType {
     IT = 'IT',
     SCIENCE = 'SCIENCE',
@@ -40,8 +42,14 @@ export interface Article {
     title: string;
     subtitle: string;
     img: string;
+    user: User;
     views: number;
     createdAt: string;
     type: ArticleType[];
     blocks: ArticleBlock[];
+}
+
+export enum ArticleView {
+    BIG = 'BIG',
+    SMALL = 'SMALL',
 }
