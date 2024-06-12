@@ -1,0 +1,53 @@
+import { ArticleView } from 'entitites/Article';
+import { FC, memo } from 'react';
+import { classNames } from 'shared/lib/classNames/classNames';
+import ListIcon from 'shared/assets/icons/list-24-24.svg';
+import TiledIcon from 'shared/assets/icons/tiled-24-24.svg';
+import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { Icon } from 'shared/ui/Icon/Icon';
+import cls from './ArticleViewSelector.module.scss';
+
+interface ArticleViewSelectorProps {
+    className?: string;
+    view: ArticleView;
+    onViewClick?: (view: ArticleView) => void;
+}
+
+const viewTypes = [
+    {
+        view: ArticleView.SMALL,
+        Icon: TiledIcon,
+    },
+    {
+        view: ArticleView.BIG,
+        Icon: ListIcon,
+    },
+];
+
+export const ArticleViewSelector: FC<ArticleViewSelectorProps> = memo(
+    ({ className, view, onViewClick }) => {
+        const onClick = (newView: ArticleView) => {
+            return () => {
+                onViewClick?.(newView);
+            };
+        };
+
+        return (
+            <div className={classNames('', {}, [className])}>
+                {viewTypes.map((item) => (
+                    <Button
+                        onClick={onClick(item.view)}
+                        theme={ThemeButton.CLEAR}
+                    >
+                        <Icon
+                            className={classNames('', {
+                                [cls.selected]: item.view === view,
+                            })}
+                            Svg={item.Icon}
+                        />
+                    </Button>
+                ))}
+            </div>
+        );
+    }
+);
