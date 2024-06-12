@@ -76,5 +76,5 @@ export const ArticleListItemSkeleton: FC<ArticleListItemProps> = memo(
                 </Card>
             </div>
         );
-    }
+    },
 );

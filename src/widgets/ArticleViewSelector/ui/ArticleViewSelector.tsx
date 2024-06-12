@@ -26,10 +26,8 @@ const viewTypes = [
 
 export const ArticleViewSelector: FC<ArticleViewSelectorProps> = memo(
     ({ className, view, onViewClick }) => {
-        const onClick = (newView: ArticleView) => {
-            return () => {
-                onViewClick?.(newView);
-            };
+        const onClick = (newView: ArticleView) => () => {
+            onViewClick?.(newView);
         };
 
         return (
@@ -49,5 +47,5 @@ export const ArticleViewSelector: FC<ArticleViewSelectorProps> = memo(
                 ))}
             </div>
         );
-    }
+    },
 );

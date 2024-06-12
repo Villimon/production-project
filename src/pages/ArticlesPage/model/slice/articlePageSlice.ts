@@ -15,7 +15,7 @@ const articleAdapter = createEntityAdapter<Article>({
 
 // Селектор с помощью которого мы получаем комментарии
 export const getArticle = articleAdapter.getSelectors<StateSchema>(
-    (state) => state.articlePage || articleAdapter.getInitialState()
+    (state) => state.articlePage || articleAdapter.getInitialState(),
 );
 
 const articlePageSlice = createSlice({
@@ -32,12 +32,12 @@ const articlePageSlice = createSlice({
             state.view = action.payload;
             localStorage.setItem(
                 ARTICLE_VIEW_LOCAL_STORAGE_KEY,
-                action.payload
+                action.payload,
             );
         },
         initState: (state) => {
             state.view = localStorage.getItem(
-                ARTICLE_VIEW_LOCAL_STORAGE_KEY
+                ARTICLE_VIEW_LOCAL_STORAGE_KEY,
             ) as ArticleView;
         },
     },
@@ -52,7 +52,7 @@ const articlePageSlice = createSlice({
                 (state, action: PayloadAction<Article[]>) => {
                     state.isLoading = false;
                     articleAdapter.setAll(state, action.payload);
-                }
+                },
             )
             .addCase(fetchArticlesList.rejected, (state, action) => {
                 state.isLoading = false;
@@ -61,5 +61,4 @@ const articlePageSlice = createSlice({
     },
 });
 
-export const { reducer: articlePageReducer, actions: articlePageActions } =
-    articlePageSlice;
+export const { reducer: articlePageReducer, actions: articlePageActions } = articlePageSlice;
