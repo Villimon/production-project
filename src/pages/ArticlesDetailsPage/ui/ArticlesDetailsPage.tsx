@@ -16,6 +16,7 @@ import {
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from 'shared/ui/Button/Button';
 import { Text } from 'shared/ui/Text/Text';
+import { Page } from 'widgets/Page/Page';
 import { getArticleCommentsIsLoading } from '../model/selectors/comments';
 import { addCommentFormArticle } from '../model/services/addCommentFormArticle/addCommentFormArticle';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
@@ -62,16 +63,18 @@ const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
 
         if (!id) {
             return (
-                <div className={classNames('', {}, [className])}>
+                <Page className={classNames('', {}, [className])}>
                     {t('Статья не найдена')}
-                </div>
+                </Page>
             );
         }
 
         return (
             <DynamicModuleLoader reducers={reducer} removeAfterUnmount>
-                <Button onClick={onBackToList}>{t('Назад к списку')}</Button>
-                <div className={classNames('', {}, [className])}>
+                <Page className={classNames('', {}, [className])}>
+                    <Button onClick={onBackToList}>
+                        {t('Назад к списку')}
+                    </Button>
                     <ArticleDetails id={id} />
                     <Text
                         className={cls.commentTitle}
@@ -82,7 +85,7 @@ const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
                         isLoading={commentsIsLoading}
                         comments={comments}
                     />
-                </div>
+                </Page>
             </DynamicModuleLoader>
         );
     },

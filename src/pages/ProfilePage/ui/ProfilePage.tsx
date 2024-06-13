@@ -14,6 +14,7 @@ import {
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { Page } from 'widgets/Page/Page';
 import { fetchProfileData, profileActions, profileReducer } from '..';
 import { getProfileError } from '../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm';
@@ -120,7 +121,7 @@ const ProfilePage: FC<ProfilePageProps> = memo(({ className }) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div className={classNames('', {}, [className])}>
+            <Page className={classNames(cls.ProfilePage, {}, [className])}>
                 <ProfilePageHeader />
                 {validateErrors?.length
                     && validateErrors.map((error) => (
@@ -144,7 +145,7 @@ const ProfilePage: FC<ProfilePageProps> = memo(({ className }) => {
                     onChangeCurrency={onChangeCurrency}
                     onChangeCountry={onChangeCountry}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 });

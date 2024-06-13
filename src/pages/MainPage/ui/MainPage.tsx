@@ -3,6 +3,7 @@ import { Counter } from 'entitites/Counter';
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'shared/ui/Input/Input';
+import { Page } from 'widgets/Page/Page';
 
 const MainPage = memo(() => {
     const { t } = useTranslation();
@@ -14,7 +15,7 @@ const MainPage = memo(() => {
     };
 
     return (
-        <div>
+        <Page>
             <BugButton />
             {t('Главная страница')}
             <Counter />
@@ -25,7 +26,7 @@ const MainPage = memo(() => {
                 onChange={onChange}
                 placeholder={t('Войти')}
             />
-        </div>
+        </Page>
     );
 });
 

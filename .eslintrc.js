@@ -74,11 +74,12 @@ module.exports = {
         'react/prop-types': 'off',
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
+        'react/jsx-no-useless-fragment': 'off',
     },
     globals: {
         __IS_DEV__: true,
         __API__: true,
-        __PROJECT__: true,
+        __PROJECT__: true,J
     },
     overrides: [
         {
