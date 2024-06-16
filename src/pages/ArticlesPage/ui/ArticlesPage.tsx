@@ -15,8 +15,8 @@ import {
     getArticlePageIsLoading,
     getArticlePageView,
 } from '../model/selectors/articlePageSelectors';
-import { fetchArticlesList } from '../model/services/fetchArticlesList/fetchArticlesList';
 import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
 import {
     articlePageActions,
     articlePageReducer,
@@ -41,12 +41,7 @@ const ArticlesPage: FC<ArticlesPageProps> = memo(({ className }) => {
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
-            dispatch(articlePageActions.initState());
-            dispatch(
-                fetchArticlesList({
-                    page: 1,
-                })
-            );
+            dispatch(initArticlesPage());
         }
     }, [dispatch]);
 
@@ -62,7 +57,7 @@ const ArticlesPage: FC<ArticlesPageProps> = memo(({ className }) => {
     );
 
     return (
-        <DynamicModuleLoader reducers={reducer}>
+        <DynamicModuleLoader reducers={reducer} removeAfterUnmount={false}>
             <Page
                 onScrollEnd={onLoadNextPart}
                 className={classNames('', {}, [className])}

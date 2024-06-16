@@ -30,6 +30,7 @@ export const CommentList: FC<CommentListProps> = memo(
                 {comments?.length ? (
                     comments.map((comment) => (
                         <CommentCard
+                            key={comment.id}
                             isLoading={isLoading}
                             className={cls.comment}
                             comment={comment}
