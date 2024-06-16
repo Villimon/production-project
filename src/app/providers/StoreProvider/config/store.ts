@@ -6,8 +6,8 @@ import {
 } from '@reduxjs/toolkit';
 import { counterReducer } from 'entitites/Counter';
 import { userReducer } from 'entitites/User';
-import { NavigateOptions, To } from 'react-router-dom';
 import { $api } from 'shared/api/api';
+import { uiReducer } from 'widgets/Page';
 import { createReducerManager } from './reducerManager';
 import { StateSchema, ThunkExtraArg } from './StateSchema';
 
@@ -19,6 +19,7 @@ export function createReduxStore(
         ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
+        ui: uiReducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);

@@ -14,11 +14,12 @@ import { LoginSchema } from 'features/AuthByUsername';
 import { ArticleDetailsCommentsSchema } from 'pages/ArticlesDetailsPage';
 import { ArticlePageSchema } from 'pages/ArticlesPage';
 import { ProfileSchema } from 'pages/ProfilePage';
-import { NavigateOptions, To } from 'react-router-dom';
+import { UISchema } from 'widgets/Page';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
+    ui: UISchema;
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSchema;

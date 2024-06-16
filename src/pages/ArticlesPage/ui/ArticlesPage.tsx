@@ -1,5 +1,7 @@
 import { ArticleList, ArticleView } from 'entitites/Article';
-import { FC, memo, useCallback, useEffect } from 'react';
+import {
+    FC, memo, useCallback, useEffect,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -9,7 +11,7 @@ import {
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { ArticleViewSelector } from 'widgets/ArticleViewSelector';
-import { Page } from 'widgets/Page/Page';
+import { Page } from 'widgets/Page';
 import {
     getArticlePageError,
     getArticlePageIsLoading,
@@ -53,7 +55,7 @@ const ArticlesPage: FC<ArticlesPageProps> = memo(({ className }) => {
         (view: ArticleView) => {
             dispatch(articlePageActions.setView(view));
         },
-        [dispatch]
+        [dispatch],
     );
 
     return (
