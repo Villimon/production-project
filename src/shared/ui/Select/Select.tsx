@@ -4,45 +4,47 @@ import {
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Select.module.scss';
 
-export interface SelectOptions {
-    value: string;
+export interface SelectOptions<T extends string> {
+    value: T;
     content: string;
 }
 
-interface SelectProps {
+interface SelectProps<T extends string> {
     className?: string;
     label?: string;
-    options?: SelectOptions[];
-    value?: string;
-    onChange?: (value: string) => void;
+    options?: SelectOptions<T>[];
+    value?: T;
+    onChange?: (value: T) => void;
     readonly?: boolean;
 }
-export const Select: FC<SelectProps> = memo(
-    ({
+export const Select = <T extends string>(props: SelectProps<T>) => {
+    const {
         className, label, options, onChange, value, readonly,
-    }) => {
-        const optionsList = useMemo(() => options?.map((i) => (
+    } = props;
+    const optionsList = useMemo(
+        () => options?.map((i) => (
             <option className={cls.option} value={i.value} key={i.value}>
                 {i.content}
             </option>
-        )), [options]);
+        )),
+        [options],
+    );
 
-        const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
-            onChange?.(e.target.value);
-        };
+    const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+        onChange?.(e.target.value as T);
+    };
 
-        return (
-            <div className={classNames(cls.Wrapper, {}, [className])}>
-                {label && <span className={cls.label}>{`${label}>`}</span>}
-                <select
-                    value={value}
-                    onChange={onChangeHandler}
-                    className={cls.select}
-                    disabled={readonly}
-                >
-                    {optionsList}
-                </select>
-            </div>
-        );
-    },
-);
+    return (
+        <div className={classNames(cls.Wrapper, {}, [className])}>
+            {label && <span className={cls.label}>{`${label}>`}</span>}
+            <select
+                value={value}
+                onChange={onChangeHandler}
+                className={cls.select}
+                disabled={readonly}
+            >
+                {optionsList}
+            </select>
+        </div>
+    );
+};

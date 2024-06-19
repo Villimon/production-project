@@ -3,5 +3,18 @@
     "Комментарии": "Comments",
     "Комментарии отсутствуют": "There are no comments",
     "Назад к списку": "Back to list",
+    "Сортировать ПО": "Sort BY",
+    "Поиск": "Search",
+    "по": "by",
+    "возрастанию": "ascending",
+    "убыванию": "descending",
+    "названию": "title",
+    "просмотрам": "views",
+    "дате создания": "data of creation",
+    "Все статьи": "All articles",
+    "Айти": "IT",
+    "Экономика": "Economics",
+    "Наука": "Science",
+    "Статьи не найдены": "Articles not found",
     "Произошла ошибка при загрузки статьи": "An error occurred while uploading the article"
 }

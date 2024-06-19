@@ -1,7 +1,5 @@
-import { ArticleList, ArticleView } from 'entitites/Article';
-import {
-    FC, memo, useCallback, useEffect,
-} from 'react';
+import { ArticleList } from 'entitites/Article';
+import { FC, memo, useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -10,20 +8,21 @@ import {
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { ArticleViewSelector } from 'widgets/ArticleViewSelector';
 import { Page } from 'widgets/Page';
+import { useSearchParams } from 'react-router-dom';
+import cls from './ArticlesPage.module.scss';
 import {
     getArticlePageError,
     getArticlePageIsLoading,
     getArticlePageView,
-} from '../model/selectors/articlePageSelectors';
-import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
-import { initArticlesPage } from '../model/services/initArticlesPage/initArticlesPage';
+} from '../../model/selectors/articlePageSelectors';
+import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import {
-    articlePageActions,
     articlePageReducer,
     getArticle,
-} from '../model/slice/articlePageSlice';
+} from '../../model/slice/articlePageSlice';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 
 const reducer: ReducersList = {
     articlePage: articlePageReducer,
@@ -38,25 +37,19 @@ const ArticlesPage: FC<ArticlesPageProps> = memo(({ className }) => {
     const dispatch = useAppDispatch();
     const articles = useSelector(getArticle.selectAll);
     const isLoading = useSelector(getArticlePageIsLoading);
-    const view = useSelector(getArticlePageView);
     const error = useSelector(getArticlePageError);
+    const view = useSelector(getArticlePageView);
+    const [searchParams] = useSearchParams();
 
     useEffect(() => {
         if (__PROJECT__ !== 'storybook') {
-            dispatch(initArticlesPage());
+            dispatch(initArticlesPage(searchParams));
         }
-    }, [dispatch]);
+    }, [dispatch, searchParams]);
 
     const onLoadNextPart = useCallback(() => {
         dispatch(fetchNextArticlesPage());
     }, [dispatch]);
-
-    const onChangeView = useCallback(
-        (view: ArticleView) => {
-            dispatch(articlePageActions.setView(view));
-        },
-        [dispatch],
-    );
 
     return (
         <DynamicModuleLoader reducers={reducer} removeAfterUnmount={false}>
@@ -64,11 +57,12 @@ const ArticlesPage: FC<ArticlesPageProps> = memo(({ className }) => {
                 onScrollEnd={onLoadNextPart}
                 className={classNames('', {}, [className])}
             >
-                <ArticleViewSelector view={view} onViewClick={onChangeView} />
+                <ArticlesPageFilters />
                 <ArticleList
                     isLoading={isLoading}
                     view={view}
                     articles={articles}
+                    className={cls.list}
                 />
             </Page>
         </DynamicModuleLoader>
