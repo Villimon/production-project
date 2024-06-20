@@ -1,5 +1,7 @@
 import { ArticleList } from 'entitites/Article';
-import { FC, memo, useCallback, useEffect } from 'react';
+import {
+    FC, memo, useCallback, useEffect,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';

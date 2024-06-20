@@ -1,5 +1,5 @@
 import { Article, ArticleView } from 'entitites/Article';
-import { FC, memo } from 'react';
+import { FC, HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextSize } from 'shared/ui/Text/Text';
@@ -12,14 +12,16 @@ interface ArticleListProps {
     articles: Article[];
     isLoading?: boolean;
     view?: ArticleView;
+    target?: HTMLAttributeAnchorTarget;
 }
 export const ArticleList: FC<ArticleListProps> = memo(
     ({
-        className, articles, isLoading, view = ArticleView.SMALL,
+        className, articles, isLoading, target, view = ArticleView.SMALL,
     }) => {
         const { t } = useTranslation('article');
         const renderArticle = (article: Article) => (
             <ArticleListItem
+                target={target}
                 className={cls.card}
                 article={article}
                 view={view}

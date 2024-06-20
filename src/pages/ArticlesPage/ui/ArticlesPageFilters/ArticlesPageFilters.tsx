@@ -14,7 +14,9 @@ import {
 } from 'pages/ArticlesPage/model/selectors/articlePageSelectors';
 import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
 import { articlePageActions } from 'pages/ArticlesPage/model/slice/articlePageSlice';
-import { FC, memo, useCallback, useMemo } from 'react';
+import {
+    FC, memo, useCallback, useMemo,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -49,7 +51,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
             (view: ArticleView) => {
                 dispatch(articlePageActions.setView(view));
             },
-            [dispatch]
+            [dispatch],
         );
 
         const onChangeOrder = useCallback(
@@ -58,7 +60,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
                 dispatch(articlePageActions.setPage(1));
                 debouncedfetchData();
             },
-            [dispatch, debouncedfetchData]
+            [dispatch, debouncedfetchData],
         );
 
         const onChangeType = useCallback(
@@ -67,7 +69,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
                 dispatch(articlePageActions.setPage(1));
                 fetchData();
             },
-            [dispatch, fetchData]
+            [dispatch, fetchData],
         );
 
         const onChangeSort = useCallback(
@@ -76,7 +78,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
                 dispatch(articlePageActions.setPage(1));
                 debouncedfetchData();
             },
-            [dispatch, debouncedfetchData]
+            [dispatch, debouncedfetchData],
         );
 
         const onChangeSearch = useCallback(
@@ -85,7 +87,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
                 dispatch(articlePageActions.setPage(1));
                 debouncedfetchData();
             },
-            [dispatch, debouncedfetchData]
+            [dispatch, debouncedfetchData],
         );
 
         return (
@@ -118,5 +120,5 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
                 />
             </div>
         );
-    }
+    },
 );

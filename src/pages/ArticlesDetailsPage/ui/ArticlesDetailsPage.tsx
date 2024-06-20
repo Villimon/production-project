@@ -1,4 +1,4 @@
-import { ArticleDetails } from 'entitites/Article';
+import { ArticleDetails, ArticleList } from 'entitites/Article';
 import { CommentList } from 'entitites/Comment';
 import { AddCommentForm } from 'features/addCommentForm';
 import {
@@ -18,12 +18,13 @@ import { Button } from 'shared/ui/Button/Button';
 import { Text } from 'shared/ui/Text/Text';
 import { Page } from 'widgets/Page';
 import { getArticleCommentsIsLoading } from '../model/selectors/comments';
+import { getArticlePageRecomIsLoading } from '../model/selectors/recommendations';
 import { addCommentFormArticle } from '../model/services/addCommentFormArticle/addCommentFormArticle';
+import { fetchArticleRecommendation } from '../model/services/fetchArticleRecommendation/fetchArticleRecommendation';
 import { fetchCommentsByArticleId } from '../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
-import {
-    articleDetailsCommentsReducer,
-    getArticleComments,
-} from '../model/slice/articleDetailsCommentsSlice';
+import { articleDetailsPageReducer } from '../model/slice';
+import { getArticleComments } from '../model/slice/articleDetailsCommentsSlice';
+import { getArticleRecom } from '../model/slice/articleDetailsPageRecomSlice';
 import cls from './ArticlesDetailsPage.module.scss';
 
 interface ArticlesDetailsPageProps {
@@ -31,7 +32,7 @@ interface ArticlesDetailsPageProps {
 }
 
 const reducer: ReducersList = {
-    articleDetailsComments: articleDetailsCommentsReducer,
+    articleDetailsPage: articleDetailsPageReducer,
 };
 
 const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
@@ -42,7 +43,11 @@ const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
         const navigate = useNavigate();
         // Чтобы получить массив комментариев
         const comments = useSelector(getArticleComments.selectAll);
+        const recommendations = useSelector(getArticleRecom.selectAll);
         const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
+        const recommendationsIsLoading = useSelector(
+            getArticlePageRecomIsLoading,
+        );
 
         const onBackToList = () => {
             navigate(RoutePath.articles);
@@ -51,6 +56,7 @@ const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
         useEffect(() => {
             if (__PROJECT__ !== 'storybook') {
                 dispatch(fetchCommentsByArticleId(id));
+                dispatch(fetchArticleRecommendation());
             }
         }, [dispatch, id]);
 
@@ -76,6 +82,16 @@ const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
                         {t('Назад к списку')}
                     </Button>
                     <ArticleDetails id={id} />
+                    <Text
+                        className={cls.commentTitle}
+                        title={t('Рукомендуем')}
+                    />
+                    <ArticleList
+                        articles={recommendations}
+                        isLoading={recommendationsIsLoading}
+                        className={cls.recommendations}
+                        target="_blank"
+                    />
                     <Text
                         className={cls.commentTitle}
                         title={t('Комментарии')}
