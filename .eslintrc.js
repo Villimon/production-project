@@ -17,7 +17,7 @@ module.exports = {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
-    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
+    plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'project-my-plugin'],
     rules: {
         // Превым аргументом передает, 0-отключаем правильн,1-выдает предупреждение,2-ощибку
         // оступы для jsx
@@ -78,6 +78,7 @@ module.exports = {
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
         'react/jsx-no-useless-fragment': 'off',
+        'project-my-plugin/path-checker': 'error'
     },
     globals: {
         __IS_DEV__: true,

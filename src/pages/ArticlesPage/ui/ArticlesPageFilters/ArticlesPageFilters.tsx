@@ -4,16 +4,7 @@ import {
     ArticleView,
 } from 'entitites/Article';
 import { ArticleType } from 'entitites/Article/model/types/article';
-import { ArticleTypeTabs } from 'pages/ArticlesPage';
-import {
-    getArticlePageOrder,
-    getArticlePageSearch,
-    getArticlePageSort,
-    getArticlePageType,
-    getArticlePageView,
-} from 'pages/ArticlesPage/model/selectors/articlePageSelectors';
-import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
-import { articlePageActions } from 'pages/ArticlesPage/model/slice/articlePageSlice';
+import { ArticleTypeTabs } from 'entitites/Article/ui/ArticleTypeTabs/ArticleTypeTabs';
 import {
     FC, memo, useCallback, useMemo,
 } from 'react';
@@ -26,6 +17,15 @@ import { SortOrder } from 'shared/types';
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
 import { ArticleViewSelector } from 'widgets/ArticleViewSelector';
+import { articlePageActions } from '../../model/slice/articlePageSlice';
+import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
+import {
+    getArticlePageOrder,
+    getArticlePageSearch,
+    getArticlePageSort,
+    getArticlePageType,
+    getArticlePageView,
+} from '../../model/selectors/articlePageSelectors';
 import cls from './ArticlesPageFilters.module.scss';
 
 interface ArticlesPageFiltersProps {

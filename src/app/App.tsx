@@ -7,6 +7,11 @@ import { classNames } from '../shared/lib/classNames/classNames';
 import { useTheme } from './providers/ThemeProvider';
 import { AppRouter } from './providers/router';
 
+// !!!TODO
+// 1.Урок 63 Виртуализация
+// Сделать Виртуализацию, штука позволяет оптимизировать большие списки, в нашем случае список статей
+// Можно использовать react-virtuoso (урок 63)
+// 2.Сделать добавление и обновление статей
 // Вернуться к 45 уроку, чтобы настроить удобную штуку в проекте
 const App = () => {
     const { theme } = useTheme();
