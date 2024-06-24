@@ -13,6 +13,7 @@ import {
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { VStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
 import { Page } from 'widgets/Page';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
@@ -72,27 +73,29 @@ const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
         return (
             <DynamicModuleLoader reducers={reducer} removeAfterUnmount>
                 <Page className={classNames('', {}, [className])}>
-                    <ArticlesDetailsPageHeader />
-                    <ArticleDetails id={id} />
-                    <Text
-                        className={cls.commentTitle}
-                        title={t('Рукомендуем')}
-                    />
-                    <ArticleList
-                        articles={recommendations}
-                        isLoading={recommendationsIsLoading}
-                        className={cls.recommendations}
-                        target="_blank"
-                    />
-                    <Text
-                        className={cls.commentTitle}
-                        title={t('Комментарии')}
-                    />
-                    <AddCommentForm onSendComment={onSendComment} />
-                    <CommentList
-                        isLoading={commentsIsLoading}
-                        comments={comments}
-                    />
+                    <VStack gap="16" max>
+                        <ArticlesDetailsPageHeader />
+                        <ArticleDetails id={id} />
+                        <Text
+                            className={cls.commentTitle}
+                            title={t('Рукомендуем')}
+                        />
+                        <ArticleList
+                            articles={recommendations}
+                            isLoading={recommendationsIsLoading}
+                            className={cls.recommendations}
+                            target="_blank"
+                        />
+                        <Text
+                            className={cls.commentTitle}
+                            title={t('Комментарии')}
+                        />
+                        <AddCommentForm onSendComment={onSendComment} />
+                        <CommentList
+                            isLoading={commentsIsLoading}
+                            comments={comments}
+                        />
+                    </VStack>
                 </Page>
             </DynamicModuleLoader>
         );

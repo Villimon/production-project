@@ -13,6 +13,7 @@ import {
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { VStack } from 'shared/ui/Stack';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { Page } from 'widgets/Page';
 import { fetchProfileData, profileActions, profileReducer } from '..';
@@ -122,29 +123,31 @@ const ProfilePage: FC<ProfilePageProps> = memo(({ className }) => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <Page className={classNames(cls.ProfilePage, {}, [className])}>
-                <ProfilePageHeader />
-                {validateErrors?.length
-                    && validateErrors.map((error) => (
-                        <Text
-                            key={error}
-                            theme={TextTheme.ERROR}
-                            text={validateErrorTranslation[error]}
-                        />
-                    ))}
-                <ProfileCard
-                    data={formData}
-                    error={error}
-                    isLoading={isLoading}
-                    readonly={readonly}
-                    onChangeFirstname={onChangeFirstname}
-                    onChangeLastname={onChangeLastname}
-                    onChangeAge={onChangeAge}
-                    onChangeCity={onChangeCity}
-                    onChangeUsername={onChangeUsername}
-                    onChangeAvatar={onChangeAvatar}
-                    onChangeCurrency={onChangeCurrency}
-                    onChangeCountry={onChangeCountry}
-                />
+                <VStack gap="16" max>
+                    <ProfilePageHeader />
+                    {validateErrors?.length
+                        && validateErrors.map((error) => (
+                            <Text
+                                key={error}
+                                theme={TextTheme.ERROR}
+                                text={validateErrorTranslation[error]}
+                            />
+                        ))}
+                    <ProfileCard
+                        data={formData}
+                        error={error}
+                        isLoading={isLoading}
+                        readonly={readonly}
+                        onChangeFirstname={onChangeFirstname}
+                        onChangeLastname={onChangeLastname}
+                        onChangeAge={onChangeAge}
+                        onChangeCity={onChangeCity}
+                        onChangeUsername={onChangeUsername}
+                        onChangeAvatar={onChangeAvatar}
+                        onChangeCurrency={onChangeCurrency}
+                        onChangeCountry={onChangeCountry}
+                    />
+                </VStack>
             </Page>
         </DynamicModuleLoader>
     );

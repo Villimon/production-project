@@ -9,6 +9,7 @@ import {
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
+import { HStack } from 'shared/ui/Stack';
 import {
     addCommentFormActions,
     addCommentFormReducer,
@@ -49,7 +50,9 @@ const AddCommentForm: FC<AddCommentFormProps> = memo(
 
         return (
             <DynamicModuleLoader reducers={reducers}>
-                <div
+                <HStack
+                    max
+                    justify="between"
                     className={classNames(cls.AddCommentForm, {}, [className])}
                 >
                     <Input
@@ -59,7 +62,7 @@ const AddCommentForm: FC<AddCommentFormProps> = memo(
                         onChange={onCommentTextChange}
                     />
                     <Button onClick={onSendHandler}>{t('Отправить')}</Button>
-                </div>
+                </HStack>
             </DynamicModuleLoader>
         );
     },

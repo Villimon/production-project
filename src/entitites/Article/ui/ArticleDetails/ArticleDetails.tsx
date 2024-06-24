@@ -28,6 +28,7 @@ import {
     ArticleBlock,
     ArticleBlockType,
 } from 'entitites/Article/model/types/article';
+import { HStack, VStack } from 'shared/ui/Stack';
 import cls from './ArticleDetails.module.scss';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
@@ -130,27 +131,30 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo(
             content = (
                 // eslint-disable-next-line
                 <>
-                    <div className={cls.avatarWrapper}>
+                    <HStack justify="center" max>
                         <Avatar
                             size={200}
                             src={article?.img}
                             className={cls.avatar}
                         />
-                    </div>
-                    <Text
-                        size={TextSize.L}
-                        className={cls.title}
-                        title={article?.title}
-                        text={article?.subtitle}
-                    />
-                    <div className={cls.articleInfo}>
-                        <Icon Svg={EyeIcon} className={cls.icon} />
-                        <Text text={String(article?.views)} />
-                    </div>
-                    <div className={cls.articleInfo}>
-                        <Icon Svg={CalendarIcon} className={cls.icon} />
-                        <Text text={article?.createdAt} />
-                    </div>
+                    </HStack>
+                    <VStack gap="4" max>
+                        <Text
+                            size={TextSize.L}
+                            className={cls.title}
+                            title={article?.title}
+                            text={article?.subtitle}
+                        />
+                        <HStack gap="8">
+                            <Icon Svg={EyeIcon} className={cls.icon} />
+                            <Text text={String(article?.views)} />
+                        </HStack>
+                        <HStack gap="8">
+                            <Icon Svg={CalendarIcon} className={cls.icon} />
+                            <Text text={article?.createdAt} />
+                        </HStack>
+                    </VStack>
+
                     {article?.blocks.map(renderBlock)}
                 </>
             );
@@ -158,11 +162,12 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo(
 
         return (
             <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-                <div
+                <VStack
+                    gap="16"
                     className={classNames(cls.ArticleDetails, {}, [className])}
                 >
                     {content}
-                </div>
+                </VStack>
             </DynamicModuleLoader>
         );
     },
