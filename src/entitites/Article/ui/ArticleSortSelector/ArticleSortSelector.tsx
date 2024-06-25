@@ -52,7 +52,7 @@ export const ArticleSortSelector: FC<ArticleSortSelectorProps> = memo(
         );
 
         return (
-            <div
+            <section
                 className={classNames(cls.ArticleSortSelector, {}, [className])}
             >
                 <Select
@@ -68,7 +68,7 @@ export const ArticleSortSelector: FC<ArticleSortSelectorProps> = memo(
                     value={order}
                     onChange={onChangeOrder}
                 />
-            </div>
+            </section>
         );
     },
 );

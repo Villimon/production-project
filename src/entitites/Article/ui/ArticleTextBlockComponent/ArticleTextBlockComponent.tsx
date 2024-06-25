@@ -9,7 +9,7 @@ interface ArticleTextBlockComponentProps {
     block: ArticleTextBlock;
 }
 export const ArticleTextBlockComponent: FC<ArticleTextBlockComponentProps> = memo(({ className, block }) => (
-    <div
+    <section
         className={classNames(cls.ArticleTextBlockComponent, {}, [
             className,
         ])}
@@ -18,5 +18,5 @@ export const ArticleTextBlockComponent: FC<ArticleTextBlockComponentProps> = mem
         {block.paragraphs.map((parag) => (
             <Text key={parag} text={parag} className={cls.paragraphs} />
         ))}
-    </div>
+    </section>
 ));

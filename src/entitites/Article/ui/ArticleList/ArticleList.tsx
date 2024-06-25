@@ -43,7 +43,7 @@ export const ArticleList: FC<ArticleListProps> = memo(
         }
 
         return (
-            <div
+            <section
                 className={classNames(cls.ArticleList, {}, [
                     className,
                     cls[view],
@@ -63,7 +63,7 @@ export const ArticleList: FC<ArticleListProps> = memo(
                             ))}
                     </>
                 )}
-            </div>
+            </section>
         );
     },
 );

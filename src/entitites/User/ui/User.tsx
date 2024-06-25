@@ -6,5 +6,5 @@ interface UserProps {
     className?: string;
 }
 export const User: FC<UserProps> = memo(({ className }) => (
-    <div className={classNames(cls.User, {}, [className])} />
+    <article className={classNames(cls.User, {}, [className])} />
 ));

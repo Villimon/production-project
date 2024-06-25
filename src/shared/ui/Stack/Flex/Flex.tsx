@@ -7,7 +7,12 @@ export type FlexAlign = 'start' | 'center' | 'end';
 export type FlexDirection = 'row' | 'column';
 export type FlexGap = '4' | '8' | '16' | '32';
 
-export interface FlexProps {
+type DivProps = React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+>;
+
+export interface FlexProps extends DivProps {
     className?: string;
     justify?: FlexJustify;
     align?: FlexAlign;

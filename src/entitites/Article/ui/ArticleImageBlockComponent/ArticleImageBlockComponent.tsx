@@ -9,7 +9,7 @@ interface ArticleImageBlockComponentProps {
     block: ArticleImgBlock;
 }
 export const ArticleImageBlockComponent: FC<ArticleImageBlockComponentProps> = memo(({ className, block }) => (
-    <div
+    <section
         className={classNames(cls.ArticleImageBlockComponent, {}, [
             className,
         ])}
@@ -18,5 +18,5 @@ export const ArticleImageBlockComponent: FC<ArticleImageBlockComponentProps> = m
         {block.title && (
             <Text text={block.title} aligh={TextAlign.CENTER} />
         )}
-    </div>
+    </section>
 ));

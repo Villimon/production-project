@@ -47,7 +47,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
             ) as ArticleTextBlock;
 
             return (
-                <div
+                <article
                     className={classNames(cls.ArticleListItem, {}, [
                         className,
                         cls[view],
@@ -89,7 +89,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                             {views}
                         </div>
                     </Card>
-                </div>
+                </article>
             );
         }
 

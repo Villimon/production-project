@@ -8,7 +8,7 @@ interface ArticleCodeBlockComponentProps {
     block: ArticleCodeBlock;
 }
 export const ArticleCodeBlockComponent: FC<ArticleCodeBlockComponentProps> = memo(({ className, block }) => (
-    <div className={classNames('', {}, [className])}>
+    <section className={classNames('', {}, [className])}>
         <Code text={block.code} />
-    </div>
+    </section>
 ));
