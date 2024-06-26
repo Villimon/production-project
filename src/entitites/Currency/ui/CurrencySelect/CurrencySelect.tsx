@@ -4,7 +4,7 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Select } from 'shared/ui/Select/Select';
+import { ListBox } from 'shared/ui/ListBox/ListBox';
 import cls from './CurrencySelect.module.scss';
 
 interface CurrencySelectProps {
@@ -20,11 +20,14 @@ export const CurrencySelect: FC<CurrencySelectProps> = memo(
     }) => {
         const { t } = useTranslation();
 
-        const options = useMemo(() => [
-            { value: Currency.RUB, content: Currency.RUB },
-            { value: Currency.EUR, content: Currency.EUR },
-            { value: Currency.USD, content: Currency.USD },
-        ], []);
+        const options = useMemo(
+            () => [
+                { value: Currency.RUB, content: Currency.RUB },
+                { value: Currency.EUR, content: Currency.EUR },
+                { value: Currency.USD, content: Currency.USD },
+            ],
+            [],
+        );
 
         const onChangeHandler = useCallback(
             (value: string) => {
@@ -34,13 +37,15 @@ export const CurrencySelect: FC<CurrencySelectProps> = memo(
         );
 
         return (
-            <Select
+            <ListBox
                 className={classNames('', {}, [className])}
-                label={t('Укажите валюту')}
-                options={options}
+                items={options}
                 value={value}
                 onChange={onChangeHandler}
+                defaultValue={t('Укажите валюту')}
+                label={t('Укажите валюту')}
                 readonly={readonly}
+                direction="top"
             />
         );
     },

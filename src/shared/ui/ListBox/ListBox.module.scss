@@ -1,0 +1,34 @@
+.ListBox {
+    position: relative;
+}
+
+.trigger {
+    outline-color: transparent;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.options {
+    background: var(--card-bg);
+    position: absolute;
+    z-index: 100;
+    border-radius: 12px;
+
+    &.top {
+        bottom: 100%;
+    }
+}
+
+.disabled {
+    opacity: 0.7;
+}
+
+.item {
+    padding: 10px 20px;
+}
+
+.active {
+    background: var(--inverted-primary-color);
+}
