@@ -1,20 +1,25 @@
-.ListBox {
+.Menu {
     position: relative;
 }
 
-.trigger {
+.btn {
     outline-color: transparent;
     background: none;
     border: none;
     padding: 0;
     margin: 0;
+    cursor: pointer;
 }
 
-.options {
-    background: var(--card-bg);
+.menu {
     position: absolute;
+    background: var(--card-bg);
     z-index: 100;
-    border-radius: 12px;
+    border-radius: 8px;
+    padding: 5px;
+    border: 1px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
 
     &.top-right {
         bottom: 100%;
@@ -37,12 +42,15 @@
     }
 }
 
-.disabled {
-    opacity: 0.7;
-}
-
 .item {
-    padding: 10px 20px;
+    padding: 10px 25px;
+    border-radius: 8px;
+    width: 100%;
+    outline-color: transparent;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
 }
 
 .active {

@@ -1,4 +1,6 @@
-import { FC, memo } from 'react';
+import {
+    FC, ForwardedRef, forwardRef, memo,
+} from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './AppLink.module.scss';
@@ -12,15 +14,21 @@ interface AppLinkProps extends LinkProps {
     className?: string;
     theme?: AppLinkTheme;
 }
-export const AppLink: FC<AppLinkProps> = memo(
-    ({
-        children,
-        to,
-        className,
-        theme = AppLinkTheme.PRIMARY,
-        ...otherProps
-    }) => (
+
+// forwardRef нужен чтобы работал клин через клавиатуру
+export const AppLink: FC<AppLinkProps> = forwardRef(
+    (
+        {
+            children,
+            to,
+            className,
+            theme = AppLinkTheme.PRIMARY,
+            ...otherProps
+        },
+        ref: ForwardedRef<HTMLAnchorElement>,
+    ) => (
         <Link
+            ref={ref}
             to={to}
             {...otherProps}
             className={classNames(cls.AppLink, {}, [className, cls[theme]])}

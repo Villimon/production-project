@@ -1,11 +1,10 @@
 import { Listbox as HListbox } from '@headlessui/react';
 import { Fragment, memo, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { DropdawnDirection } from 'shared/types/ui';
 import { Button } from '../Button/Button';
 import { HStack } from '../Stack';
 import cls from './ListBox.module.scss';
-
-type DropdawnDirection = 'top' | 'bottom';
 
 export interface ListBoxItem {
     value: string;
@@ -31,7 +30,7 @@ export const ListBox = memo((props: ListBoxProps) => {
         defaultValue,
         value,
         readonly,
-        direction = 'bottom',
+        direction = 'bottom-right',
         label,
     } = props;
 
