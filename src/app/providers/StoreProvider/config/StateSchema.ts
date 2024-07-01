@@ -11,15 +11,17 @@ import { CounterSchema } from 'entitites/Counter';
 import { UserSchema } from 'entitites/User';
 import { AddCommentFormSchema } from 'features/addCommentForm';
 import { LoginSchema } from 'features/AuthByUsername';
+import { ProfileSchema } from 'features/editablePofileCard';
 import { ArticleDetailsPageSchema } from 'pages/ArticlesDetailsPage';
 import { ArticlePageSchema } from 'pages/ArticlesPage';
-import { ProfileSchema } from 'pages/ProfilePage';
+import { rtkApi } from 'shared/api/rtkApi';
 import { UISchema } from 'widgets/Page';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
     ui: UISchema;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSchema;

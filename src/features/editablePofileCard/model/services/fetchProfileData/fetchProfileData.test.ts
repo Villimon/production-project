@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { Country } from 'entitites/Country';
 import { Currency } from 'entitites/Currency';
-import { userActions } from 'entitites/User';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { fetchProfileData } from './fetchProfileData';
 

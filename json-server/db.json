@@ -613,6 +613,12 @@
       "userId": "1",
       "text": "asdasd",
       "id": "6eqV2KJ"
+    },
+    {
+      "articleId": "7",
+      "userId": "1",
+      "text": "qweqw",
+      "id": "67hBlGG"
     }
   ],
   "users": [
@@ -636,7 +642,7 @@
       "id": "1",
       "first": "Oleg",
       "lastname": "Sidorov",
-      "age": 465,
+      "age": 5,
       "currency": "EUR",
       "country": "Russia",
       "city": "Moscow",

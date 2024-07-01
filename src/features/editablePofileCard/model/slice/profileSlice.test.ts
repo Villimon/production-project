@@ -1,7 +1,10 @@
 import { Country } from 'entitites/Country';
 import { Currency } from 'entitites/Currency';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
-import { ProfileSchema, ValidateProfileErrors } from '../types/profile';
+import {
+    ProfileSchema,
+    ValidateProfileErrors,
+} from '../types/editablePofileCardSchema';
 import { profileActions, profileReducer } from './profileSlice';
 
 describe('profileSlice', () => {
