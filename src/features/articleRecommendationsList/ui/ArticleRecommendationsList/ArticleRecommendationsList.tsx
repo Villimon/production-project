@@ -14,7 +14,7 @@ export const ArticleRecommendationsList: FC<ArticleRecommendationsListProps> = m
     const { t } = useTranslation('article');
     const { data: articles, isLoading } = useArticleRecommendationsList(3);
 
-    if (isLoading) {
+    if (isLoading || !articles) {
         // Добавить скелетон
         return null;
     }

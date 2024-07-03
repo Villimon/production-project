@@ -48,6 +48,7 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = memo(
                             <Button
                                 onClick={onEdit}
                                 theme={ThemeButton.OUTLINE}
+                                data-testid="ProfilePageHeader.EditButton"
                             >
                                 {t('Редактировать')}
                             </Button>
@@ -56,12 +57,14 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = memo(
                                 <Button
                                     onClick={onCancelEdit}
                                     theme={ThemeButton.RED}
+                                    data-testid="ProfilePageHeader.CancelButton"
                                 >
                                     {t('Отменить')}
                                 </Button>
                                 <Button
                                     onClick={onSave}
                                     theme={ThemeButton.OUTLINE}
+                                    data-testid="ProfilePageHeader.SaveButton"
                                 >
                                     {t('Сохранить')}
                                 </Button>

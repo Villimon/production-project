@@ -101,6 +101,7 @@ export const ProfileCard: FC<ProfileCardProps> = memo(
                     value={data?.first}
                     onChange={onChangeFirstname}
                     readonly={readonly}
+                    data-testid="ProfileCard.first"
                 />
                 <Input
                     className={cls.input}
@@ -108,6 +109,7 @@ export const ProfileCard: FC<ProfileCardProps> = memo(
                     value={data?.lastname}
                     onChange={onChangeLastname}
                     readonly={readonly}
+                    data-testid="ProfileCard.lastname"
                 />
                 <Input
                     className={cls.input}
