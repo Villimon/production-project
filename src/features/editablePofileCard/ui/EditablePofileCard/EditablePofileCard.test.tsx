@@ -45,17 +45,17 @@ describe('EditablePofileCardSidebar', () => {
     test('Режим рид онли должен переключиться', async () => {
         componentRender(<EditablePofileCard id="1" />, options);
         await userEvent.click(
-            screen.getByTestId('ProfilePageHeader.EditButton')
+            screen.getByTestId('ProfilePageHeader.EditButton'),
         );
         expect(
-            screen.getByTestId('ProfilePageHeader.CancelButton')
+            screen.getByTestId('ProfilePageHeader.CancelButton'),
         ).toBeInTheDocument();
     });
 
     test('При отмене значения должны обнулиться', async () => {
         componentRender(<EditablePofileCard id="1" />, options);
         await userEvent.click(
-            screen.getByTestId('ProfilePageHeader.EditButton')
+            screen.getByTestId('ProfilePageHeader.EditButton'),
         );
         // Очистили поля
         await userEvent.clear(screen.getByTestId('ProfileCard.first'));
@@ -65,7 +65,7 @@ describe('EditablePofileCardSidebar', () => {
         await userEvent.type(screen.getByTestId('ProfileCard.first'), 'user');
         await userEvent.type(
             screen.getByTestId('ProfileCard.lastname'),
-            'user'
+            'user',
         );
 
         // Проверили что данные обновлись
@@ -74,25 +74,25 @@ describe('EditablePofileCardSidebar', () => {
 
         // Нажимаем отмену
         await userEvent.click(
-            screen.getByTestId('ProfilePageHeader.CancelButton')
+            screen.getByTestId('ProfilePageHeader.CancelButton'),
         );
 
         expect(screen.getByTestId('ProfileCard.first')).toHaveValue('Oleg');
         expect(screen.getByTestId('ProfileCard.lastname')).toHaveValue(
-            'Sidorov'
+            'Sidorov',
         );
     });
 
     test('Должна появиться ошибка', async () => {
         componentRender(<EditablePofileCard id="1" />, options);
         await userEvent.click(
-            screen.getByTestId('ProfilePageHeader.EditButton')
+            screen.getByTestId('ProfilePageHeader.EditButton'),
         );
 
         await userEvent.clear(screen.getByTestId('ProfileCard.lastname'));
 
         await userEvent.click(
-            screen.getByTestId('ProfilePageHeader.SaveButton')
+            screen.getByTestId('ProfilePageHeader.SaveButton'),
         );
 
         // Прогружается сперва лоадер почему-то
@@ -105,13 +105,13 @@ describe('EditablePofileCardSidebar', () => {
         const mockPutReq = jest.spyOn($api, 'put');
         componentRender(<EditablePofileCard id="1" />, options);
         await userEvent.click(
-            screen.getByTestId('ProfilePageHeader.EditButton')
+            screen.getByTestId('ProfilePageHeader.EditButton'),
         );
 
         await userEvent.type(screen.getByTestId('ProfileCard.first'), 'user');
 
         await userEvent.click(
-            screen.getByTestId('ProfilePageHeader.SaveButton')
+            screen.getByTestId('ProfilePageHeader.SaveButton'),
         );
 
         expect(mockPutReq).toHaveBeenCalled();

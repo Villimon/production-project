@@ -6,7 +6,12 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserData, userActions } from 'entitites/User';
+import {
+    getUserData,
+    isUserAdmin,
+    isUserManager,
+    userActions,
+} from 'entitites/User';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
@@ -22,7 +27,11 @@ export const Navbar: FC<NavbarProps> = memo(() => {
     const { t } = useTranslation();
     const [isAuthModal, setIsAuthModal] = useState(false);
     const authData = useSelector(getUserData);
+    const isAdmin = useSelector(isUserAdmin);
+    const isManager = useSelector(isUserManager);
     const dispatch = useDispatch();
+
+    const isAdminPanelAvaileble = isAdmin || isManager;
 
     const onClose = useCallback(() => {
         setIsAuthModal(false);
@@ -54,6 +63,14 @@ export const Navbar: FC<NavbarProps> = memo(() => {
                     direction="bottom-left"
                     className={cls.links}
                     items={[
+                        ...(isAdminPanelAvaileble
+                            ? [
+                                {
+                                    content: t('Админ панель'),
+                                    href: RoutePath.admin_panel,
+                                },
+                            ]
+                            : []),
                         {
                             content: t('Профиль'),
                             href: RoutePath.profile + authData.id,
