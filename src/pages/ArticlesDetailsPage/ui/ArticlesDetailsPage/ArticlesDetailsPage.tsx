@@ -26,15 +26,6 @@ const reducer: ReducersList = {
 const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
     ({ className }) => {
         const { id } = useParams<{ id: string }>();
-        const { t } = useTranslation('article');
-
-        if (!id) {
-            return (
-                <Page className={classNames('', {}, [className])}>
-                    {t('Статья не найдена')}
-                </Page>
-            );
-        }
 
         return (
             <DynamicModuleLoader reducers={reducer} removeAfterUnmount>

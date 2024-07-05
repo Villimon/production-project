@@ -1,5 +1,5 @@
 import {
-    FC, ForwardedRef, forwardRef, memo,
+    FC, ForwardedRef, forwardRef, memo, ReactNode,
 } from 'react';
 import { Link, LinkProps } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -11,12 +11,13 @@ export enum AppLinkTheme {
 }
 
 interface AppLinkProps extends LinkProps {
+    children: ReactNode;
     className?: string;
     theme?: AppLinkTheme;
 }
 
 // forwardRef нужен чтобы работал клин через клавиатуру
-export const AppLink: FC<AppLinkProps> = forwardRef(
+export const AppLink = forwardRef(
     (
         {
             children,
@@ -24,7 +25,7 @@ export const AppLink: FC<AppLinkProps> = forwardRef(
             className,
             theme = AppLinkTheme.PRIMARY,
             ...otherProps
-        },
+        }: AppLinkProps,
         ref: ForwardedRef<HTMLAnchorElement>,
     ) => (
         <Link

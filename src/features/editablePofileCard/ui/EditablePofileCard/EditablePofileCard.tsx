@@ -26,7 +26,7 @@ import { ProfilePageHeader } from '../ProfilePageHeader/ProfilePageHeader';
 
 interface EditablePofileCardProps {
     className?: string;
-    id: string;
+    id?: string;
 }
 
 const reducers: ReducersList = {

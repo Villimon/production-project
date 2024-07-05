@@ -13,11 +13,6 @@ interface ProfilePageProps {
 }
 const ProfilePage: FC<ProfilePageProps> = memo(({ className }) => {
     const { id } = useParams<{ id: string }>();
-    const { t } = useTranslation();
-
-    if (!id) {
-        return <Text title={t('Статья не найдена')} />;
-    }
 
     return (
         <Page className={classNames(cls.ProfilePage, {}, [className])}>

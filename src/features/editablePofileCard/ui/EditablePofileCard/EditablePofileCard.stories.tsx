@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import { EditablePofileCard } from './EditablePofileCard';
 
 export default {
@@ -11,9 +12,10 @@ export default {
     },
 } as ComponentMeta<typeof EditablePofileCard>;
 
-const Template: ComponentStory<typeof EditablePofileCard> = (args) => <EditablePofileCard {...args} />;
+const Template: ComponentStory<typeof EditablePofileCard> = (args) => (
+    <EditablePofileCard {...args} />
+);
 
 export const Normal = Template.bind({});
-Normal.args = {
-
-};
+Normal.args = {};
+Normal.decorators = [StoreDecorator({})];

@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC, memo, ReactNode } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Flex.module.scss';
 
@@ -19,6 +19,7 @@ export interface FlexProps extends DivProps {
     direction: FlexDirection;
     gap?: FlexGap;
     max?: boolean;
+    children: ReactNode;
 }
 
 const justifyClasses: Record<FlexJustify, string> = {
@@ -46,7 +47,7 @@ const gapClasses: Record<FlexGap, string> = {
     32: cls.gap32,
 };
 
-export const Flex: FC<FlexProps> = ({
+export const Flex = ({
     className,
     children,
     direction = 'row',
@@ -54,7 +55,7 @@ export const Flex: FC<FlexProps> = ({
     justify = 'start',
     gap,
     max,
-}) => {
+}: FlexProps) => {
     const classes = [
         className,
         justifyClasses[justify],
