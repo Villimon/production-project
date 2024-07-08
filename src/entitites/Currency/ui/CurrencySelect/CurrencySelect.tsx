@@ -1,4 +1,4 @@
-import { Currency } from 'entitites/Currency';
+import { Currency } from 'entitites/Currency/model/types/currency';
 import {
     FC, memo, useCallback, useMemo,
 } from 'react';
