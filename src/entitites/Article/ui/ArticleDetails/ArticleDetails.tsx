@@ -24,11 +24,9 @@ import {
 import EyeIcon from 'shared/assets/icons/eye-20-20.svg';
 import CalendarIcon from 'shared/assets/icons/calendar-20-20.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
-import {
-    ArticleBlock,
-    ArticleBlockType,
-} from 'entitites/Article/model/types/article';
+import { ArticleBlock } from 'entitites/Article/model/types/article';
 import { HStack, VStack } from 'shared/ui/Stack';
+import { ArticleBlockType } from 'entitites/Article/model/consts/consts';
 import cls from './ArticleDetails.module.scss';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';

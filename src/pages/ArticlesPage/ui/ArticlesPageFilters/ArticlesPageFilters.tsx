@@ -1,9 +1,9 @@
 import {
     ArticleSortField,
     ArticleSortSelector,
+    ArticleType,
     ArticleView,
 } from 'entitites/Article';
-import { ArticleType } from 'entitites/Article/model/types/article';
 import { ArticleTypeTabs } from 'entitites/Article/ui/ArticleTypeTabs/ArticleTypeTabs';
 import {
     FC, memo, useCallback, useMemo,

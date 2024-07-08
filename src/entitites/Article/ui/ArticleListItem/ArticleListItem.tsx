@@ -8,13 +8,10 @@ import { Card } from 'shared/ui/Card/Card';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Button } from 'shared/ui/Button/Button';
 import { useTranslation } from 'react-i18next';
-import {
-    ArticleBlockType,
-    ArticleTextBlock,
-} from 'entitites/Article/model/types/article';
-import { useNavigate } from 'react-router-dom';
+import { ArticleTextBlock } from 'entitites/Article/model/types/article';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { ArticleBlockType } from 'entitites/Article/model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticleListItem.module.scss';
 

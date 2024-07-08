@@ -1,6 +1,4 @@
-import {
-    FC, memo, useCallback, useEffect,
-} from 'react';
+import { FC, memo, useCallback, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -14,7 +12,7 @@ import {
     ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { VStack } from 'shared/ui/Stack';
-import { ValidateProfileErrors } from '../../model/types/editablePofileCardSchema';
+import { ValidateProfileErrors } from '../../model/consts/consts';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
@@ -47,7 +45,7 @@ export const EditablePofileCard: FC<EditablePofileCardProps> = memo(
             [ValidateProfileErrors.INCORRECT_AGE]: t('Некорректный возраст'),
             [ValidateProfileErrors.INCORRECT_COUNTRY]: t('Некорректный регион'),
             [ValidateProfileErrors.INCORRECT_USER_DATA]: t(
-                'Имя и фамилия обязательны',
+                'Имя и фамилия обязательны'
             ),
             [ValidateProfileErrors.NO_DATA]: t('Данные не указаны'),
             [ValidateProfileErrors.SERVER_ERROR]: t('Серверная ошибка'),
@@ -65,73 +63,73 @@ export const EditablePofileCard: FC<EditablePofileCardProps> = memo(
             (value?: string) => {
                 dispatch(profileActions.updateProfile({ first: value || '' }));
             },
-            [dispatch],
+            [dispatch]
         );
 
         // Есди функцию передаем пропсом, то тогда оборачиваем ее в useCallback
         const onChangeLastname = useCallback(
             (value?: string) => {
                 dispatch(
-                    profileActions.updateProfile({ lastname: value || '' }),
+                    profileActions.updateProfile({ lastname: value || '' })
                 );
             },
-            [dispatch],
+            [dispatch]
         );
 
         const onChangeAge = useCallback(
             (value?: string) => {
                 if (value && /^\d*$/.test(value)) {
                     dispatch(
-                        profileActions.updateProfile({ age: Number(value) }),
+                        profileActions.updateProfile({ age: Number(value) })
                     );
                 }
             },
-            [dispatch],
+            [dispatch]
         );
 
         const onChangeCity = useCallback(
             (value?: string) => {
                 dispatch(profileActions.updateProfile({ city: value || '' }));
             },
-            [dispatch],
+            [dispatch]
         );
 
         const onChangeUsername = useCallback(
             (value?: string) => {
                 dispatch(
-                    profileActions.updateProfile({ username: value || '' }),
+                    profileActions.updateProfile({ username: value || '' })
                 );
             },
-            [dispatch],
+            [dispatch]
         );
 
         const onChangeAvatar = useCallback(
             (value?: string) => {
                 dispatch(profileActions.updateProfile({ avatar: value || '' }));
             },
-            [dispatch],
+            [dispatch]
         );
 
         const onChangeCurrency = useCallback(
             (currency: Currency) => {
                 dispatch(profileActions.updateProfile({ currency }));
             },
-            [dispatch],
+            [dispatch]
         );
 
         const onChangeCountry = useCallback(
             (country: Country) => {
                 dispatch(profileActions.updateProfile({ country }));
             },
-            [dispatch],
+            [dispatch]
         );
 
         return (
             <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
                 <VStack max gap="8" className={classNames('', {}, [className])}>
                     <ProfilePageHeader />
-                    {validateErrors?.length
-                        && validateErrors.map((error) => (
+                    {validateErrors?.length &&
+                        validateErrors.map((error) => (
                             <Text
                                 key={error}
                                 theme={TextTheme.ERROR}
@@ -156,5 +154,5 @@ export const EditablePofileCard: FC<EditablePofileCardProps> = memo(
                 </VStack>
             </DynamicModuleLoader>
         );
-    },
+    }
 );
