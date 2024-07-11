@@ -12,19 +12,17 @@ interface NotificationButtonProps {
 }
 // Не до конца понял почему это фича
 export const NotificationButton: FC<NotificationButtonProps> = memo(
-    ({ className }) => {
-        return (
-            <Popover
-                className={classNames(cls.NotificationButton, {}, [className])}
-                direction="bottom-left"
-                trigger={
-                    <Button theme={ThemeButton.CLEAR}>
-                        <Icon inverted Svg={NotificationIcon} />
-                    </Button>
-                }
-            >
-                <NotificationList className={cls.notifications} />
-            </Popover>
-        );
-    }
+    ({ className }) => (
+        <Popover
+            className={classNames(cls.NotificationButton, {}, [className])}
+            direction="bottom-left"
+            trigger={(
+                <Button theme={ThemeButton.CLEAR}>
+                    <Icon inverted Svg={NotificationIcon} />
+                </Button>
+            )}
+        >
+            <NotificationList className={cls.notifications} />
+        </Popover>
+    ),
 );
