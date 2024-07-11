@@ -5,7 +5,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { Menu as HMenu } from '@headlessui/react';
 import { DropdawnDirection } from 'shared/types/ui';
 import cls from './Menu.module.scss';
-import { AppLink } from '../AppLink/AppLink';
+import { AppLink } from '../../../AppLink/AppLink';
+import popupCls from '../../styles/popup.module.scss';
 
 export interface MenuItem {
     disabled?: boolean;
@@ -25,11 +26,12 @@ export const Menu: FC<MenuProps> = memo(
     ({
         className, items, trigger, direction = 'bottom-right',
     }) => (
-        <HMenu as="div" className={classNames(cls.Menu, {}, [className])}>
-            <HMenu.Button className={cls.btn}>{trigger}</HMenu.Button>
-            <HMenu.Items
-                className={classNames(cls.menu, {}, [cls[direction]])}
-            >
+        <HMenu
+            as="div"
+            className={classNames(cls.Menu, {}, [className, popupCls.popup])}
+        >
+            <HMenu.Button className={popupCls.trigger}>{trigger}</HMenu.Button>
+            <HMenu.Items className={classNames(cls.menu, {}, [cls[direction]])}>
                 {items.map((item) => {
                     const content = ({ active }: { active: boolean }) => (
                         <button
@@ -37,7 +39,7 @@ export const Menu: FC<MenuProps> = memo(
                             onClick={item.onClick}
                             className={classNames(
                                 cls.item,
-                                { [cls.active]: active },
+                                { [popupCls.active]: active },
                                 [],
                             )}
                             disabled={item.disabled}

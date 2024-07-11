@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Theme } from 'app/providers/ThemeProvider';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Menu } from './Menu';
-import { Button } from '../Button/Button';
+import { Button } from '../../../Button/Button';
 
 export default {
     title: 'shared/Menu',
