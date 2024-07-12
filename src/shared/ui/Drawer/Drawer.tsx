@@ -12,7 +12,9 @@ interface DrawerProps {
     onClose?: () => void;
 }
 export const Drawer: FC<DrawerProps> = memo(
-    ({ className, children, isOpen, onClose }) => (
+    ({
+        className, children, isOpen, onClose,
+    }) => (
         <Portal>
             <div
                 className={classNames(cls.Drawer, { [cls.opened]: isOpen }, [
@@ -23,5 +25,5 @@ export const Drawer: FC<DrawerProps> = memo(
                 <div className={cls.content}>{children}</div>
             </div>
         </Portal>
-    )
+    ),
 );
