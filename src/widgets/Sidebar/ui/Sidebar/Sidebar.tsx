@@ -11,6 +11,7 @@ import { getSidebaritems } from '../../model/selectors/getSidebaritems';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 
+// !TODO: Сделать анимацию как на Drawer, урок 82
 interface SidebarProps {
     className?: string;
 }
