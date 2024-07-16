@@ -7,7 +7,7 @@ import React, {
     useState,
 } from 'react';
 import { Trans } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<

@@ -1,11 +1,11 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Theme } from 'app/providers/ThemeProvider';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
-import { Currency } from 'entitites/Currency';
-import { Country } from 'entitites/Country';
-import avatar from 'shared/assets/tests/storybook.jpg';
+import { Theme } from '@/app/providers/ThemeProvider';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
+import { Currency } from '@/entitites/Currency';
+import { Country } from '@/entitites/Country';
+import avatar from '@/shared/assets/tests/storybook.jpg';
 import ProfilePage from './ProfilePage';
 
 export default {

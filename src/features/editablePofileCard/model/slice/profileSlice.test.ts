@@ -1,5 +1,5 @@
-import { Country } from 'entitites/Country';
-import { Currency } from 'entitites/Currency';
+import { Country } from '@/entitites/Country';
+import { Currency } from '@/entitites/Currency';
 import { ValidateProfileErrors } from '../consts/consts';
 import { updateProfileData } from '../services/updateProfileData/updateProfileData';
 import { ProfileSchema } from '../types/editablePofileCardSchema';

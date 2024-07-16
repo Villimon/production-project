@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { Country } from 'entitites/Country';
-import { Currency } from 'entitites/Currency';
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
+import { Country } from '@/entitites/Country';
+import { Currency } from '@/entitites/Currency';
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { ValidateProfileErrors } from '../../consts/consts';
 import { updateProfileData } from './updateProfileData';
 

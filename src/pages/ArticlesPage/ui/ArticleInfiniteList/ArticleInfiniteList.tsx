@@ -1,6 +1,6 @@
-import { ArticleList } from 'entitites/Article';
 import { FC, memo } from 'react';
 import { useSelector } from 'react-redux';
+import { ArticleList } from '@/entitites/Article';
 import {
     getArticlePageError,
     getArticlePageIsLoading,

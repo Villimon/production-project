@@ -1,14 +1,10 @@
-import { getUserData } from 'entitites/User';
-import {
-    memo, Suspense, useCallback, useMemo,
-} from 'react';
-import { useSelector } from 'react-redux';
+import { Suspense, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import {
     AppRoutesProps,
     routeConfig,
-} from 'shared/config/routeConfig/routeConfig';
-import { PageLoader } from 'widgets/PageLoader';
+} from '@/shared/config/routeConfig/routeConfig';
+import { PageLoader } from '@/widgets/PageLoader';
 import { RequierAuth } from './RequierAuth';
 
 export const AppRouter = () => {

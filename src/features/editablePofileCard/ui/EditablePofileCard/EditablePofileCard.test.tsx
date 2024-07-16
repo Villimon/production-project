@@ -1,11 +1,11 @@
-import { Country } from 'entitites/Country';
-import { Currency } from 'entitites/Currency';
-import { Profile } from 'pages/ProfilePage';
 import React from 'react';
-import { componentRender } from 'shared/lib/tests/componentRender/componentRender';
 import { userEvent } from '@storybook/testing-library';
 import { screen } from '@testing-library/react';
-import { $api } from 'shared/api/api';
+import { Country } from '@/entitites/Country';
+import { Currency } from '@/entitites/Currency';
+import { Profile } from '@/pages/ProfilePage';
+import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
+import { $api } from '@/shared/api/api';
 import { EditablePofileCard } from './EditablePofileCard';
 import { profileReducer } from '../../model/slice/profileSlice';
 

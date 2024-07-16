@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import { action } from '@storybook/addon-actions';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 import { CommentCard } from './CommentCard';
 
 export default {

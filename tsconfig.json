@@ -30,7 +30,7 @@
         // Для абсалютного импорта
         "baseUrl": ".",
         "paths": {
-            "*": ["./src/*"]
+            "@/*": ["./src/*"]
         },
         "strict": true,
         "isolatedModules": true

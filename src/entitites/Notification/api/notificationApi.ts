@@ -1,4 +1,4 @@
-import { rtkApi } from 'shared/api/rtkApi';
+import { rtkApi } from '@/shared/api/rtkApi';
 import { Notification } from '../model/types/NotificationSchema';
 
 // Если страница подгружается асинхронно, то тогда это не попадает в общий бандл

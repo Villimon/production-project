@@ -1,4 +1,4 @@
-import { Profile } from 'pages/ProfilePage';
+import { Profile } from '@/pages/ProfilePage';
 import { ValidateProfileErrors } from '../consts/consts';
 
 export interface ProfileSchema {
