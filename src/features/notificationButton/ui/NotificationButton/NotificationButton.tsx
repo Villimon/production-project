@@ -13,7 +13,7 @@ import { AnimationProvider } from '@/shared/lib/components/AnimationProvider';
 import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {
-    className?: string;
+    className?: string
 }
 // Не до конца понял почему это фича
 export const NotificationButton: FC<NotificationButtonProps> = memo(
@@ -40,11 +40,9 @@ export const NotificationButton: FC<NotificationButtonProps> = memo(
                     <>
                         {trigger}
                         {isOpen && (
-                            <AnimationProvider>
-                                <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
-                                    <NotificationList />
-                                </Drawer>
-                            </AnimationProvider>
+                            <Drawer isOpen={isOpen} onClose={onCloseDrawer}>
+                                <NotificationList />
+                            </Drawer>
                         )}
                     </>
                 ) : (
