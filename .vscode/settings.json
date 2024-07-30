@@ -3,5 +3,16 @@
     "stylelint.enable": true,
     "css.validate": true,
     "scss.validate": true,
-    "stylelint.validate": ["css", "scss"]
+    "stylelint.validate": ["css", "scss"],
+    "[typescript]": { // for .ts files
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+            "editor.formatOnSave": true
+        },
+    "[typescriptreact]": { // for .tsx files
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+            "editor.formatOnSave": true
+    },
+    "editor.codeActionsOnSave": { // apply ESLint
+        "source.fixAll.eslint": true
+    },
 }
