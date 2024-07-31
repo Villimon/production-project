@@ -16,38 +16,45 @@ import { Drawer } from '@/shared/ui/Drawer/Drawer';
 interface RatingCardProps {
     className?: string
     title?: string
-    feadbackTitle?: string
-    hasFeadback?: boolean
+    feedbackTitle?: string
+    hasFeedback?: boolean
     onCancle?: (star: number) => void
-    onAccept?: (star: number, feadback?: string) => void
+    onAccept?: (star: number, feedback?: string) => void
+    rate?: number
 }
 
 export const RatingCard: FC<RatingCardProps> = memo(
     ({
-        className, feadbackTitle, hasFeadback, onAccept, onCancle, title,
+        className,
+        feedbackTitle,
+        hasFeedback,
+        onAccept,
+        onCancle,
+        title,
+        rate = 0,
     }) => {
         const { t } = useTranslation();
         const [isModalOpen, setIsModalOpen] = useState(false);
-        const [starsCount, setStarsCount] = useState(0);
-        const [feadback, setFeadback] = useState('');
+        const [starsCount, setStarsCount] = useState(rate);
+        const [feedback, setfeedback] = useState('');
         const isMobile = useDevice();
 
         const onSelectStars = useCallback(
             (selectedStarsCount: number) => {
                 setStarsCount(selectedStarsCount);
-                if (hasFeadback) {
+                if (hasFeedback) {
                     setIsModalOpen(true);
                 } else {
                     onAccept?.(selectedStarsCount);
                 }
             },
-            [onAccept, hasFeadback],
+            [onAccept, hasFeedback],
         );
 
         const onAcceptHandle = useCallback(() => {
             setIsModalOpen(false);
-            onAccept?.(starsCount, feadback);
-        }, [onAccept, feadback, starsCount]);
+            onAccept?.(starsCount, feedback);
+        }, [onAccept, feedback, starsCount]);
 
         const onCancelHandle = useCallback(() => {
             setIsModalOpen(false);
@@ -56,20 +63,24 @@ export const RatingCard: FC<RatingCardProps> = memo(
 
         const modalContent = (
             <>
-                <Text title={feadbackTitle} />
+                <Text title={feedbackTitle} />
                 <Input
-                    value={feadback}
-                    onChange={setFeadback}
+                    value={feedback}
+                    onChange={setfeedback}
                     placeholder={t('Ваш отзыв')}
                 />
             </>
         );
 
         return (
-            <Card className={classNames('', {}, [className])}>
+            <Card fullWidth className={classNames('', {}, [className])}>
                 <VStack align="center" gap="8">
-                    <Text title={title} />
-                    <Raiting size={40} onSelect={onSelectStars} />
+                    <Text title={starsCount ? t('Спасибо за оценку') : title} />
+                    <Raiting
+                        selectedStars={rate}
+                        size={40}
+                        onSelect={onSelectStars}
+                    />
                 </VStack>
                 {isMobile ? (
                     <Drawer isOpen={isModalOpen} lazy>

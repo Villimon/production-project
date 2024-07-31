@@ -725,5 +725,71 @@
       "username": "ulbi tv",
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     }
+  ],
+  "article-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "2"
+    },
+    {
+      "userId": "1",
+      "articleId": "3",
+      "rate": 3,
+      "feedback": "",
+      "id": "A9h5D1H"
+    },
+    {
+      "userId": "1",
+      "articleId": "4",
+      "rate": 5,
+      "feedback": "Cool",
+      "id": "IzVFu3G"
+    },
+    {
+      "userId": "1",
+      "articleId": "5",
+      "rate": 4,
+      "id": "GHjg4AP"
+    },
+    {
+      "userId": "1",
+      "articleId": "6",
+      "rate": 3,
+      "feedback": "",
+      "id": "iNKkMCV"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 4,
+      "feedback": "",
+      "id": "_M-QQrT"
+    }
+  ],
+  "profile-ratings": [
+    {
+      "profileId": "1",
+      "rate": 5,
+      "userId": "1",
+      "feedback": "",
+      "id": 1
+    },
+    {
+      "profileId": "2",
+      "rate": 5,
+      "userId": "1",
+      "feedback": "Красавчик",
+      "id": 2
+    }
   ]
 }

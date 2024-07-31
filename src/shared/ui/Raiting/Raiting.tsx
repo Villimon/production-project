@@ -17,7 +17,7 @@ export const Raiting: FC<RaitingProps> = memo(
     ({
         className, onSelect, selectedStars = 0, size = 30,
     }) => {
-        const [currentStarsCount, setCurrentStarsCount] = useState(0);
+        const [currentStarsCount, setCurrentStarsCount] = useState(selectedStars);
         const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
 
         const onHover = (star: number) => () => {
