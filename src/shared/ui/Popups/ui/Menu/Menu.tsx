@@ -9,17 +9,17 @@ import { AppLink } from '../../../AppLink/AppLink';
 import popupCls from '../../styles/popup.module.scss';
 
 export interface MenuItem {
-    disabled?: boolean;
-    content?: ReactNode;
-    onClick?: () => void;
-    href?: string;
+    disabled?: boolean
+    content?: ReactNode
+    onClick?: () => void
+    href?: string
 }
 
 interface MenuProps {
-    className?: string;
-    items: MenuItem[];
-    trigger: ReactNode;
-    direction?: DropdawnDirection;
+    className?: string
+    items: MenuItem[]
+    trigger: ReactNode
+    direction?: DropdawnDirection
 }
 
 export const Menu: FC<MenuProps> = memo(
@@ -32,10 +32,11 @@ export const Menu: FC<MenuProps> = memo(
         >
             <HMenu.Button className={popupCls.trigger}>{trigger}</HMenu.Button>
             <HMenu.Items className={classNames(cls.menu, {}, [cls[direction]])}>
-                {items.map((item) => {
+                {items.map((item, index) => {
                     const content = ({ active }: { active: boolean }) => (
                         <button
                             type="button"
+                            key={index}
                             onClick={item.onClick}
                             className={classNames(
                                 cls.item,
@@ -51,6 +52,7 @@ export const Menu: FC<MenuProps> = memo(
                     if (item.href) {
                         return (
                             <HMenu.Item
+                                key={index}
                                 as={AppLink}
                                 to={item.href}
                                 disabled={item.disabled}
@@ -61,7 +63,11 @@ export const Menu: FC<MenuProps> = memo(
                     }
 
                     return (
-                        <HMenu.Item as={Fragment} disabled={item.disabled}>
+                        <HMenu.Item
+                            key={index}
+                            as={Fragment}
+                            disabled={item.disabled}
+                        >
                             {content}
                         </HMenu.Item>
                     );

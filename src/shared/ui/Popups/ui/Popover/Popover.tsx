@@ -6,22 +6,19 @@ import cls from './Popover.module.scss';
 import popupCls from '../../styles/popup.module.scss';
 
 interface PopoverProps {
-    className?: string;
-    trigger: ReactNode;
-    direction?: DropdawnDirection;
-    children: ReactNode;
+    className?: string
+    trigger: ReactNode
+    direction?: DropdawnDirection
+    children: ReactNode
 }
 export const Popover: FC<PopoverProps> = memo(
     ({
         className, trigger, direction = 'bottom-right', children,
     }) => (
         <HPopover
-            className={classNames(cls.Popover, {}, [
-                className,
-                popupCls.popup,
-            ])}
+            className={classNames(cls.Popover, {}, [className, popupCls.popup])}
         >
-            <HPopover.Button className={popupCls.trigger}>
+            <HPopover.Button as="div" className={popupCls.trigger}>
                 {trigger}
             </HPopover.Button>
 
