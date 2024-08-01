@@ -1,9 +1,9 @@
-import { FC, memo, useCallback } from 'react'
-import { useTranslation } from 'react-i18next'
-import { useSelector } from 'react-redux'
-import { RatingCard } from '@/entitites/RatingCard'
-import { useGetProfileRating, useRateProfile } from '../../api/articleRatingApi'
-import { getUserData } from '@/entitites/User'
+import { FC, memo, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { RatingCard } from '@/entitites/RatingCard';
+import { useGetProfileRating, useRateProfile } from '../../api/articleRatingApi';
+import { getUserData } from '@/entitites/User';
 
 interface ProfileRatingProps {
     className?: string
@@ -12,14 +12,14 @@ interface ProfileRatingProps {
 
 export const ProfileRating: FC<ProfileRatingProps> = memo(
     ({ className, profileId }) => {
-        const { t } = useTranslation('profile')
-        const userData = useSelector(getUserData)
+        const { t } = useTranslation('profile');
+        const userData = useSelector(getUserData);
         const { data, isLoading } = useGetProfileRating({
             profileId,
             userId: userData?.id ?? '',
-        })
-        const [rateProfileMutatuin] = useRateProfile()
-        const rating = data?.[0]
+        });
+        const [rateProfileMutatuin] = useRateProfile();
+        const rating = data?.[0];
 
         const handleRateProfile = useCallback(
             (star: number, feedback?: string) => {
@@ -29,28 +29,28 @@ export const ProfileRating: FC<ProfileRatingProps> = memo(
                         rate: star,
                         userId: userData?.id ?? '',
                         feedback,
-                    })
+                    });
                 } catch (error) {
-                    console.log(error)
+                    console.log(error);
                 }
             },
-            [userData?.id, profileId, rateProfileMutatuin]
-        )
+            [userData?.id, profileId, rateProfileMutatuin],
+        );
         const onAccept = useCallback(
             (star: number, feedback?: string) => {
-                handleRateProfile(star, feedback)
+                handleRateProfile(star, feedback);
             },
-            [handleRateProfile]
-        )
+            [handleRateProfile],
+        );
         const onCancle = useCallback(
             (star: number) => {
-                handleRateProfile(star)
+                handleRateProfile(star);
             },
-            [handleRateProfile]
-        )
+            [handleRateProfile],
+        );
 
         if (isLoading) {
-            return null
+            return null;
         }
 
         return (
@@ -63,6 +63,6 @@ export const ProfileRating: FC<ProfileRatingProps> = memo(
                 onCancle={onCancle}
                 rate={rating?.rate}
             />
-        )
-    }
-)
+        );
+    },
+);
