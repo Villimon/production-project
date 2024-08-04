@@ -1,9 +1,9 @@
-import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import withMock from 'storybook-addon-mock'
-import ArticleRating from './ArticleRating'
-import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator'
+import withMock from 'storybook-addon-mock';
+import ArticleRating from './ArticleRating';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
 
 // Не работает запрос на сервер моковый, поэтому не отобрадается как надо
 export default {
@@ -13,23 +13,23 @@ export default {
         backgroundColor: { control: 'color' },
     },
     decorators: [withMock],
-} as ComponentMeta<typeof ArticleRating>
+} as ComponentMeta<typeof ArticleRating>;
 
 const Template: ComponentStory<typeof ArticleRating> = (args) => (
     <ArticleRating {...args} />
-)
+);
 
-export const Normal = Template.bind({})
+export const Normal = Template.bind({});
 Normal.args = {
     articleId: '1',
-}
+};
 Normal.decorators = [
     StoreDecorator({
         user: {
             authData: { id: '1' },
         },
     }),
-]
+];
 Normal.parameters = {
     mockData: [
         {
@@ -43,19 +43,19 @@ Normal.parameters = {
             ],
         },
     ],
-}
+};
 
-export const WithoutRate = Template.bind({})
+export const WithoutRate = Template.bind({});
 WithoutRate.args = {
     articleId: '1',
-}
+};
 WithoutRate.decorators = [
     StoreDecorator({
         user: {
             authData: { id: '1' },
         },
     }),
-]
+];
 WithoutRate.parameters = {
     mockData: [
         {
@@ -65,4 +65,4 @@ WithoutRate.parameters = {
             response: [],
         },
     ],
-}
+};

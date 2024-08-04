@@ -95,7 +95,7 @@ module.exports = {
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
         'react/jsx-no-useless-fragment': 'off',
-        'project-my-plugin/path-checker': 'error',
+        'project-my-plugin/path-checker': ['error', { alias: '@' }],
     },
     globals: {
         __IS_DEV__: true,
@@ -111,4 +111,4 @@ module.exports = {
             },
         },
     ],
-};
+}

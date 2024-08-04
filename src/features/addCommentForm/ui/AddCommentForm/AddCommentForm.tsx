@@ -21,8 +21,8 @@ import {
 import cls from './AddCommentForm.module.scss';
 
 export interface AddCommentFormProps {
-    className?: string;
-    onSendComment: (text: string) => void;
+    className?: string
+    onSendComment: (text: string) => void
 }
 
 const reducers: ReducersList = {
