@@ -7,18 +7,18 @@ import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
 import { Card } from '@/shared/ui/Card/Card';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Button } from '@/shared/ui/Button/Button';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticleListItem.module.scss';
+import { RoutePath } from '@/shared/constants/router';
 
 interface ArticleListItemProps {
-    className?: string;
-    article: Article;
-    view: ArticleView;
-    target?: HTMLAttributeAnchorTarget;
+    className?: string
+    article: Article
+    view: ArticleView
+    target?: HTMLAttributeAnchorTarget
 }
 export const ArticleListItem: FC<ArticleListItemProps> = memo(
     ({

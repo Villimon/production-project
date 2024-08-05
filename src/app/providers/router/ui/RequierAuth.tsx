@@ -2,11 +2,11 @@ import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 import { getUserData, getUserRole, UserRole } from '@/entitites/User';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { RoutePath } from '@/shared/constants/router';
 
 interface RequierAuthProps {
-    children: JSX.Element;
-    roles?: UserRole[];
+    children: JSX.Element
+    roles?: UserRole[]
 }
 
 export const RequierAuth = ({ children, roles }: RequierAuthProps) => {

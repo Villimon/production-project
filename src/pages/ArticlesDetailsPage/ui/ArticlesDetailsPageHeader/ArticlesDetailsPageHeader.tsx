@@ -3,14 +3,14 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getArticleDetailsData } from '@/entitites/Article';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { getCanEditArticle } from '../../model/selectors/article';
+import { RoutePath } from '@/shared/constants/router';
 
 interface ArticlesDetailsPageHeaderProps {
-    className?: string;
+    className?: string
 }
 export const ArticlesDetailsPageHeader: FC<ArticlesDetailsPageHeaderProps> = memo(({ className }) => {
     const { t } = useTranslation('article');

@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { Menu } from '@/shared/ui/Popups';
 import {
     getUserData,
@@ -12,9 +11,10 @@ import {
     userActions,
 } from '@/entitites/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { RoutePath } from '@/shared/constants/router';
 
 interface AvatarDropdownProps {
-    className?: string;
+    className?: string
 }
 
 export const AvatarDropdown: FC<AvatarDropdownProps> = memo(({ className }) => {
