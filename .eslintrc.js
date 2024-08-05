@@ -96,6 +96,10 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'react/jsx-no-useless-fragment': 'off',
         'project-my-plugin/path-checker': ['error', { alias: '@' }],
+        'project-my-plugin/layer-imports': [
+            'error',
+            { alias: '@', ignoreImportPatterns: ['**/StoreProvider'] },
+        ],
         'project-my-plugin/public-api-impots': ['error', { alias: '@' }],
     },
     globals: {

@@ -1,11 +1,10 @@
 import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+// eslint-disable-next-line project-my-plugin/layer-imports
 import { BugButton } from '@/app/providers/ErrorBoundary';
 import { Counter } from '@/entitites/Counter';
 import { Input } from '@/shared/ui/Input/Input';
 import { Page } from '@/widgets/Page';
-import { Raiting } from '@/shared/ui/Raiting/Raiting';
-import { RatingCard } from '@/entitites/RatingCard';
 
 const MainPage = memo(() => {
     const { t } = useTranslation();

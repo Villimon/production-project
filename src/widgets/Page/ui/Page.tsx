@@ -1,10 +1,5 @@
 import {
-    FC,
-    MutableRefObject,
-    ReactNode,
-    UIEvent,
-    useEffect,
-    useRef,
+    MutableRefObject, ReactNode, UIEvent, useEffect, useRef,
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -18,9 +13,9 @@ import { uiActions } from '../model/slice/UISlice';
 import cls from './Page.module.scss';
 
 interface PageProps {
-    className?: string;
-    onScrollEnd?: () => void;
-    children: ReactNode;
+    className?: string
+    onScrollEnd?: () => void
+    children: ReactNode
 }
 export const Page = ({ className, children, onScrollEnd }: PageProps) => {
     const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;

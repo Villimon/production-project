@@ -3,11 +3,11 @@ import { userEvent } from '@storybook/testing-library';
 import { screen } from '@testing-library/react';
 import { Country } from '@/entitites/Country';
 import { Currency } from '@/entitites/Currency';
-import { Profile } from '@/pages/ProfilePage';
 import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
 import { $api } from '@/shared/api/api';
 import { EditablePofileCard } from './EditablePofileCard';
 import { profileReducer } from '../../model/slice/profileSlice';
+import { Profile } from '@/entitites/Profile';
 
 const profile: Profile = {
     age: 12,
@@ -63,10 +63,7 @@ describe('EditablePofileCardSidebar', () => {
 
         // Ввели в поле новые данные
         await userEvent.type(screen.getByTestId('ProfileCard.first'), 'user');
-        await userEvent.type(
-            screen.getByTestId('ProfileCard.lastname'),
-            'user',
-        );
+        await userEvent.type(screen.getByTestId('ProfileCard.lastname'), 'user');
 
         // Проверили что данные обновлись
         expect(screen.getByTestId('ProfileCard.first')).toHaveValue('user');

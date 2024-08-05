@@ -1,9 +1,11 @@
 import { useContext, useEffect } from 'react';
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from './ThemeContext';
+import { ThemeContext } from '../../context/ThemeContext';
+import { Theme } from '@/shared/constants/theme';
+import { LOCAL_STORAGE_THEME_KEY } from '@/shared/constants/localstorage';
 
 interface UseThemeResult {
-    toggleTheme: () => void;
-    theme: Theme;
+    toggleTheme: () => void
+    theme: Theme
 }
 
 export const useTheme = (): UseThemeResult => {

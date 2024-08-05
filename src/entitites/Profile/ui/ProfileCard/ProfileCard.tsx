@@ -2,7 +2,6 @@ import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Country, CountrySelect } from '@/entitites/Country';
 import { Currency, CurrencySelect } from '@/entitites/Currency';
-import { Profile } from '@/pages/ProfilePage';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
 import { Input } from '@/shared/ui/Input/Input';
@@ -10,21 +9,22 @@ import { Loader } from '@/shared/ui/Loader/Loader';
 import { Text, TextAlign, TextTheme } from '@/shared/ui/Text/Text';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import cls from './ProfileCard.module.scss';
+import { Profile } from '../../model/types/profile';
 
 interface ProfileCardProps {
-    className?: string;
-    data?: Profile;
-    error?: string;
-    isLoading?: boolean;
-    readonly?: boolean;
-    onChangeFirstname?: (value?: string) => void;
-    onChangeLastname?: (value?: string) => void;
-    onChangeAge?: (value?: string) => void;
-    onChangeCity?: (value?: string) => void;
-    onChangeUsername?: (value?: string) => void;
-    onChangeAvatar?: (value?: string) => void;
-    onChangeCurrency?: (currency: Currency) => void;
-    onChangeCountry?: (country: Country) => void;
+    className?: string
+    data?: Profile
+    error?: string
+    isLoading?: boolean
+    readonly?: boolean
+    onChangeFirstname?: (value?: string) => void
+    onChangeLastname?: (value?: string) => void
+    onChangeAge?: (value?: string) => void
+    onChangeCity?: (value?: string) => void
+    onChangeUsername?: (value?: string) => void
+    onChangeAvatar?: (value?: string) => void
+    onChangeCurrency?: (currency: Currency) => void
+    onChangeCountry?: (country: Country) => void
 }
 // entiti слои не должны иметь логику внутри себя, это переисбользуемые блоки в которые поступает логика
 export const ProfileCard: FC<ProfileCardProps> = memo(
