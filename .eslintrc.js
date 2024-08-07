@@ -23,6 +23,7 @@ module.exports = {
         'i18next',
         'react-hooks',
         'project-my-plugin',
+        'unused-imports',
     ],
     rules: {
         // Превым аргументом передает, 0-отключаем правильн,1-выдает предупреждение,2-ощибку
@@ -101,6 +102,7 @@ module.exports = {
             { alias: '@', ignoreImportPatterns: ['**/StoreProvider'] },
         ],
         'project-my-plugin/public-api-impots': ['error', { alias: '@' }],
+        'unused-imports/no-unused-imports': 'error',
     },
     globals: {
         __IS_DEV__: true,

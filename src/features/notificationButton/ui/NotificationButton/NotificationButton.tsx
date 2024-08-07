@@ -9,7 +9,6 @@ import { Icon } from '@/shared/ui/Icon';
 import { NotificationList } from '@/entitites/Notification';
 import { Drawer } from '@/shared/ui/Drawer';
 import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
-import { AnimationProvider } from '@/shared/lib/components/AnimationProvider';
 import cls from './NotificationButton.module.scss';
 
 interface NotificationButtonProps {

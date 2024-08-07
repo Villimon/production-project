@@ -74,6 +74,7 @@
         "eslint-plugin-project-my-plugin": "0.0.4",
         "eslint-plugin-react": "^7.34.1",
         "eslint-plugin-react-hooks": "^4.3.0",
+        "eslint-plugin-unused-imports": "2.0.0",
         "fork-ts-checker-webpack-plugin": "^7.2.13",
         "globals": "^15.2.0",
         "html-webpack-plugin": "^5.5.0",

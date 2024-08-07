@@ -2,7 +2,7 @@ import { FC, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { EditablePofileCard } from '@/features/editablePofileCard';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { HStack, VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/ui/Stack';
 import { Page } from '@/widgets/Page';
 import cls from './ProfilePage.module.scss';
 import { ProfileRating } from '@/features/profileRating';
