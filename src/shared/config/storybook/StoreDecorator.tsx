@@ -1,7 +1,7 @@
 import { Story } from '@storybook/react';
 import { StateSchema, StoreProvider } from '@/app/providers/StoreProvider';
 // eslint-disable-next-line project-my-plugin/layer-imports
-import { articleDetailsReducer } from '@/entitites/Article/model/slice/articleDetailsSlice';
+import { articleDetailsReducer } from '@/entitites/Article';
 // eslint-disable-next-line project-my-plugin/layer-imports
 import { profileReducer } from '@/features/editablePofileCard';
 import { ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';

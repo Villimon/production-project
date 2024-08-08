@@ -1,6 +1,6 @@
 import { FC, memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ArticleSortField } from '@/entitites/Article/model/consts/consts';
+import { ArticleSortField } from '@/entitites/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { SortOrder } from '@/shared/types';
 import { Select, SelectOptions } from '@/shared/ui/Select';

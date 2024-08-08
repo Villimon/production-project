@@ -1,12 +1,12 @@
 import { FC, memo } from 'react';
-import { ArticleImgBlock } from '@/entitites/Article/model/types/article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text, TextAlign } from '@/shared/ui/Text';
 import cls from './ArticleImageBlockComponent.module.scss';
+import { ArticleImgBlock } from '../../model/types/article';
 
 interface ArticleImageBlockComponentProps {
-    className?: string;
-    block: ArticleImgBlock;
+    className?: string
+    block: ArticleImgBlock
 }
 export const ArticleImageBlockComponent: FC<ArticleImageBlockComponentProps> = memo(({ className, block }) => (
     <section

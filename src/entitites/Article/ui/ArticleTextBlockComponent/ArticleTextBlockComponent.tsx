@@ -1,12 +1,12 @@
 import { FC, memo } from 'react';
-import { ArticleTextBlock } from '@/entitites/Article/model/types/article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text';
 import cls from './ArticleTextBlockComponent.module.scss';
+import { ArticleTextBlock } from '../../model/types/article';
 
 interface ArticleTextBlockComponentProps {
-    className?: string;
-    block: ArticleTextBlock;
+    className?: string
+    block: ArticleTextBlock
 }
 export const ArticleTextBlockComponent: FC<ArticleTextBlockComponentProps> = memo(({ className, block }) => (
     <section

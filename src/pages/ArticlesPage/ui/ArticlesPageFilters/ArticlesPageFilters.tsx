@@ -1,12 +1,12 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { ArticleTypeTabs } from '@/entitites/Article/ui/ArticleTypeTabs/ArticleTypeTabs';
 import {
     ArticleSortField,
     ArticleSortSelector,
     ArticleType,
     ArticleView,
+    ArticleTypeTabs,
 } from '@/entitites/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -27,7 +27,7 @@ import {
 import cls from './ArticlesPageFilters.module.scss';
 
 interface ArticlesPageFiltersProps {
-    className?: string;
+    className?: string
 }
 export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = memo(
     ({ className }) => {

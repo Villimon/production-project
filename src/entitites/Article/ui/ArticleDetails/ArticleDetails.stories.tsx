@@ -1,11 +1,9 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator';
-import {
-    ArticleBlockType,
-    ArticleType,
-} from '@/entitites/Article/model/consts/consts';
+import { ArticleType } from '@/entitites/Article';
 import { ArticleDetails } from './ArticleDetails';
+import { ArticleBlockType } from '../../model/consts/consts';
 
 export default {
     title: 'entititis/ArticleDetails',
@@ -37,7 +35,6 @@ const article = {
     blocks: [
         {
             id: '1',
-            type: ArticleBlockType.TEXT,
             title: 'Заголовок этого блока',
             paragraphs: [
                 'Программа, которую по традиции называют «Hello, world!», очень проста. Она выводит куда-либо фразу «Hello, world!», или другую подобную, средствами некоего языка.',

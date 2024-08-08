@@ -3,13 +3,7 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import {
-    getArticleDetailsData,
-    getArticleDetailsError,
-    getArticleDetailsIsLoading,
-} from '@/entitites/Article/model/selectors/getArticleDetailsData/getArticleDetailsData';
-import { fetchArticleById } from '@/entitites/Article/model/services/fetchArticleById/fetchArticleById';
-import { articleDetailsReducer } from '@/entitites/Article/model/slice/articleDetailsSlice';
+import { getArticleDetailsData } from '@/entitites/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
@@ -24,17 +18,23 @@ import {
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
 import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
 import { Icon } from '@/shared/ui/Icon';
-import { ArticleBlock } from '@/entitites/Article/model/types/article';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import { ArticleBlockType } from '@/entitites/Article/model/consts/consts';
 import cls from './ArticleDetails.module.scss';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { ArticleBlockType } from '../../model/consts/consts';
+import {
+    getArticleDetailsIsLoading,
+    getArticleDetailsError,
+} from '../../model/selectors/getArticleDetailsData/getArticleDetailsData';
+import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
+import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
+import { ArticleBlock } from '../../model/types/article';
 
 interface ArticleDetailsProps {
-    className?: string;
-    id?: string;
+    className?: string
+    id?: string
 }
 
 const reducers: ReducersList = {
