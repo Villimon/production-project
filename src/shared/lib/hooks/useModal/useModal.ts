@@ -11,6 +11,14 @@ interface UseModalProps {
     isOpen?: boolean;
     animationDelay?: number;
 }
+
+/**
+ * Переиспользкемый хук для модальных компонентов (drawer/modal)
+ * @param animationDelay
+ * @param isOpen
+ * @param onClose
+ * @returns
+ */
 export function useModal({ animationDelay, isOpen, onClose }: UseModalProps) {
     const [isClosing, setIsClosing] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
@@ -32,7 +40,7 @@ export function useModal({ animationDelay, isOpen, onClose }: UseModalProps) {
                 closeHandler();
             }
         },
-        [closeHandler],
+        [closeHandler]
     );
 
     useEffect(() => {
