@@ -174,15 +174,15 @@ Clear.args = {
 
 ## Сущности (entities)
 
--   [Article](/src/entities/Article)
--   [Comment](/src/entities/Comment)
--   [Counter](/src/entities/Counter)
--   [Country](/src/entities/Country)
--   [Currency](/src/entities/Currency)
--   [Notification](/src/entities/Notification)
--   [Profile](/src/entities/Profile)
--   [Rating](/src/entities/Rating)
--   [User](/src/entities/User)
+-   [Article](/src/entitites/Article)
+-   [Comment](/src/entitites/Comment)
+-   [Counter](/src/entitites/Counter)
+-   [Country](/src/entitites/Country)
+-   [Currency](/src/entitites/Currency)
+-   [Notification](/src/entitites/Notification)
+-   [Profile](/src/entitites/Profile)
+-   [Rating](/src/entitites/Rating)
+-   [User](/src/entitites/User)
 
 ## Фичи (features)
 

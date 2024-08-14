@@ -40,7 +40,7 @@ export function useModal({ animationDelay, isOpen, onClose }: UseModalProps) {
                 closeHandler();
             }
         },
-        [closeHandler]
+        [closeHandler],
     );
 
     useEffect(() => {
