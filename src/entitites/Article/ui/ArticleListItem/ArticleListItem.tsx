@@ -12,7 +12,7 @@ import { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticleListItem.module.scss';
-import { RoutePath } from '@/shared/constants/router';
+import { getRouteArticlesDetails } from '@/shared/constants/router';
 
 interface ArticleListItemProps {
     className?: string
@@ -77,7 +77,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                         <div className={cls.footer}>
                             <AppLink
                                 target={target}
-                                to={RoutePath.articles_details + article.id}
+                                to={getRouteArticlesDetails(article.id)}
                             >
                                 <Button>{t('Читать далее')}</Button>
                             </AppLink>
@@ -92,7 +92,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
         return (
             <AppLink
                 target={target}
-                to={RoutePath.articles_details + article.id}
+                to={getRouteArticlesDetails(article.id)}
                 className={classNames(cls.ArticleListItem, {}, [
                     className,
                     cls[view],

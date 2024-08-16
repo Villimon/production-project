@@ -13,7 +13,7 @@ import { HStack } from '@/shared/ui/Stack';
 import { NotificationButton } from '@/features/notificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 import cls from './Navbar.module.scss';
-import { RoutePath } from '@/shared/constants/router';
+import { getRouteArticlesCreate } from '@/shared/constants/router';
 
 interface NavbarProps {
     className?: string
@@ -41,7 +41,7 @@ export const Navbar: FC<NavbarProps> = memo(() => {
                     theme={TextTheme.INVERTED}
                 />
                 <AppLink
-                    to={RoutePath.articles_create}
+                    to={getRouteArticlesCreate()}
                     theme={AppLinkTheme.SECONDARY}
                 >
                     {t('Создать статью')}

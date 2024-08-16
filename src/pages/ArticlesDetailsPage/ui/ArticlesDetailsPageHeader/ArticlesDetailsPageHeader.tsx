@@ -7,7 +7,10 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { getCanEditArticle } from '../../model/selectors/article';
-import { RoutePath } from '@/shared/constants/router';
+import {
+    getRouteArticles,
+    getRouteArticlesEdit,
+} from '@/shared/constants/router';
 
 interface ArticlesDetailsPageHeaderProps {
     className?: string
@@ -19,11 +22,11 @@ export const ArticlesDetailsPageHeader: FC<ArticlesDetailsPageHeaderProps> = mem
     const article = useSelector(getArticleDetailsData);
 
     const onBackToList = () => {
-        navigate(RoutePath.articles);
+        navigate(getRouteArticles());
     };
 
     const onEditArticle = () => {
-        navigate(`${RoutePath.articles_details}${article?.id}/edit`);
+        navigate(getRouteArticlesEdit(article?.id || ''));
     };
     return (
         <HStack
