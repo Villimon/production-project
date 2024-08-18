@@ -22,7 +22,7 @@ export const buildWebpackConfig = (options: BuildOptions): Configuration => {
         },
         resolve: buildResolvers(options),
         // Для того чтобы показывать где у нас произошла ошибка
-        devtool: isDev ? 'inline-source-map' : undefined,
+        devtool: isDev ? 'eval-cheap-module-source-map' : undefined,
         devServer: isDev ? buildDevServer(options) : undefined,
     };
 };

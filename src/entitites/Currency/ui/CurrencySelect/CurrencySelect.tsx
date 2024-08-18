@@ -2,15 +2,15 @@ import {
     FC, memo, useCallback, useMemo,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Currency } from '@/entitites/Currency';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ListBox } from '@/shared/ui/Popups';
+import { Currency } from '../../model/types/currency';
 
 interface CurrencySelectProps {
-    className?: string;
-    value?: Currency;
-    readonly?: boolean;
-    onChange?: (value: any) => void;
+    className?: string
+    value?: Currency
+    readonly?: boolean
+    onChange?: (value: any) => void
 }
 
 export const CurrencySelect: FC<CurrencySelectProps> = memo(

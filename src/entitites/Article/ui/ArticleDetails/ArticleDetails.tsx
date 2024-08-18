@@ -3,7 +3,6 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { getArticleDetailsData } from '@/entitites/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
@@ -27,6 +26,7 @@ import { ArticleBlockType } from '../../model/consts/consts';
 import {
     getArticleDetailsIsLoading,
     getArticleDetailsError,
+    getArticleDetailsData,
 } from '../../model/selectors/getArticleDetailsData/getArticleDetailsData';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
