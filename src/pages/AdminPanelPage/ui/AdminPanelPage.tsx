@@ -4,12 +4,15 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Page } from '@/widgets/Page';
 
 interface AdminPanelPageProps {
-    className?: string;
+    className?: string
 }
 const AdminPanelPage: FC<AdminPanelPageProps> = memo(({ className }) => {
     const { t } = useTranslation();
     return (
-        <Page className={classNames('', {}, [className])}>
+        <Page
+            data-testid="AdminPanelPage"
+            className={classNames('', {}, [className])}
+        >
             {t('Админ панель')}
         </Page>
     );
