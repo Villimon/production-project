@@ -1,6 +1,4 @@
-import {
-    FC, memo, useCallback, useEffect,
-} from 'react';
+import { FC, memo, useCallback, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
@@ -43,6 +41,7 @@ const ArticlesPage: FC<ArticlesPageProps> = memo(({ className }) => {
     return (
         <DynamicModuleLoader reducers={reducer} removeAfterUnmount={false}>
             <Page
+                data-testid="ArticlesPage"
                 onScrollEnd={onLoadNextPart}
                 className={classNames('', {}, [className])}
             >
