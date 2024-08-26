@@ -1,6 +1,4 @@
-import {
-    FC, memo, useCallback, useState,
-} from 'react';
+import { FC, memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Card } from '@/shared/ui/Card';
@@ -14,13 +12,13 @@ import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
 import { Drawer } from '@/shared/ui/Drawer';
 
 interface RatingCardProps {
-    className?: string
-    title?: string
-    feedbackTitle?: string
-    hasFeedback?: boolean
-    onCancle?: (star: number) => void
-    onAccept?: (star: number, feedback?: string) => void
-    rate?: number
+    className?: string;
+    title?: string;
+    feedbackTitle?: string;
+    hasFeedback?: boolean;
+    onCancle?: (star: number) => void;
+    onAccept?: (star: number, feedback?: string) => void;
+    rate?: number;
 }
 
 export const RatingCard: FC<RatingCardProps> = memo(
@@ -48,7 +46,7 @@ export const RatingCard: FC<RatingCardProps> = memo(
                     onAccept?.(selectedStarsCount);
                 }
             },
-            [onAccept, hasFeedback],
+            [onAccept, hasFeedback]
         );
 
         const onAcceptHandle = useCallback(() => {
@@ -65,6 +63,7 @@ export const RatingCard: FC<RatingCardProps> = memo(
             <>
                 <Text title={feedbackTitle} />
                 <Input
+                    data-testid="RatingCard.Input"
                     value={feedback}
                     onChange={setfeedback}
                     placeholder={t('Ваш отзыв')}
@@ -73,7 +72,11 @@ export const RatingCard: FC<RatingCardProps> = memo(
         );
 
         return (
-            <Card fullWidth className={classNames('', {}, [className])}>
+            <Card
+                data-testid="RatingCard"
+                fullWidth
+                className={classNames('', {}, [className])}
+            >
                 <VStack align="center" gap="8">
                     <Text title={starsCount ? t('Спасибо за оценку') : title} />
                     <Raiting
@@ -101,10 +104,14 @@ export const RatingCard: FC<RatingCardProps> = memo(
                                 <Button
                                     onClick={onCancelHandle}
                                     theme={ThemeButton.RED}
+                                    data-testid="RatingCard.Close"
                                 >
                                     {t('Закрыть')}
                                 </Button>
-                                <Button onClick={onAcceptHandle}>
+                                <Button
+                                    data-testid="RatingCard.Send"
+                                    onClick={onAcceptHandle}
+                                >
                                     {t('Отправить')}
                                 </Button>
                             </HStack>
@@ -113,5 +120,5 @@ export const RatingCard: FC<RatingCardProps> = memo(
                 )}
             </Card>
         );
-    },
+    }
 );

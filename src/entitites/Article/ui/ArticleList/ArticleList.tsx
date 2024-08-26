@@ -16,9 +16,7 @@ interface ArticleListProps {
     target?: HTMLAttributeAnchorTarget;
 }
 export const ArticleList: FC<ArticleListProps> = memo(
-    ({
-        className, articles, isLoading, target, view = ArticleView.SMALL,
-    }) => {
+    ({ className, articles, isLoading, target, view = ArticleView.SMALL }) => {
         const { t } = useTranslation('article');
         const renderArticle = (article: Article) => (
             <ArticleListItem
@@ -45,6 +43,7 @@ export const ArticleList: FC<ArticleListProps> = memo(
 
         return (
             <section
+                data-testid="ArticleList"
                 className={classNames(cls.ArticleList, {}, [
                     className,
                     cls[view],
@@ -66,5 +65,5 @@ export const ArticleList: FC<ArticleListProps> = memo(
                 )}
             </section>
         );
-    },
+    }
 );

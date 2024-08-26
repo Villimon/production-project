@@ -21,8 +21,8 @@ import {
 import cls from './AddCommentForm.module.scss';
 
 export interface AddCommentFormProps {
-    className?: string
-    onSendComment: (text: string) => void
+    className?: string;
+    onSendComment: (text: string) => void;
 }
 
 const reducers: ReducersList = {
@@ -40,7 +40,7 @@ const AddCommentForm: FC<AddCommentFormProps> = memo(
             (value: string) => {
                 dispatch(addCommentFormActions.setText(value));
             },
-            [dispatch],
+            [dispatch]
         );
 
         const onSendHandler = useCallback(() => {
@@ -51,21 +51,28 @@ const AddCommentForm: FC<AddCommentFormProps> = memo(
         return (
             <DynamicModuleLoader reducers={reducers}>
                 <HStack
+                    data-testid="AddCommentForm"
                     max
                     justify="between"
                     className={classNames(cls.AddCommentForm, {}, [className])}
                 >
                     <Input
                         className={cls.input}
+                        data-testid="AddCommentForm.Input"
                         placeholder={t('Введите текст комментария')}
                         value={text}
                         onChange={onCommentTextChange}
                     />
-                    <Button onClick={onSendHandler}>{t('Отправить')}</Button>
+                    <Button
+                        data-testid="AddCommentForm.Button"
+                        onClick={onSendHandler}
+                    >
+                        {t('Отправить')}
+                    </Button>
                 </HStack>
             </DynamicModuleLoader>
         );
-    },
+    }
 );
 
 export default AddCommentForm;

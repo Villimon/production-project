@@ -17,15 +17,13 @@ import { AppImage } from '@/shared/ui/AppImage/AppImage';
 import { Skeleton } from '@/shared/ui/Skeleton';
 
 interface ArticleListItemProps {
-    className?: string
-    article: Article
-    view: ArticleView
-    target?: HTMLAttributeAnchorTarget
+    className?: string;
+    article: Article;
+    view: ArticleView;
+    target?: HTMLAttributeAnchorTarget;
 }
 export const ArticleListItem: FC<ArticleListItemProps> = memo(
-    ({
-        className, article, view, target,
-    }) => {
+    ({ className, article, view, target }) => {
         const { t } = useTranslation();
 
         const types = (
@@ -41,11 +39,12 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
 
         if (view === ArticleView.BIG) {
             const textBlock = article.blocks.find(
-                (i) => i.type === ArticleBlockType.TEXT,
+                (i) => i.type === ArticleBlockType.TEXT
             ) as ArticleTextBlock;
 
             return (
                 <article
+                    data-testid="ArticleListItem"
                     className={classNames(cls.ArticleListItem, {}, [
                         className,
                         cls[view],
@@ -94,6 +93,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
 
         return (
             <AppLink
+                data-testid="ArticleListItem"
                 target={target}
                 to={getRouteArticlesDetails(article.id)}
                 className={classNames(cls.ArticleListItem, {}, [
@@ -119,5 +119,5 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                 </Card>
             </AppLink>
         );
-    },
+    }
 );

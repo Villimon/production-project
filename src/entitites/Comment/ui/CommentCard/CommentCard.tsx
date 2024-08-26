@@ -10,9 +10,9 @@ import cls from './CommentCard.module.scss';
 import { getRouteProfile } from '@/shared/constants/router';
 
 interface CommentCardProps {
-    className?: string
-    comment?: Comment
-    isLoading?: boolean
+    className?: string;
+    comment?: Comment;
+    isLoading?: boolean;
 }
 export const CommentCard: FC<CommentCardProps> = memo(
     ({ className, comment, isLoading }) => {
@@ -43,6 +43,7 @@ export const CommentCard: FC<CommentCardProps> = memo(
 
         return (
             <VStack
+                data-testid="CommentCard.Content"
                 gap="8"
                 max
                 className={classNames(cls.CommentCard, {}, [className])}
@@ -62,5 +63,5 @@ export const CommentCard: FC<CommentCardProps> = memo(
                 <Text className={cls.text} text={comment.text} />
             </VStack>
         );
-    },
+    }
 );

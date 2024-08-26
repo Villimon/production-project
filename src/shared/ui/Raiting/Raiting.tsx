@@ -5,19 +5,18 @@ import { Icon } from '../Icon/Icon';
 import StarIcon from '@/shared/assets/icons/star.svg';
 
 interface RaitingProps {
-    className?: string
-    onSelect?: (star: number) => void
-    size?: number
-    selectedStars?: number
+    className?: string;
+    onSelect?: (star: number) => void;
+    size?: number;
+    selectedStars?: number;
 }
 
 const stars = [1, 2, 3, 4, 5];
 
 export const Raiting: FC<RaitingProps> = memo(
-    ({
-        className, onSelect, selectedStars = 0, size = 30,
-    }) => {
-        const [currentStarsCount, setCurrentStarsCount] = useState(selectedStars);
+    ({ className, onSelect, selectedStars = 0, size = 30 }) => {
+        const [currentStarsCount, setCurrentStarsCount] =
+            useState(selectedStars);
         const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
 
         const onHover = (star: number) => () => {
@@ -53,16 +52,18 @@ export const Raiting: FC<RaitingProps> = memo(
                                 currentStarsCount >= star
                                     ? cls.hovered
                                     : cls.normal,
-                            ],
+                            ]
                         )}
                         width={size}
                         height={size}
                         onMouseLeave={onLeave}
                         onMouseEnter={onHover(star)}
                         onClick={onClick(star)}
+                        data-testid={`Rating.${star}`}
+                        data-selected={currentStarsCount >= star}
                     />
                 ))}
             </div>
         );
-    },
+    }
 );
