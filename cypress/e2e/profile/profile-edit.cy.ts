@@ -24,7 +24,7 @@ describe('Пользователь заходит на страницу поль
         cy.getByTestId('ProfileCard.first').should('have.value', newName);
         cy.getByTestId('ProfileCard.lastname').should(
             'have.value',
-            newLastname
+            newLastname,
         );
     });
 });

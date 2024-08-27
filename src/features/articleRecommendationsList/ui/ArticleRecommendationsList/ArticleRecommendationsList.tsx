@@ -10,24 +10,23 @@ interface ArticleRecommendationsListProps {
     className?: string;
 }
 
-export const ArticleRecommendationsList: FC<ArticleRecommendationsListProps> =
-    memo(({ className }) => {
-        const { t } = useTranslation('article');
-        const { data: articles, isLoading } = useArticleRecommendationsList(3);
+export const ArticleRecommendationsList: FC<ArticleRecommendationsListProps> = memo(({ className }) => {
+    const { t } = useTranslation('article');
+    const { data: articles, isLoading } = useArticleRecommendationsList(3);
 
-        if (isLoading || !articles) {
-            // Добавить скелетон
-            return null;
-        }
+    if (isLoading || !articles) {
+        // Добавить скелетон
+        return null;
+    }
 
-        return (
-            <VStack
-                data-testid="ArticleRecommendationsList"
-                gap="8"
-                className={classNames('', {}, [className])}
-            >
-                <Text title={t('Рукомендуем')} />
-                <ArticleList articles={articles} target="_blank" />
-            </VStack>
-        );
-    });
+    return (
+        <VStack
+            data-testid="ArticleRecommendationsList"
+            gap="8"
+            className={classNames('', {}, [className])}
+        >
+            <Text title={t('Рукомендуем')} />
+            <ArticleList articles={articles} target="_blank" />
+        </VStack>
+    );
+});

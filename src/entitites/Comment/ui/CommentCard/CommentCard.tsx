@@ -63,5 +63,5 @@ export const CommentCard: FC<CommentCardProps> = memo(
                 <Text className={cls.text} text={comment.text} />
             </VStack>
         );
-    }
+    },
 );

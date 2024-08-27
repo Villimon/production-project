@@ -1,4 +1,6 @@
-import { FC, memo, useCallback, useEffect } from 'react';
+import {
+    FC, memo, useCallback, useEffect,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -9,7 +11,9 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Avatar } from '@/shared/ui/Avatar';
 import { Skeleton } from '@/shared/ui/Skeleton';
-import { Text, TextAlign, TextSize, TextTheme } from '@/shared/ui/Text';
+import {
+    Text, TextAlign, TextSize, TextTheme,
+} from '@/shared/ui/Text';
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
 import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
 import { Icon } from '@/shared/ui/Icon';
@@ -47,33 +51,33 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo(
 
         const renderBlock = useCallback((block: ArticleBlock) => {
             switch (block.type) {
-                case ArticleBlockType.CODE:
-                    return (
-                        <ArticleCodeBlockComponent
-                            key={block.id}
-                            block={block}
-                            className={cls.block}
-                        />
-                    );
-                case ArticleBlockType.IMAGE:
-                    return (
-                        <ArticleImageBlockComponent
-                            key={block.id}
-                            block={block}
-                            className={cls.block}
-                        />
-                    );
-                case ArticleBlockType.TEXT:
-                    return (
-                        <ArticleTextBlockComponent
-                            key={block.id}
-                            block={block}
-                            className={cls.block}
-                        />
-                    );
+            case ArticleBlockType.CODE:
+                return (
+                    <ArticleCodeBlockComponent
+                        key={block.id}
+                        block={block}
+                        className={cls.block}
+                    />
+                );
+            case ArticleBlockType.IMAGE:
+                return (
+                    <ArticleImageBlockComponent
+                        key={block.id}
+                        block={block}
+                        className={cls.block}
+                    />
+                );
+            case ArticleBlockType.TEXT:
+                return (
+                    <ArticleTextBlockComponent
+                        key={block.id}
+                        block={block}
+                        className={cls.block}
+                    />
+                );
 
-                default:
-                    return null;
+            default:
+                return null;
             }
         }, []);
 
@@ -165,5 +169,5 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo(
                 </VStack>
             </DynamicModuleLoader>
         );
-    }
+    },
 );

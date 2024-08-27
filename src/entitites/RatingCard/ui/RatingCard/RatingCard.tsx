@@ -1,4 +1,6 @@
-import { FC, memo, useCallback, useState } from 'react';
+import {
+    FC, memo, useCallback, useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Card } from '@/shared/ui/Card';
@@ -46,7 +48,7 @@ export const RatingCard: FC<RatingCardProps> = memo(
                     onAccept?.(selectedStarsCount);
                 }
             },
-            [onAccept, hasFeedback]
+            [onAccept, hasFeedback],
         );
 
         const onAcceptHandle = useCallback(() => {
@@ -120,5 +122,5 @@ export const RatingCard: FC<RatingCardProps> = memo(
                 )}
             </Card>
         );
-    }
+    },
 );

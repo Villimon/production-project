@@ -23,7 +23,9 @@ interface ArticleListItemProps {
     target?: HTMLAttributeAnchorTarget;
 }
 export const ArticleListItem: FC<ArticleListItemProps> = memo(
-    ({ className, article, view, target }) => {
+    ({
+        className, article, view, target,
+    }) => {
         const { t } = useTranslation();
 
         const types = (
@@ -39,7 +41,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
 
         if (view === ArticleView.BIG) {
             const textBlock = article.blocks.find(
-                (i) => i.type === ArticleBlockType.TEXT
+                (i) => i.type === ArticleBlockType.TEXT,
             ) as ArticleTextBlock;
 
             return (
@@ -119,5 +121,5 @@ export const ArticleListItem: FC<ArticleListItemProps> = memo(
                 </Card>
             </AppLink>
         );
-    }
+    },
 );
