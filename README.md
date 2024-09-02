@@ -102,12 +102,12 @@ npm run start:dev или npm run start:dev:vite - запуск сервера + 
 Пример:
 
 ```typescript jsx
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from 'react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Button, ButtonSize, ButtonTheme } from './Button';
-import { Theme } from '@/shared/const/theme';
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Button, ButtonSize, ButtonTheme } from './Button'
+import { Theme } from '@/shared/const/theme'
 
 export default {
     title: 'shared/Button',
@@ -115,20 +115,20 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof Button>;
+} as ComponentMeta<typeof Button>
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 
-export const Primary = Template.bind({});
+export const Primary = Template.bind({})
 Primary.args = {
     children: 'Text',
-};
+}
 
-export const Clear = Template.bind({});
+export const Clear = Template.bind({})
 Clear.args = {
     children: 'Text',
     theme: ButtonTheme.CLEAR,
-};
+}
 ```
 
 ---
@@ -169,6 +169,23 @@ Clear.args = {
 
 Для асинхронного подключения редюсеров (чтобы не тянуть их в общий бандл) используется
 [DynamicModuleLoader](/src/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader.tsx)
+
+---
+
+### Работа с feature-flags
+
+Разрешено использование feature-flags тольо с помощью хэлпура [toggleFeatures](/src/shared/lib/features/toogleFeatures.ts)
+
+В него передаются объект с опциями:
+
+-   name: название фичи-флага
+-   on: функция, которая отработает после ВКЛючения фичи
+-   off: функция, которая отработает после ВЫКЛючения фичи
+
+Для автоматического удаления фичи использовать скрипт [remove-feature](./scripts/remove-feature.ts), который принимает два аргумента
+
+1. Название удаляемого фича-флага
+2. Состояние (on/off)
 
 ---
 

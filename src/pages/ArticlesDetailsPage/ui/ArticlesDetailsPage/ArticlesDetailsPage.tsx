@@ -35,13 +35,15 @@ const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
             return null;
         }
 
+        const counter = <Counter />;
+
         return (
             <DynamicModuleLoader reducers={reducer} removeAfterUnmount>
                 <Page className={classNames('', {}, [className])}>
                     <VStack gap="16" max>
                         <ArticlesDetailsPageHeader />
                         <ArticleDetails id={id} />
-                        {isArticleCounterEnable && <Counter />}
+                        {counter}
                         {isArticleRatingEnable && (
                             <ArticleRating articleId={id} />
                         )}
