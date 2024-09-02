@@ -765,6 +765,10 @@
       "roles": [
         "ADMIN"
       ],
+      "features": {
+        "isArticleRatingEnable": true,
+        "isArticleCounterEnable": true
+      },
       "avatar": "https://avatars.mds.yandex.net/get-zen_doc/3413519/pub_5ff887b2fe4e686f6ae6ba3f_5ff887d7f906b16872a69755/scale_1200"
     },
     {
@@ -774,6 +778,10 @@
       "roles": [
         "USER"
       ],
+      "features": {
+        "isArticleRatingEnable": false,
+        "isArticleCounterEnable": false
+      },
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     },
     {
@@ -783,6 +791,10 @@
       "roles": [
         "MANAGER"
       ],
+      "features": {
+        "isArticleRatingEnable": false,
+        "isArticleCounterEnable": true
+      },
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     },
     {
@@ -792,6 +804,10 @@
       "roles": [
         "ADMIN"
       ],
+      "features": {
+        "isArticleRatingEnable": true,
+        "isArticleCounterEnable": false
+      },
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     }
   ],
@@ -885,6 +901,13 @@
       "rate": 3,
       "feedback": "",
       "id": "IZf5rBl"
+    },
+    {
+      "userId": "4",
+      "articleId": "7",
+      "rate": 4,
+      "feedback": "",
+      "id": "v2AjchR"
     }
   ],
   "profile-ratings": [
