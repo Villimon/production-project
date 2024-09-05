@@ -4,6 +4,9 @@ import {
 import { ThemeContext } from '../../../../shared/lib/context/ThemeContext';
 import { Theme } from '@/shared/constants/theme';
 import { useJsonSettings } from '@/entitites/User';
+import { LOCAL_STORAGE_THEME_KEY } from '@/shared/constants/localstorage';
+
+const themeForLocalstorage = localStorage.getItem(LOCAL_STORAGE_THEME_KEY);
 
 interface ThemeProviderProps {
     initialTheme?: Theme
@@ -11,13 +14,18 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider = ({ children, initialTheme }: ThemeProviderProps) => {
-    const { theme: defaultTheme = Theme.LIGHT } = useJsonSettings();
+    const { theme: defaultTheme } = useJsonSettings();
     const [isThemeInited, setThemeInited] = useState(false);
-    const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme);
+    const [theme, setTheme] = useState<Theme>(
+        initialTheme || defaultTheme || Theme.LIGHT,
+    );
 
     // TODO не работает инициализация темы
     useEffect(() => {
-        if (!isThemeInited) {
+        if (!defaultTheme && themeForLocalstorage) {
+            setTheme(themeForLocalstorage as Theme);
+        }
+        if (!isThemeInited && defaultTheme) {
             setTheme(defaultTheme);
             setThemeInited(true);
         }
