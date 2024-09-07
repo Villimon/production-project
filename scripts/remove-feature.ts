@@ -1,11 +1,16 @@
 // astexplorer.net
 
-import { Node, Project, SyntaxKind } from 'ts-morph';
+import {
+    JsxAttribute, Node, Project, SyntaxKind,
+} from 'ts-morph';
 
 const project = new Project({});
 
 const removeFeatureName = process.argv[2]; // isArticleEnable
 const featureState = process.argv[3]; // off/on
+
+const toggleFunctionName = 'toggleFeatures';
+const toggleComponentName = 'ToggleFeatures';
 
 if (!removeFeatureName) {
     throw new Error('Укажите название фичи-флага');
@@ -34,7 +39,7 @@ function isToggleFunction(node: Node) {
         // Находим Identifier с названием нашей функции
         if (
             child.isKind(SyntaxKind.Identifier)
-            && child.getText() === 'toggleFeatures'
+            && child.getText() === toggleFunctionName
         ) {
             isToggleFeatures = true;
         }
@@ -42,54 +47,117 @@ function isToggleFunction(node: Node) {
     return isToggleFeatures;
 }
 
+function isToggleComponent(node: Node) {
+    // Сами компоненты <Counter/>
+    const identifier = node.getFirstDescendantByKind(SyntaxKind.Identifier);
+
+    return identifier?.getText() === toggleComponentName;
+}
+
+const replaceToggleFunction = (node: Node) => {
+    // Наш объект что мы передаем: name, on, off
+    const objectOptions = node.getFirstDescendantByKind(
+        SyntaxKind.ObjectLiteralExpression,
+    );
+
+    if (!objectOptions) return;
+
+    // Получаем ключ:значение по ключу
+    const onFunctionProperty = objectOptions.getProperty('on'); // on: () => <Counter />
+    const offFunctionProperty = objectOptions.getProperty('off');
+    const featureNameProperty = objectOptions.getProperty('name');
+
+    // Значения
+    const onFunction = onFunctionProperty?.getFirstDescendantByKind(
+        SyntaxKind.ArrowFunction,
+    ); // () => <Counter />
+    const offFunction = offFunctionProperty?.getFirstDescendantByKind(
+        SyntaxKind.ArrowFunction,
+    );
+    const featureName = featureNameProperty
+        ?.getFirstDescendantByKind(SyntaxKind.StringLiteral)
+        ?.getText()
+        .slice(1, -1);
+
+    if (featureName !== removeFeatureName) return;
+
+    if (featureState === 'on') {
+        // Оставляем только значение функции
+        node.replaceWithText(onFunction?.getBody().getText() || ''); // <Counter />
+
+        /*
+        Было: const counter = toggleFeatures({
+            name: 'isArticleCounterEnable',
+            on: () => <>asdasd</>,
+            off: () => <Counter />,
+        })
+
+        Cтало: const counter = <Counter />
+        */
+    }
+
+    if (featureState === 'off') {
+        node.replaceWithText(offFunction?.getBody().getText() || '');
+    }
+};
+
+const getAttributeNodeByName = (
+    jsxAttributes: JsxAttribute[],
+    name: string,
+) => jsxAttributes.find((node) => node.getName() === name);
+
+const getReplaceComponent = (attribute?: JsxAttribute) => {
+    const value = attribute
+        ?.getFirstDescendantByKind(SyntaxKind.JsxExpression)
+        ?.getExpression()
+        ?.getText();
+
+    if (value?.startsWith('(')) {
+        return value.slice(1, -1);
+    }
+    return value;
+};
+
+const replaceComponent = (node: Node) => {
+    const attributes = node.getDescendantsOfKind(SyntaxKind.JsxAttribute);
+
+    const onAttribute = getAttributeNodeByName(attributes, 'on');
+    const offAttribute = getAttributeNodeByName(attributes, 'off');
+
+    const featureAttributeName = getAttributeNodeByName(attributes, 'name');
+    const featureName = featureAttributeName
+        ?.getFirstDescendantByKind(SyntaxKind.StringLiteral)
+        ?.getText()
+        .slice(1, -1);
+
+    if (featureName !== removeFeatureName) return;
+
+    // Компоненты что лежат в пропсах в on и off
+    const offValue = getReplaceComponent(offAttribute);
+    const onValue = getReplaceComponent(onAttribute);
+
+    if (featureState === 'on' && onValue) {
+        node.replaceWithText(onValue);
+    }
+
+    if (featureState === 'off' && offValue) {
+        node.replaceWithText(offValue);
+    }
+};
+
 files.forEach((sourceFile) => {
     sourceFile.forEachDescendant((node) => {
         // Находим все функции
         if (node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node)) {
-            // Наш объект что мы передаем: name, on, off
-            const objectOptions = node.getFirstDescendantByKind(
-                SyntaxKind.ObjectLiteralExpression,
-            );
+            replaceToggleFunction(node);
+        }
 
-            if (!objectOptions) return;
-
-            // Получаем ключ:значение по ключу
-            const onFunctionProperty = objectOptions.getProperty('on'); // on: () => <Counter />
-            const offFunctionProperty = objectOptions.getProperty('off');
-            const featureNameProperty = objectOptions.getProperty('name');
-
-            // Значения
-            const onFunction = onFunctionProperty?.getFirstDescendantByKind(
-                SyntaxKind.ArrowFunction,
-            ); // () => <Counter />
-            const offFunction = offFunctionProperty?.getFirstDescendantByKind(
-                SyntaxKind.ArrowFunction,
-            );
-            const featureName = featureNameProperty
-                ?.getFirstDescendantByKind(SyntaxKind.StringLiteral)
-                ?.getText()
-                .slice(1, -1);
-
-            if (featureName !== removeFeatureName) return;
-
-            if (featureState === 'on') {
-                // Оставляем только значение функции
-                node.replaceWithText(onFunction?.getBody().getText() || ''); // <Counter />
-
-                /*
-                Было: const counter = toggleFeatures({
-                    name: 'isArticleCounterEnable',
-                    on: () => <>asdasd</>,
-                    off: () => <Counter />,
-                })
-
-                Cтало: const counter = <Counter />
-                */
-            }
-
-            if (featureState === 'off') {
-                node.replaceWithText(offFunction?.getBody().getText() || '');
-            }
+        // Для JSX Elements
+        if (
+            node.isKind(SyntaxKind.JsxSelfClosingElement)
+            && isToggleComponent(node)
+        ) {
+            replaceComponent(node);
         }
     });
 });

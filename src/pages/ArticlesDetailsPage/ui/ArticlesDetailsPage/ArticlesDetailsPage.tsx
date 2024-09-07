@@ -13,7 +13,11 @@ import { articleDetailsPageReducer } from '../../model/slice';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticlesDetailsPageHeader } from '../ArticlesDetailsPageHeader/ArticlesDetailsPageHeader';
 import { ArticleRating } from '@/features/articleRating';
-import { getFeatureFlag } from '@/shared/lib/features';
+import {
+    ToggleFeatures,
+    getFeatureFlag,
+    toggleFeatures,
+} from '@/shared/lib/features';
 import { Counter } from '@/entitites/Counter';
 
 interface ArticlesDetailsPageProps {
@@ -35,7 +39,11 @@ const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
             return null;
         }
 
-        const counter = <Counter />;
+        const articleRatingCard = toggleFeatures({
+            name: 'isArticleRatingEnable',
+            on: () => console.log('Новая функция'),
+            off: () => console.log('Старая функция'),
+        });
 
         return (
             <DynamicModuleLoader reducers={reducer} removeAfterUnmount>
@@ -43,7 +51,11 @@ const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
                     <VStack gap="16" max>
                         <ArticlesDetailsPageHeader />
                         <ArticleDetails id={id} />
-                        {counter}
+                        <ToggleFeatures
+                            name="isArticleRatingEnable"
+                            on={<ArticleRating articleId={id} />}
+                            off={<Counter />}
+                        />
                         {isArticleRatingEnable && (
                             <ArticleRating articleId={id} />
                         )}
