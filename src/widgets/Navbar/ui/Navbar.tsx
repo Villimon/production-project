@@ -14,6 +14,7 @@ import { NotificationButton } from '@/features/notificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 import cls from './Navbar.module.scss';
 import { getRouteArticlesCreate } from '@/shared/constants/router';
+import { ToggleFeatures } from '@/shared/lib/features';
 
 interface NavbarProps {
     className?: string
@@ -34,23 +35,38 @@ export const Navbar: FC<NavbarProps> = memo(() => {
 
     if (authData) {
         return (
-            <header className={classNames(cls.Navbar, {}, [])}>
-                <Text
-                    className={cls.appName}
-                    title={t('My App')}
-                    theme={TextTheme.INVERTED}
-                />
-                <AppLink
-                    to={getRouteArticlesCreate()}
-                    theme={AppLinkTheme.SECONDARY}
-                >
-                    {t('Создать статью')}
-                </AppLink>
-                <HStack gap="16" className={cls.actions}>
-                    <NotificationButton />
-                    <AvatarDropdown />
-                </HStack>
-            </header>
+            <ToggleFeatures
+                name="isAppRedesigned"
+                on={(
+                    <header
+                        className={classNames(cls.NavbarRedesigned, {}, [])}
+                    >
+                        <HStack gap="16" className={cls.actions}>
+                            <NotificationButton />
+                            <AvatarDropdown />
+                        </HStack>
+                    </header>
+                )}
+                off={(
+                    <header className={classNames(cls.Navbar, {}, [])}>
+                        <Text
+                            className={cls.appName}
+                            title={t('My App')}
+                            theme={TextTheme.INVERTED}
+                        />
+                        <AppLink
+                            to={getRouteArticlesCreate()}
+                            theme={AppLinkTheme.SECONDARY}
+                        >
+                            {t('Создать статью')}
+                        </AppLink>
+                        <HStack gap="16" className={cls.actions}>
+                            <NotificationButton />
+                            <AvatarDropdown />
+                        </HStack>
+                    </header>
+                )}
+            />
         );
     }
 

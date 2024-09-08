@@ -8,6 +8,8 @@ import { AppRouter } from './providers/router';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { PageLoader } from '@/widgets/PageLoader';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { MainLayout } from '@/shared/layouts/MainLayout';
 
 // !!!TODO
 // 1.Урок 63 Виртуализация
@@ -29,15 +31,32 @@ const App = () => {
     }
 
     return (
-        <div className={classNames('app', {}, [theme])}>
-            <Suspense fallback="">
-                <Navbar />
-                <div className="content-page">
-                    <Sidebar />
-                    {inited && <AppRouter />}
+        <ToggleFeatures
+            name="isAppRedesigned"
+            on={(
+                <div className={classNames('app_redesigned', {}, [theme])}>
+                    <Suspense fallback="">
+                        <MainLayout
+                            content={<AppRouter />}
+                            header={<Navbar />}
+                            sidebar={<Sidebar />}
+                            toolbar={<div>asdasdasd</div>}
+                        />
+                    </Suspense>
                 </div>
-            </Suspense>
-        </div>
+            )}
+            off={(
+                <div className={classNames('app', {}, [theme])}>
+                    <Suspense fallback="">
+                        <Navbar />
+                        <div className="content-page">
+                            <Sidebar />
+                            <AppRouter />
+                        </div>
+                    </Suspense>
+                </div>
+            )}
+        />
     );
 };
 

@@ -767,10 +767,11 @@
       ],
       "features": {
         "isArticleRatingEnable": true,
-        "isArticleCounterEnable": true
+        "isArticleCounterEnable": true,
+        "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_pink_theme",
+        "theme": "app_light_theme",
         "isFirstVisit": true,
         "settingsPaageHasBeenOpen": false,
         "isArticlesPageWasOpened": true
