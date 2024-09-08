@@ -7,13 +7,13 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Currency } from '@/entitites/Currency';
 import { Country } from '@/entitites/Country';
-import { Text, TextTheme } from '@/shared/ui/Text';
+import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
 import { ProfileCard } from '@/entitites/Profile';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 import { ValidateProfileErrors } from '../../model/consts/consts';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
@@ -25,8 +25,8 @@ import { fetchProfileData } from '../../model/services/fetchProfileData/fetchPro
 import { ProfilePageHeader } from '../ProfilePageHeader/ProfilePageHeader';
 
 interface EditablePofileCardProps {
-    className?: string;
-    id?: string;
+    className?: string
+    id?: string
 }
 
 const reducers: ReducersList = {

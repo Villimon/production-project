@@ -1,18 +1,18 @@
 import { FC, memo } from 'react';
 import { Comment } from '@/entitites/Comment';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink } from '@/shared/ui/AppLink';
-import { Avatar } from '@/shared/ui/Avatar';
-import { Skeleton } from '@/shared/ui/Skeleton';
-import { VStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/Text';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import { Avatar } from '@/shared/ui/deprecated/Avatar';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { VStack } from '@/shared/ui/deprecated/Stack';
+import { Text } from '@/shared/ui/deprecated/Text';
 import cls from './CommentCard.module.scss';
 import { getRouteProfile } from '@/shared/constants/router';
 
 interface CommentCardProps {
-    className?: string;
-    comment?: Comment;
-    isLoading?: boolean;
+    className?: string
+    comment?: Comment
+    isLoading?: boolean
 }
 export const CommentCard: FC<CommentCardProps> = memo(
     ({ className, comment, isLoading }) => {

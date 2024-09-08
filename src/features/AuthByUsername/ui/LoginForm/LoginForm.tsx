@@ -7,9 +7,8 @@ import {
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button, ThemeButton } from '@/shared/ui/Button';
-import { Input } from '@/shared/ui/Input';
-import { Text, TextTheme } from '@/shared/ui/Text';
+import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
+import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
@@ -17,10 +16,11 @@ import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLogi
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import cls from './LoginForm.module.scss';
+import { Input } from '@/shared/ui/deprecated/Input';
 
 export interface LoginFormProps {
-    className?: string;
-    onSuccess: () => void;
+    className?: string
+    onSuccess: () => void
 }
 
 const initialReducers: ReducersList = {

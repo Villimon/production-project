@@ -1,13 +1,13 @@
 import { FC, memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Card } from '@/shared/ui/Card';
-import { Skeleton } from '@/shared/ui/Skeleton';
+import { Card } from '@/shared/ui/deprecated/Card';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
 import { ArticleView } from '../../model/consts/consts';
 import cls from './ArticleListItem.module.scss';
 
 interface ArticleListItemProps {
-    className?: string;
-    view: ArticleView;
+    className?: string
+    view: ArticleView
 }
 export const ArticleListItemSkeleton: FC<ArticleListItemProps> = memo(
     ({ className, view }) => {

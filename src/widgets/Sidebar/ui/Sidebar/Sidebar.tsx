@@ -3,15 +3,15 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonSize, ThemeButton } from '@/shared/ui/Button';
-import { VStack } from '@/shared/ui/Stack';
-import { getSidebaritems } from '../../model/selectors/getSidebaritems';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { AppLogo } from '@/shared/ui/AppLogo';
+import { AppLogo } from '@/shared/ui/deprecated/AppLogo';
+import { getSidebaritems } from '../../model/selectors/getSidebaritems';
+import { Button, ButtonSize, ThemeButton } from '@/shared/ui/deprecated/Button';
 
 // !TODO: Сделать анимацию как на Drawer, урок 82
 interface SidebarProps {

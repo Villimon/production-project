@@ -1,12 +1,12 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Skeleton } from '@/shared/ui/Skeleton';
-import { VStack } from '@/shared/ui/Stack';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { VStack } from '@/shared/ui/deprecated/Stack';
 import { useNotifications } from '../../api/notificationApi';
 import { NotificationItem } from '../NotificationItem/NotificationItem';
 
 interface NotificationListProps {
-    className?: string;
+    className?: string
 }
 export const NotificationList = memo(({ className }: NotificationListProps) => {
     const { data, isLoading } = useNotifications(null, {

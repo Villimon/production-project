@@ -3,17 +3,17 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button, ThemeButton } from '@/shared/ui/Button';
-import { Text } from '@/shared/ui/Text';
+import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
+import { Text } from '@/shared/ui/deprecated/Text';
 import { getUserData } from '@/entitites/User';
-import { HStack } from '@/shared/ui/Stack';
+import { HStack } from '@/shared/ui/deprecated/Stack';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { profileActions } from '../../model/slice/profileSlice';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
 
 interface ProfilePageHeaderProps {
-    className?: string;
+    className?: string
 }
 export const ProfilePageHeader: FC<ProfilePageHeaderProps> = memo(
     ({ className }) => {

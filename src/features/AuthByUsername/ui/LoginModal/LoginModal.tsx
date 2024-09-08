@@ -1,13 +1,13 @@
 import { FC, memo, Suspense } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Loader } from '@/shared/ui/Loader';
-import { Modal } from '@/shared/ui/Modal';
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
+import { Modal } from '@/shared/ui/deprecated/Modal';
+import { Loader } from '@/shared/ui/deprecated/Loader';
 
 interface LoginModalProps {
-    className?: string;
-    isOpen: boolean;
-    onClose: () => void;
+    className?: string
+    isOpen: boolean
+    onClose: () => void
 }
 export const LoginModal: FC<LoginModalProps> = memo(
     ({ className, isOpen, onClose }) => (

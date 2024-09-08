@@ -4,17 +4,17 @@ import {
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ThemeButton } from '@/shared/ui/Button';
 import { LoginModal } from '@/features/AuthByUsername';
-import { getUserData } from '@/entitites/User';
-import { Text, TextTheme } from '@/shared/ui/Text';
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
-import { HStack } from '@/shared/ui/Stack';
+import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
+import { HStack } from '@/shared/ui/deprecated/Stack';
 import { NotificationButton } from '@/features/notificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 import cls from './Navbar.module.scss';
 import { getRouteArticlesCreate } from '@/shared/constants/router';
 import { ToggleFeatures } from '@/shared/lib/features';
+import { getUserData } from '@/entitites/User';
+import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
 
 interface NavbarProps {
     className?: string

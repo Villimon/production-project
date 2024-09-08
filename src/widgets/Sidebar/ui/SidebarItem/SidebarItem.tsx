@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { getUserData } from '@/entitites/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
+import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
 import { SidebarItemType } from '../../model/types/sidebar';
 import cls from './SidebarItem.module.scss';
 
 interface SidebarItemProps {
-    item?: SidebarItemType;
-    collapsed: boolean;
+    item?: SidebarItemType
+    collapsed: boolean
 }
 export const SidebarItem: FC<SidebarItemProps> = memo(({ item, collapsed }) => {
     const { t } = useTranslation();

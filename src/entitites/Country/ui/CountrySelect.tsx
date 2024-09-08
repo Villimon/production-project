@@ -1,14 +1,14 @@
 import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ListBox } from '@/shared/ui/Popups';
+import { ListBox } from '@/shared/ui/deprecated/Popups';
 import { Country } from '../model/types/country';
 
 interface CountrySelectProps {
-    className?: string;
-    value?: Country;
-    readonly?: boolean;
-    onChange?: (value: Country) => void;
+    className?: string
+    value?: Country
+    readonly?: boolean
+    onChange?: (value: Country) => void
 }
 
 const options = [

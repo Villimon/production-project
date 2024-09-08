@@ -3,13 +3,13 @@ import {
 } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import NotificationIcon from '@/shared/assets/icons/notification-20-20.svg';
-import { Popover } from '@/shared/ui/Popups';
-import { Button, ThemeButton } from '@/shared/ui/Button';
-import { Icon } from '@/shared/ui/Icon';
+import { Popover } from '@/shared/ui/deprecated/Popups';
+import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
 import { NotificationList } from '@/entitites/Notification';
-import { Drawer } from '@/shared/ui/Drawer';
 import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
 import cls from './NotificationButton.module.scss';
+import { Icon } from '@/shared/ui/deprecated/Icon';
+import { Drawer } from '@/shared/ui/deprecated/Drawer';
 
 interface NotificationButtonProps {
     className?: string

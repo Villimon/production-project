@@ -3,24 +3,24 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Card } from '@/shared/ui/Card';
-import { HStack, VStack } from '@/shared/ui/Stack';
-import { Text } from '@/shared/ui/Text';
-import { Raiting } from '@/shared/ui/Raiting';
-import { Modal } from '@/shared/ui/Modal';
-import { Input } from '@/shared/ui/Input';
-import { Button, ThemeButton } from '@/shared/ui/Button';
+import { Card } from '@/shared/ui/deprecated/Card';
+import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
+import { Text } from '@/shared/ui/deprecated/Text';
+import { Raiting } from '@/shared/ui/deprecated/Raiting';
+import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
 import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
-import { Drawer } from '@/shared/ui/Drawer';
+import { Input } from '@/shared/ui/deprecated/Input';
+import { Drawer } from '@/shared/ui/deprecated/Drawer';
+import { Modal } from '@/shared/ui/deprecated/Modal';
 
 interface RatingCardProps {
-    className?: string;
-    title?: string;
-    feedbackTitle?: string;
-    hasFeedback?: boolean;
-    onCancle?: (star: number) => void;
-    onAccept?: (star: number, feedback?: string) => void;
-    rate?: number;
+    className?: string
+    title?: string
+    feedbackTitle?: string
+    hasFeedback?: boolean
+    onCancle?: (star: number) => void
+    onAccept?: (star: number, feedback?: string) => void
+    rate?: number
 }
 
 export const RatingCard: FC<RatingCardProps> = memo(

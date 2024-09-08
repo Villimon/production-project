@@ -1,14 +1,14 @@
 import { FC, memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Card, CardTheme } from '@/shared/ui/Card';
-import { Text } from '@/shared/ui/Text';
-import { AppLink } from '@/shared/ui/AppLink';
+import { Card, CardTheme } from '@/shared/ui/deprecated/Card';
+import { Text } from '@/shared/ui/deprecated/Text';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
 import { Notification } from '../../model/types/NotificationSchema';
 import cls from './NotificationItem.module.scss';
 
 interface NotificationItemProps {
-    className?: string;
-    item: Notification;
+    className?: string
+    item: Notification
 }
 
 export const NotificationItem: FC<NotificationItemProps> = memo(

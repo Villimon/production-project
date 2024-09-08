@@ -3,13 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { Country, CountrySelect } from '@/entitites/Country';
 import { Currency, CurrencySelect } from '@/entitites/Currency';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Avatar } from '@/shared/ui/Avatar';
-import { Input } from '@/shared/ui/Input';
-import { Loader } from '@/shared/ui/Loader';
-import { Text, TextAlign, TextTheme } from '@/shared/ui/Text';
-import { HStack, VStack } from '@/shared/ui/Stack';
+import { Avatar } from '@/shared/ui/deprecated/Avatar';
+import { Text, TextAlign, TextTheme } from '@/shared/ui/deprecated/Text';
+import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
 import cls from './ProfileCard.module.scss';
 import { Profile } from '../../model/types/profile';
+import { Loader } from '@/shared/ui/deprecated/Loader';
+import { Input } from '@/shared/ui/deprecated/Input';
 
 interface ProfileCardProps {
     className?: string

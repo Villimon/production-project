@@ -3,15 +3,15 @@ import { useTranslation } from 'react-i18next';
 import { ArticleSortField } from '@/entitites/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { SortOrder } from '@/shared/types';
-import { Select, SelectOptions } from '@/shared/ui/Select';
+import { Select, SelectOptions } from '@/shared/ui/deprecated/Select';
 import cls from './ArticleSortSelector.module.scss';
 
 interface ArticleSortSelectorProps {
-    className?: string;
-    sort: ArticleSortField;
-    order: SortOrder;
-    onChangeOrder: (newOrder: SortOrder) => void;
-    onChangeSort: (newSort: ArticleSortField) => void;
+    className?: string
+    sort: ArticleSortField
+    order: SortOrder
+    onChangeOrder: (newOrder: SortOrder) => void
+    onChangeSort: (newSort: ArticleSortField) => void
 }
 export const ArticleSortSelector: FC<ArticleSortSelectorProps> = memo(
     ({

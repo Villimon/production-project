@@ -7,9 +7,8 @@ import {
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Button } from '@/shared/ui/Button';
-import { Input } from '@/shared/ui/Input';
-import { HStack } from '@/shared/ui/Stack';
+import { Button } from '@/shared/ui/deprecated/Button';
+import { HStack } from '@/shared/ui/deprecated/Stack';
 import {
     addCommentFormActions,
     addCommentFormReducer,
@@ -19,10 +18,11 @@ import {
     getAddCommentFormText,
 } from '../../model/selectors/addCommentFormSelectors';
 import cls from './AddCommentForm.module.scss';
+import { Input } from '@/shared/ui/deprecated/Input';
 
 export interface AddCommentFormProps {
-    className?: string;
-    onSendComment: (text: string) => void;
+    className?: string
+    onSendComment: (text: string) => void
 }
 
 const reducers: ReducersList = {
