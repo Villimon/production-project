@@ -8,9 +8,9 @@ import { Icon } from '@/shared/ui/Icon';
 import cls from './ArticleViewSelector.module.scss';
 
 interface ArticleViewSelectorProps {
-    className?: string;
-    view: ArticleView;
-    onViewClick?: (view: ArticleView) => void;
+    className?: string
+    view: ArticleView
+    onViewClick?: (view: ArticleView) => void
 }
 
 const viewTypes = [
@@ -39,6 +39,8 @@ export const ArticleViewSelector: FC<ArticleViewSelectorProps> = memo(
                         theme={ThemeButton.CLEAR}
                     >
                         <Icon
+                            width={24}
+                            height={24}
                             className={classNames('', {
                                 [cls.selected]: item.view === view,
                             })}
