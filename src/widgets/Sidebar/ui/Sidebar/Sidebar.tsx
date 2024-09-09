@@ -9,9 +9,11 @@ import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { AppLogo } from '@/shared/ui/deprecated/AppLogo';
+import { AppLogo } from '@/shared/ui/redesigned/AppLogo';
 import { getSidebaritems } from '../../model/selectors/getSidebaritems';
 import { Button, ButtonSize, ThemeButton } from '@/shared/ui/deprecated/Button';
+import { Icon } from '@/shared/ui/redesigned/Icon';
+import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 
 // !TODO: Сделать анимацию как на Drawer, урок 82
 interface SidebarProps {
@@ -44,11 +46,28 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
                     data-testid="sidebar"
                     className={classNames(
                         cls.SidebarRedesigned,
-                        { [cls.collapsed]: collapsed },
+                        { [cls.collapsedRedesigned]: collapsed },
                         [className],
                     )}
                 >
-                    <AppLogo className={cls.appLogo} />
+                    <AppLogo
+                        size={collapsed ? 30 : 50}
+                        className={cls.appLogo}
+                    />
+                    <VStack role="navigation" gap="4" className={cls.items}>
+                        {itemsList}
+                    </VStack>
+                    <Icon
+                        Svg={ArrowIcon}
+                        data-testid="sidebar-toggle"
+                        onClick={onToggle}
+                        className={cls.collapseBtn}
+                        clickable
+                    />
+                    <div className={cls.switchers}>
+                        <ThemeSwitcher />
+                        <LangSwitcher short={collapsed} className={cls.lang} />
+                    </div>
                 </nav>
             )}
             off={(
