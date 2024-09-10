@@ -7,7 +7,6 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { VStack } from '@/shared/ui/deprecated/Stack';
 import { Page } from '@/widgets/Page';
 import { articleDetailsPageReducer } from '../../model/slice';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
@@ -19,6 +18,7 @@ import {
     toggleFeatures,
 } from '@/shared/lib/features';
 import { Counter } from '@/entitites/Counter';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticlesDetailsPageProps {
     className?: string

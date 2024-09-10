@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Avatar.module.scss';
-import { AppImage } from '../AppImage/AppImage';
+import { AppImage } from '../../redesigned/AppImage/AppImage';
 import UserIcon from '@/shared/assets/icons/user-icon.svg';
 import { Skeleton } from '../Skeleton';
 import { Icon } from '../Icon';

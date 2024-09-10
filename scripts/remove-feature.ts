@@ -101,10 +101,7 @@ const replaceToggleFunction = (node: Node) => {
     }
 };
 
-const getAttributeNodeByName = (
-    jsxAttributes: JsxAttribute[],
-    name: string,
-) => jsxAttributes.find((node) => node.getName() === name);
+const getAttributeNodeByName = (jsxAttributes: JsxAttribute[], name: string) => jsxAttributes.find((node) => node.getName() === name);
 
 const getReplaceComponent = (attribute?: JsxAttribute) => {
     const value = attribute
@@ -149,7 +146,7 @@ files.forEach((sourceFile) => {
     sourceFile.forEachDescendant((node) => {
         // Находим все функции
         if (node.isKind(SyntaxKind.CallExpression) && isToggleFunction(node)) {
-            replaceToggleFunction(node);
+            return replaceToggleFunction(node);
         }
 
         // Для JSX Elements
@@ -157,7 +154,7 @@ files.forEach((sourceFile) => {
             node.isKind(SyntaxKind.JsxSelfClosingElement)
             && isToggleComponent(node)
         ) {
-            replaceComponent(node);
+            return replaceComponent(node);
         }
     });
 });

@@ -4,7 +4,6 @@ import {
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Card } from '@/shared/ui/deprecated/Card';
-import { HStack, VStack } from '@/shared/ui/deprecated/Stack';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { Raiting } from '@/shared/ui/deprecated/Raiting';
 import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
@@ -12,6 +11,7 @@ import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
 import { Input } from '@/shared/ui/deprecated/Input';
 import { Drawer } from '@/shared/ui/deprecated/Drawer';
 import { Modal } from '@/shared/ui/deprecated/Modal';
+import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 
 interface RatingCardProps {
     className?: string

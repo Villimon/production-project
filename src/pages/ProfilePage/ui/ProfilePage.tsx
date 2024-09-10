@@ -2,10 +2,10 @@ import { FC, memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { EditablePofileCard } from '@/features/editablePofileCard';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { VStack } from '@/shared/ui/deprecated/Stack';
 import { Page } from '@/widgets/Page';
 import cls from './ProfilePage.module.scss';
 import { ProfileRating } from '@/features/profileRating';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 
 interface ProfilePageProps {
     className?: string

@@ -12,7 +12,7 @@ import { ArticleBlockType, ArticleView } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticleListItem.module.scss';
 import { getRouteArticlesDetails } from '@/shared/constants/router';
-import { AppImage } from '@/shared/ui/deprecated/AppImage/AppImage';
+import { AppImage } from '@/shared/ui/redesigned/AppImage/AppImage';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
 import { Icon } from '@/shared/ui/deprecated/Icon';
 

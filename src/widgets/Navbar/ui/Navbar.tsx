@@ -7,7 +7,6 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { LoginModal } from '@/features/AuthByUsername';
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
 import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
-import { HStack } from '@/shared/ui/deprecated/Stack';
 import { NotificationButton } from '@/features/notificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 import cls from './Navbar.module.scss';
@@ -15,6 +14,7 @@ import { getRouteArticlesCreate } from '@/shared/constants/router';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { getUserData } from '@/entitites/User';
 import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface NavbarProps {
     className?: string

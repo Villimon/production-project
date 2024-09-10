@@ -31,11 +31,11 @@ body {
 }
 
 *::-webkit-scrollbar-track {
-    background: var(--card-bg);
+    background: var(--light-bg-redesigned);
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: var(--inverted-primary-color);
+    background-color: var(--bg-redesigned);
     border-radius: 20px;
-    border: 2px solid var(--primary-color);
+    border: 2px solid var(--text-redesigned);
 }

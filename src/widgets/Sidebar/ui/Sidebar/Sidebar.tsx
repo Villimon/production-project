@@ -3,7 +3,6 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { VStack } from '@/shared/ui/deprecated/Stack';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
@@ -14,6 +13,7 @@ import { getSidebaritems } from '../../model/selectors/getSidebaritems';
 import { Button, ButtonSize, ThemeButton } from '@/shared/ui/deprecated/Button';
 import { Icon } from '@/shared/ui/redesigned/Icon';
 import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 
 // !TODO: Сделать анимацию как на Drawer, урок 82
 interface SidebarProps {

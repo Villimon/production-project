@@ -6,11 +6,11 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { getUserData } from '@/entitites/User';
-import { HStack } from '@/shared/ui/deprecated/Stack';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { profileActions } from '../../model/slice/profileSlice';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface ProfilePageHeaderProps {
     className?: string

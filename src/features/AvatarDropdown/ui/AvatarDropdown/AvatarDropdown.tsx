@@ -2,8 +2,8 @@ import { FC, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
-import { Menu } from '@/shared/ui/deprecated/Popups';
+import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
+import { Menu as MenuDeprecated } from '@/shared/ui/deprecated/Popups';
 import {
     getUserData,
     isUserAdmin,
@@ -12,6 +12,9 @@ import {
 } from '@/entitites/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getRouteAdminPanel, getRouteProfile } from '@/shared/constants/router';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Menu } from '@/shared/ui/redesigned/Popups';
+import { Avatar } from '@/shared/ui/redesigned/Avatar';
 
 interface AvatarDropdownProps {
     className?: string
@@ -34,31 +37,50 @@ export const AvatarDropdown: FC<AvatarDropdownProps> = memo(({ className }) => {
         return null;
     }
 
+    const items = [
+        ...(isAdminPanelAvaileble
+            ? [
+                {
+                    content: t('Админ панель'),
+                    href: getRouteAdminPanel(),
+                },
+            ]
+            : []),
+        {
+            content: t('Профиль'),
+            href: getRouteProfile(authData.id),
+        },
+        {
+            content: t('Выйти'),
+            onClick: onLogout,
+        },
+    ];
+
     return (
-        <Menu
-            className={classNames('', {}, [className])}
-            direction="bottom-left"
-            items={[
-                ...(isAdminPanelAvaileble
-                    ? [
-                        {
-                            content: t('Админ панель'),
-                            href: getRouteAdminPanel(),
-                        },
-                    ]
-                    : []),
-                {
-                    content: t('Профиль'),
-                    href: getRouteProfile(authData.id),
-                },
-                {
-                    content: t('Выйти'),
-                    onClick: onLogout,
-                },
-            ]}
-            trigger={
-                <Avatar fallbackInverted size={30} src={authData.avatar} />
-            }
+        <ToggleFeatures
+            name="isAppRedesigned"
+            on={(
+                <Menu
+                    className={classNames('', {}, [className])}
+                    direction="bottom-left"
+                    items={items}
+                    trigger={<Avatar size={40} src={authData.avatar} />}
+                />
+            )}
+            off={(
+                <MenuDeprecated
+                    className={classNames('', {}, [className])}
+                    direction="bottom-left"
+                    items={items}
+                    trigger={(
+                        <AvatarDeprecated
+                            fallbackInverted
+                            size={30}
+                            src={authData.avatar}
+                        />
+                    )}
+                />
+            )}
         />
     );
 });

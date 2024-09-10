@@ -2,9 +2,9 @@ import { FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Comment } from '@/entitites/Comment';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { VStack } from '@/shared/ui/deprecated/Stack';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { CommentCard } from '../CommentCard/CommentCard';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 
 interface CommentListProps {
     className?: string

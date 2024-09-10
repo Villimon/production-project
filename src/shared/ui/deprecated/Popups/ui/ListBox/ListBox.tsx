@@ -3,9 +3,9 @@ import { Fragment, memo, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DropdawnDirection } from '@/shared/types/ui';
 import { Button } from '../../../Button/Button';
-import { HStack } from '../../../Stack';
 import cls from './ListBox.module.scss';
 import popupCls from '../../styles/popup.module.scss';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 export interface ListBoxItem {
     value: string

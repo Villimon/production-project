@@ -8,7 +8,6 @@ import {
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Button } from '@/shared/ui/deprecated/Button';
-import { HStack } from '@/shared/ui/deprecated/Stack';
 import {
     addCommentFormActions,
     addCommentFormReducer,
@@ -19,6 +18,7 @@ import {
 } from '../../model/selectors/addCommentFormSelectors';
 import cls from './AddCommentForm.module.scss';
 import { Input } from '@/shared/ui/deprecated/Input';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 export interface AddCommentFormProps {
     className?: string

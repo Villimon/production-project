@@ -8,12 +8,12 @@ import { CommentList } from '@/entitites/Comment';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Text } from '@/shared/ui/deprecated/Text';
-import { VStack } from '@/shared/ui/deprecated/Stack';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
 import { addCommentFormArticle } from '../../model/services/addCommentFormArticle/addCommentFormArticle';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { Loader } from '@/shared/ui/deprecated/Loader';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleDetailsCommentsProps {
     className?: string
