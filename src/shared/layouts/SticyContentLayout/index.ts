@@ -1,0 +1,1 @@
+export { SticyContentLayout } from './SticyContentLayout';

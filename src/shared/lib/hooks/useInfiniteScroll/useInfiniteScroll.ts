@@ -1,11 +1,11 @@
 import { MutableRefObject, useEffect } from 'react';
 
 export interface UseInfiniteScrollProps {
-    callback?: () => void;
+    callback?: () => void
     // Элемент триггера
-    triggerRef: MutableRefObject<HTMLElement>;
+    triggerRef: MutableRefObject<HTMLElement>
     // Обертка в котором скролл
-    wrapperRef: MutableRefObject<HTMLElement>;
+    wrapperRef?: MutableRefObject<HTMLElement>
 }
 
 export const useInfiniteScroll = ({
@@ -14,7 +14,7 @@ export const useInfiniteScroll = ({
     wrapperRef,
 }: UseInfiniteScrollProps) => {
     useEffect(() => {
-        const wrapperElement = wrapperRef.current;
+        const wrapperElement = wrapperRef?.current || null;
         const triggerElement = triggerRef.current;
         let observer: IntersectionObserver | null = null;
         if (callback) {

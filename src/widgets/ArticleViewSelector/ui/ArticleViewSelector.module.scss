@@ -1,3 +1,11 @@
-.selected {
-    fill: var(--secendoty-color);
+.ArticleViewSelector {
+    .selected {
+        fill: var(--secendoty-color);
+    }
+}
+
+.ArticleViewSelectorRedesigned {
+    .selected {
+        color: var(--light-bg-redesigned);
+    }
 }
