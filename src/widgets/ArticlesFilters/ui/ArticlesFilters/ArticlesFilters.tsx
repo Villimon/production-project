@@ -9,6 +9,8 @@ import { ArticleSortField, ArticleType } from '@/entitites/Article';
 import { SortOrder } from '@/shared/types';
 import cls from './ArticlesFilters.module.scss';
 import { Input } from '@/shared/ui/redesigned/Input';
+import SearchIcon from '@/shared/assets/icons/search.svg';
+import { Icon } from '@/shared/ui/redesigned/Icon';
 
 interface ArticlesFiltersProps {
     className?: string
@@ -34,7 +36,7 @@ export const ArticlesFilters: FC<ArticlesFiltersProps> = memo(
         sort,
         type,
     }) => {
-        const { t } = useTranslation();
+        const { t } = useTranslation('article');
 
         return (
             <Card
@@ -46,6 +48,7 @@ export const ArticlesFilters: FC<ArticlesFiltersProps> = memo(
                         value={search}
                         onChange={onChangeSearch}
                         placeholder={t('Поиск')}
+                        addonLeft={<Icon Svg={SearchIcon} />}
                     />
                     <ArticleTypeTabs value={type} onChangeType={onChangeType} />
                     <ArticleSortSelector

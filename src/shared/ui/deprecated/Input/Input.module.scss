@@ -40,33 +40,3 @@
     font: var(--font-m);
     z-index: 1;
 }
-
-/* stylelint-disable-next-line selector-pseudo-element-no-unknown */
-::input-placeholder {
-    /* WebKit, Blink, Edge */
-    color: var(--primary-color);
-}
-
-:placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    color: var(--primary-color);
-    opacity: 1;
-}
-
-::placeholder {
-    /* Mozilla Firefox 19+ */
-    color: var(--primary-color);
-    opacity: 1;
-}
-
-/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
-:input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: var(--primary-color);
-}
-
-/* stylelint-disable-next-line no-duplicate-selectors */
-::placeholder {
-    /* Most modern browsers support this now. */
-    color: var(--primary-color);
-}

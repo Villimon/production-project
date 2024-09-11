@@ -1,72 +1,47 @@
 .InputWrapper {
-    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 48px;
+    padding: 8px 16px;
+    border: 2px solid var(--icon-redesigned);
+    height: 38px;
+    width: 100%;
 }
 
 .readonly {
     opacity: 0.7;
 }
 
-.InputWrapper label {
-    position: absolute;
-    margin: 0 5px;
-    left: 0;
-    top: 44%;
-    transform: translateY(-15%);
-    z-index: -1;
-    background-color: var(--bg-color);
-    padding: 0 2px;
-    color: var(--primary-color);
-    transition: 0.2s;
+.withAddonLeft {
+    padding-left: 8px;
 }
 
-.InputWrapper input {
-    margin-top: 10px;
-    width: 100%;
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    background-color: transparent;
-    padding: 5px;
-    font: var(--font-m);
-    color: var(--primary-color);
+.withAddonRight {
+    padding-right: 8px;
 }
 
-.InputWrapper input:focus {
+.addonLeft,
+.addonRight {
+    display: flex;
+}
+
+.input {
+    border: none;
     outline: none;
+    width: 100%;
+    color: var(--text-redesigned);
+    background: none;
+
+    &:focus {
+        color: var(--hint-redesigned);
+    }
 }
 
-.InputWrapper input:focus + label,
-.InputWrapper input:not(:placeholder-shown) + label {
-    top: 0;
-    font: var(--font-m);
-    z-index: 1;
-}
+.focused {
+    border: 2px solid var(--accent-redesigned);
 
-/* stylelint-disable-next-line selector-pseudo-element-no-unknown */
-::input-placeholder {
-    /* WebKit, Blink, Edge */
-    color: var(--primary-color);
-}
-
-:placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    color: var(--primary-color);
-    opacity: 1;
-}
-
-::placeholder {
-    /* Mozilla Firefox 19+ */
-    color: var(--primary-color);
-    opacity: 1;
-}
-
-/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
-:input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: var(--primary-color);
-}
-
-/* stylelint-disable-next-line no-duplicate-selectors */
-::placeholder {
-    /* Most modern browsers support this now. */
-    color: var(--primary-color);
+    .addonLeft svg,
+    .addonRight svg {
+        color: var(--accent-redesigned);
+    }
 }

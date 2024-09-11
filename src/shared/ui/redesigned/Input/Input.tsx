@@ -1,13 +1,14 @@
 import React, {
     FC,
     InputHTMLAttributes,
+    ReactNode,
     memo,
     useEffect,
     useRef,
     useState,
 } from 'react';
 import { Trans } from 'react-i18next';
-import { classNames } from '@/shared/lib/classNames/classNames';
+import { Mods, classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
 type HTMLInputProps = Omit<
@@ -23,6 +24,8 @@ interface InputProps extends HTMLInputProps {
     placeholder: string
     autofocus?: boolean
     readonly?: boolean
+    addonLeft?: ReactNode
+    addonRight?: ReactNode
 }
 
 export const Input: FC<InputProps> = memo(
@@ -34,6 +37,8 @@ export const Input: FC<InputProps> = memo(
         placeholder,
         autofocus,
         readonly,
+        addonLeft,
+        addonRight,
         ...otherProps
     }) => {
         const [isFocused, setIsFocused] = useState(false);
@@ -56,20 +61,22 @@ export const Input: FC<InputProps> = memo(
             setIsFocused(true);
         };
 
+        const mods: Mods = {
+            [cls.readonly]: readonly,
+            [cls.focused]: isFocused,
+            [cls.withAddonLeft]: Boolean(addonLeft),
+            [cls.withAddonRight]: Boolean(addonRight),
+        };
+
         return (
-            <div
-                className={classNames(
-                    cls.InputWrapper,
-                    { [cls.readonly]: readonly },
-                    [className],
-                )}
-            >
+            <div className={classNames(cls.InputWrapper, mods, [className])}>
+                {addonLeft && <div className={cls.addonLeft}>{addonLeft}</div>}
                 <Trans _translateProps={['placeholder']}>
                     <input
                         id="input"
                         ref={ref}
                         className={cls.input}
-                        placeholder={!isFocused ? placeholder : ' '}
+                        placeholder={placeholder}
                         type={type}
                         value={value}
                         onChange={onChangeHandler}
@@ -79,9 +86,9 @@ export const Input: FC<InputProps> = memo(
                         {...otherProps}
                     />
                 </Trans>
-                <label htmlFor="input" className={cls.label}>
-                    {placeholder}
-                </label>
+                {addonRight && (
+                    <div className={cls.addonRight}>{addonRight}</div>
+                )}
             </div>
         );
     },

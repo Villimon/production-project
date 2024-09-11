@@ -11,6 +11,7 @@ import { PageLoader } from '@/widgets/PageLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { MainLayout } from '@/shared/layouts/MainLayout';
 
+// Расширение в браузер pixel perfect plugin
 // !!!TODO
 // 1.Урок 63 Виртуализация
 // Сделать Виртуализацию, штука позволяет оптимизировать большие списки, в нашем случае список статей
