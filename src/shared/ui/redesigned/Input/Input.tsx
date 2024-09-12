@@ -10,6 +10,8 @@ import React, {
 import { Trans } from 'react-i18next';
 import { Mods, classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
+import { HStack } from '../Stack';
+import { Text } from '../Text';
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
@@ -18,10 +20,11 @@ type HTMLInputProps = Omit<
 
 interface InputProps extends HTMLInputProps {
     className?: string
+    label?: string
     value?: string | number
     onChange?: (value: string) => void
     type?: string
-    placeholder: string
+    placeholder?: string
     autofocus?: boolean
     readonly?: boolean
     addonLeft?: ReactNode
@@ -39,6 +42,7 @@ export const Input: FC<InputProps> = memo(
         readonly,
         addonLeft,
         addonRight,
+        label,
         ...otherProps
     }) => {
         const [isFocused, setIsFocused] = useState(false);
@@ -69,27 +73,34 @@ export const Input: FC<InputProps> = memo(
         };
 
         return (
-            <div className={classNames(cls.InputWrapper, mods, [className])}>
-                {addonLeft && <div className={cls.addonLeft}>{addonLeft}</div>}
-                <Trans _translateProps={['placeholder']}>
-                    <input
-                        id="input"
-                        ref={ref}
-                        className={cls.input}
-                        placeholder={placeholder}
-                        type={type}
-                        value={value}
-                        onChange={onChangeHandler}
-                        onFocus={onFocus}
-                        onBlur={onBlur}
-                        readOnly={readonly}
-                        {...otherProps}
-                    />
-                </Trans>
-                {addonRight && (
-                    <div className={cls.addonRight}>{addonRight}</div>
-                )}
-            </div>
+            <HStack gap="8" max>
+                {label && <Text text={label} />}
+                <div
+                    className={classNames(cls.InputWrapper, mods, [className])}
+                >
+                    {addonLeft && (
+                        <div className={cls.addonLeft}>{addonLeft}</div>
+                    )}
+                    <Trans _translateProps={['placeholder']}>
+                        <input
+                            id="input"
+                            ref={ref}
+                            className={cls.input}
+                            placeholder={placeholder}
+                            type={type}
+                            value={value}
+                            onChange={onChangeHandler}
+                            onFocus={onFocus}
+                            onBlur={onBlur}
+                            readOnly={readonly}
+                            {...otherProps}
+                        />
+                    </Trans>
+                    {addonRight && (
+                        <div className={cls.addonRight}>{addonRight}</div>
+                    )}
+                </div>
+            </HStack>
         );
     },
 );

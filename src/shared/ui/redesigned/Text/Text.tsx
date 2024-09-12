@@ -25,7 +25,7 @@ interface TextProps {
     text?: string
     title?: string
     variant?: TextVariant
-    aligh?: TextAlign
+    align?: TextAlign
     size?: TextSize
     'data-testid'?: string
 }
@@ -36,7 +36,7 @@ export const Text: FC<TextProps> = memo(
         title,
         text,
         variant = 'primary',
-        aligh = 'left',
+        align = 'left',
         size = 'm',
         'data-testid': dataTestId = 'Text',
     }) => {
@@ -48,7 +48,7 @@ export const Text: FC<TextProps> = memo(
                 className={classNames(cls.Text, {}, [
                     className,
                     cls[variant],
-                    cls[aligh],
+                    cls[align],
                     sizeClass,
                 ])}
             >

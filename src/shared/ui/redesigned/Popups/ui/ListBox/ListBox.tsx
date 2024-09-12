@@ -44,7 +44,7 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
     );
 
     return (
-        <HStack gap="4">
+        <HStack gap="8">
             {label && <span>{label}</span>}
             <HListbox
                 disabled={readonly}
