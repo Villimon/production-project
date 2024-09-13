@@ -7,6 +7,8 @@ import { ArticleView } from '../../model/consts/consts';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import cls from './ArticleList.module.scss';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleListProps {
     className?: string
@@ -44,28 +46,64 @@ export const ArticleList: FC<ArticleListProps> = memo(
         }
 
         return (
-            <section
-                data-testid="ArticleList"
-                className={classNames(cls.ArticleList, {}, [
-                    className,
-                    cls[view],
-                ])}
-            >
-                {articles.length > 0 ? articles.map(renderArticle) : null}
-                {isLoading && (
-                    <>
-                        {new Array(view === ArticleView.BIG ? 3 : 9)
-                            .fill(0)
-                            .map((item, index) => (
-                                <ArticleListItemSkeleton
-                                    className={cls.card}
-                                    view={view}
-                                    key={index}
-                                />
-                            ))}
-                    </>
+            <ToggleFeatures
+                name="isAppRedesigned"
+                on={(
+                    <HStack
+                        wrap="wrap"
+                        gap="16"
+                        data-testid="ArticleList"
+                        className={classNames(
+                            cls.ArticleListRedesigned,
+                            {},
+                            [],
+                        )}
+                    >
+                        {articles.length > 0
+                            ? articles.map(renderArticle)
+                            : null}
+                        {isLoading && (
+                            <>
+                                {new Array(view === ArticleView.BIG ? 3 : 9)
+                                    .fill(0)
+                                    .map((item, index) => (
+                                        <ArticleListItemSkeleton
+                                            className={cls.card}
+                                            view={view}
+                                            key={index}
+                                        />
+                                    ))}
+                            </>
+                        )}
+                    </HStack>
                 )}
-            </section>
+                off={(
+                    <section
+                        data-testid="ArticleList"
+                        className={classNames(cls.ArticleList, {}, [
+                            className,
+                            cls[view],
+                        ])}
+                    >
+                        {articles.length > 0
+                            ? articles.map(renderArticle)
+                            : null}
+                        {isLoading && (
+                            <>
+                                {new Array(view === ArticleView.BIG ? 3 : 9)
+                                    .fill(0)
+                                    .map((item, index) => (
+                                        <ArticleListItemSkeleton
+                                            className={cls.card}
+                                            view={view}
+                                            key={index}
+                                        />
+                                    ))}
+                            </>
+                        )}
+                    </section>
+                )}
+            />
         );
     },
 );

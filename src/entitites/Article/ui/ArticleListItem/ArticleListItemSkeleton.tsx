@@ -14,11 +14,18 @@ interface ArticleListItemProps {
 }
 export const ArticleListItemSkeleton: FC<ArticleListItemProps> = memo(
     ({ className, view }) => {
+        const mainClass = toggleFeatures({
+            name: 'isAppRedesigned',
+            on: () => cls.ArticleListItemRedesigned,
+            off: () => cls.ArticleListItem,
+        });
+
         const Skeleton = toggleFeatures({
             name: 'isAppRedesigned',
             on: () => SkeletonRedesigned,
             off: () => SkeletonDeprecated,
         });
+
         const Card = toggleFeatures({
             name: 'isAppRedesigned',
             on: () => CardRedesigned,
@@ -28,7 +35,7 @@ export const ArticleListItemSkeleton: FC<ArticleListItemProps> = memo(
         if (view === ArticleView.BIG) {
             return (
                 <div
-                    className={classNames(cls.ArticleListItem, {}, [
+                    className={classNames(mainClass, {}, [
                         className,
                         cls[view],
                     ])}
@@ -65,12 +72,7 @@ export const ArticleListItemSkeleton: FC<ArticleListItemProps> = memo(
         }
 
         return (
-            <div
-                className={classNames(cls.ArticleListItem, {}, [
-                    className,
-                    cls[view],
-                ])}
-            >
+            <div className={classNames(mainClass, {}, [className, cls[view]])}>
                 <Card className={cls.card}>
                     <div className={cls.imageWrapper}>
                         <Skeleton
