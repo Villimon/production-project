@@ -20,6 +20,9 @@
     "Статья": "Article",
     "Отправить": "Send",
     "Закрыть": "Close",
+    "Старый": "Old",
+    "Вариант интерфейса": "Interface option",
+    "Новый": "New",
     "Ваш отзыв": "Your feedback",
     "Читать далее": "Read more",
     "Спасибо за оценку": "Thanks for the assessment",
@@ -27,6 +30,7 @@
     "My App": "My App",
     "Создать статью": "Create article",
     "Админ панель": "Admin panel",
+    "Настройки пользователя": "User settings",
     "Вы ввели неверный логин или пароль": "You entered an incorrect username or password",
     "Пароль": "Password"
 }
