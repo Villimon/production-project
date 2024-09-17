@@ -1,9 +1,10 @@
 import { ReactNode } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
-import { Overlay } from '../../redesigned/Overlay/Overlay';
-import { Portal } from '../../redesigned/Portal/Portal';
+import { Overlay } from '../Overlay/Overlay';
+import { Portal } from '../Portal/Portal';
 import cls from './Modal.module.scss';
+import { toggleFeatures } from '@/shared/lib/features';
 
 interface ModalProps {
     className?: string
@@ -12,10 +13,7 @@ interface ModalProps {
     lazy?: boolean
     children: ReactNode
 }
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
+
 export const Modal = ({
     className,
     children,
@@ -34,12 +32,19 @@ export const Modal = ({
     }
 
     return (
-        <Portal>
+        <Portal element={document.getElementById('app') ?? document.body}>
             <div
                 className={classNames(
                     cls.Modal,
                     { [cls.opened]: isOpen, [cls.isClosing]: isClosing },
-                    [className],
+                    [
+                        className,
+                        toggleFeatures({
+                            name: 'isAppRedesigned',
+                            on: () => cls.modalNew,
+                            off: () => cls.modalOld,
+                        }),
+                    ],
                 )}
             >
                 <Overlay onClick={closeHandler} />

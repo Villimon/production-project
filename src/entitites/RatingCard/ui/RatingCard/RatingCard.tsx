@@ -9,8 +9,8 @@ import { Raiting } from '@/shared/ui/deprecated/Raiting';
 import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
 import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
 import { Input } from '@/shared/ui/deprecated/Input';
-import { Drawer } from '@/shared/ui/deprecated/Drawer';
-import { Modal } from '@/shared/ui/deprecated/Modal';
+import { Drawer } from '@/shared/ui/redesigned/Drawer';
+import { Modal } from '@/shared/ui/redesigned/Modal';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 
 interface RatingCardProps {

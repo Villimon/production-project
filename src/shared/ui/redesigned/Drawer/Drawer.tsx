@@ -6,12 +6,11 @@ import {
     AnimationProvider,
     useAnimationLibs,
 } from '@/shared/lib/components/AnimationProvider';
-import { Overlay } from '../../redesigned/Overlay/Overlay';
-import { Portal } from '../../redesigned/Portal/Portal';
+import { Overlay } from '../Overlay/Overlay';
+import { Portal } from '../Portal/Portal';
 import cls from './Drawer.module.scss';
+import { toggleFeatures } from '@/shared/lib/features';
 
-// До - 434
-// После - 495
 interface DrawerProps {
     className?: string
     children: ReactNode
@@ -21,10 +20,7 @@ interface DrawerProps {
 }
 
 const height = window.innerHeight - 100;
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
+
 export const DrawerContent: FC<DrawerProps> = memo(
     ({
         className, children, isOpen, onClose, lazy,
@@ -85,8 +81,17 @@ export const DrawerContent: FC<DrawerProps> = memo(
         const display = y.to((py) => (py < height ? 'block' : 'none'));
 
         return (
-            <Portal>
-                <div className={classNames(cls.Drawer, {}, [className])}>
+            <Portal element={document.getElementById('app') ?? document.body}>
+                <div
+                    className={classNames(cls.Drawer, {}, [
+                        className,
+                        toggleFeatures({
+                            name: 'isAppRedesigned',
+                            on: () => cls.drawerNew,
+                            off: () => cls.drawerOld,
+                        }),
+                    ])}
+                >
                     <Overlay onClick={onClose} />
                     <Spring.a.div
                         className={cls.sheet}

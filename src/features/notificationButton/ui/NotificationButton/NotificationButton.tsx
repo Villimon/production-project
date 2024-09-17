@@ -13,7 +13,7 @@ import { NotificationList } from '@/entitites/Notification';
 import { useDevice } from '@/shared/lib/hooks/useDevice/useDevice';
 import cls from './NotificationButton.module.scss';
 import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
-import { Drawer } from '@/shared/ui/deprecated/Drawer';
+import { Drawer } from '@/shared/ui/redesigned/Drawer';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { Icon } from '@/shared/ui/redesigned/Icon';
 import { Popover } from '@/shared/ui/redesigned/Popups';
