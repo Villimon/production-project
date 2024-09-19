@@ -31,6 +31,9 @@
     "Создать статью": "Create article",
     "Админ панель": "Admin panel",
     "Настройки пользователя": "User settings",
+    "{{count}} просмотров_zero": "{{count}} views",
+    "{{count}} просмотров_one": "{{count}} view",
+    "{{count}} просмотров_other": "{{count}} views",
     "Вы ввели неверный логин или пароль": "You entered an incorrect username or password",
     "Пароль": "Password"
 }

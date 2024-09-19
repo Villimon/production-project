@@ -19,6 +19,9 @@ import {
 } from '@/shared/lib/features';
 import { Counter } from '@/entitites/Counter';
 import { VStack } from '@/shared/ui/redesigned/Stack';
+import { SticyContentLayout } from '@/shared/layouts/SticyContentLayout';
+import { DetailsContainer } from '../DetailsContainer/DetailsContainer';
+import { AditionalInfoContainer } from '../AditionalInfoContainer/AditionalInfoContainer';
 
 interface ArticlesDetailsPageProps {
     className?: string
@@ -47,22 +50,44 @@ const ArticlesDetailsPage: FC<ArticlesDetailsPageProps> = memo(
 
         return (
             <DynamicModuleLoader reducers={reducer} removeAfterUnmount>
-                <Page className={classNames('', {}, [className])}>
-                    <VStack gap="16" max>
-                        <ArticlesDetailsPageHeader />
-                        <ArticleDetails id={id} />
-                        <ToggleFeatures
-                            name="isArticleRatingEnable"
-                            on={<ArticleRating articleId={id} />}
-                            off={<Counter />}
+                <ToggleFeatures
+                    name="isAppRedesigned"
+                    on={(
+                        <SticyContentLayout
+                            content={(
+                                <Page
+                                    className={classNames('', {}, [className])}
+                                >
+                                    <VStack gap="16" max>
+                                        <DetailsContainer />
+                                        <ArticleRating articleId={id} />
+                                        <ArticleRecommendationsList />
+                                        <ArticleDetailsComments id={id} />
+                                    </VStack>
+                                </Page>
+                            )}
+                            right={<AditionalInfoContainer />}
                         />
-                        {isArticleRatingEnable && (
-                            <ArticleRating articleId={id} />
-                        )}
-                        <ArticleRecommendationsList />
-                        <ArticleDetailsComments id={id} />
-                    </VStack>
-                </Page>
+                    )}
+                    off={(
+                        <Page className={classNames('', {}, [className])}>
+                            <VStack gap="16" max>
+                                <ArticlesDetailsPageHeader />
+                                <ArticleDetails id={id} />
+                                <ToggleFeatures
+                                    name="isArticleRatingEnable"
+                                    on={<ArticleRating articleId={id} />}
+                                    off={<Counter />}
+                                />
+                                {isArticleRatingEnable && (
+                                    <ArticleRating articleId={id} />
+                                )}
+                                <ArticleRecommendationsList />
+                                <ArticleDetailsComments id={id} />
+                            </VStack>
+                        </Page>
+                    )}
+                />
             </DynamicModuleLoader>
         );
     },
