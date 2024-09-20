@@ -206,7 +206,7 @@ export const RatingCard: FC<RatingCardProps> = memo(
                 name="isAppRedesigned"
                 on={(
                     <Card
-                        border="round"
+                        border="partial"
                         padding="24"
                         data-testid="RatingCard"
                         fullWidth

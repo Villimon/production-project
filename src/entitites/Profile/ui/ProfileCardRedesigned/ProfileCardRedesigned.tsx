@@ -69,7 +69,7 @@ export const ProfileCardRedesigned: FC<ProfileCardProps> = memo(
         }
 
         return (
-            <Card fullWidth padding="24" className={className}>
+            <Card border="partial" fullWidth padding="24" className={className}>
                 <VStack gap="16" max>
                     {data?.avatar && (
                         <HStack justify="center" max>

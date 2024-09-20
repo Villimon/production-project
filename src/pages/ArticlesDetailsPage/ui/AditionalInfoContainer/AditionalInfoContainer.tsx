@@ -27,7 +27,7 @@ export const AditionalInfoContainer: FC<AditionalInfoContainerProps> = memo(
         return (
             <Card
                 padding="24"
-                border="round"
+                border="partial"
                 className={classNames(cls.AditionalInfoContainer, {}, [
                     className,
                 ])}

@@ -52,7 +52,7 @@ export const ArticleViewSelector: FC<ArticleViewSelectorProps> = memo(
                 name="isAppRedesigned"
                 on={(
                     <Card
-                        border="round"
+                        border="partial"
                         className={classNames(
                             cls.ArticleViewSelectorRedesigned,
                             {},

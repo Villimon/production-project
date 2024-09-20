@@ -128,7 +128,11 @@ export const EditablePofileCard: FC<EditablePofileCardProps> = memo(
 
         return (
             <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-                <VStack max gap="8" className={classNames('', {}, [className])}>
+                <VStack
+                    max
+                    gap="16"
+                    className={classNames('', {}, [className])}
+                >
                     <ProfilePageHeader />
                     {validateErrors?.length
                         && validateErrors.map((error) => (

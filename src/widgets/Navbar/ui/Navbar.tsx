@@ -5,16 +5,23 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { LoginModal } from '@/features/AuthByUsername';
-import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
-import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
+import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text';
+import {
+    AppLink as AppLinkDeprecated,
+    AppLinkTheme,
+} from '@/shared/ui/deprecated/AppLink';
 import { NotificationButton } from '@/features/notificationButton';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
 import cls from './Navbar.module.scss';
 import { getRouteArticlesCreate } from '@/shared/constants/router';
-import { ToggleFeatures } from '@/shared/lib/features';
+import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
 import { getUserData } from '@/entitites/User';
-import { Button, ThemeButton } from '@/shared/ui/deprecated/Button';
+import {
+    Button as ButtonDeprecated,
+    ThemeButton,
+} from '@/shared/ui/deprecated/Button';
 import { HStack } from '@/shared/ui/redesigned/Stack';
+import { Button } from '@/shared/ui/redesigned/Button';
 
 interface NavbarProps {
     className?: string
@@ -33,14 +40,18 @@ export const Navbar: FC<NavbarProps> = memo(() => {
         setIsAuthModal(true);
     }, []);
 
+    const mainClass = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => cls.NavbarRedesigned,
+        off: () => cls.Navbar,
+    });
+
     if (authData) {
         return (
             <ToggleFeatures
                 name="isAppRedesigned"
                 on={(
-                    <header
-                        className={classNames(cls.NavbarRedesigned, {}, [])}
-                    >
+                    <header className={classNames(mainClass, {}, [])}>
                         <HStack gap="16" className={cls.actions}>
                             <NotificationButton />
                             <AvatarDropdown />
@@ -48,18 +59,18 @@ export const Navbar: FC<NavbarProps> = memo(() => {
                     </header>
                 )}
                 off={(
-                    <header className={classNames(cls.Navbar, {}, [])}>
-                        <Text
+                    <header className={classNames(mainClass, {}, [])}>
+                        <TextDeprecated
                             className={cls.appName}
                             title={t('My App')}
                             theme={TextTheme.INVERTED}
                         />
-                        <AppLink
+                        <AppLinkDeprecated
                             to={getRouteArticlesCreate()}
                             theme={AppLinkTheme.SECONDARY}
                         >
                             {t('Создать статью')}
-                        </AppLink>
+                        </AppLinkDeprecated>
                         <HStack gap="16" className={cls.actions}>
                             <NotificationButton />
                             <AvatarDropdown />
@@ -71,14 +82,28 @@ export const Navbar: FC<NavbarProps> = memo(() => {
     }
 
     return (
-        <header className={classNames(cls.Navbar, {}, [])}>
-            <Button
-                theme={ThemeButton.CLEAR}
-                className={classNames(cls.links, {}, [])}
-                onClick={onShowModal}
-            >
-                {t('Войти')}
-            </Button>
+        <header className={classNames(mainClass, {}, [])}>
+            <ToggleFeatures
+                name="isAppRedesigned"
+                on={(
+                    <Button
+                        variant="clear"
+                        className={classNames(cls.links, {}, [])}
+                        onClick={onShowModal}
+                    >
+                        {t('Войти')}
+                    </Button>
+                )}
+                off={(
+                    <ButtonDeprecated
+                        theme={ThemeButton.CLEAR}
+                        className={classNames(cls.links, {}, [])}
+                        onClick={onShowModal}
+                    >
+                        {t('Войти')}
+                    </ButtonDeprecated>
+                )}
+            />
             {isAuthModal && (
                 <LoginModal isOpen={isAuthModal} onClose={onClose} />
             )}
