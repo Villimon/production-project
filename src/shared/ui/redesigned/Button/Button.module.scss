@@ -20,12 +20,12 @@
 }
 
 .outline {
-    border: 1px solid var(--icon-redesigned);
+    border: 2px solid var(--icon-redesigned);
     background: none;
     border-radius: 34px;
 
     &:hover {
-        border: 1px solid var(--accent-redesigned);
+        border: 2px solid var(--accent-redesigned);
     }
 }
 

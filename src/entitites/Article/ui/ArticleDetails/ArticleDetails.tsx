@@ -9,6 +9,7 @@ import {
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
 import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import {
     Text as TextDeprecated,
     TextAlign,
@@ -29,10 +30,9 @@ import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { Icon as IconDeprecated } from '@/shared/ui/deprecated/Icon';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
 import { renderArticleBlock } from './renderBlock';
-import { ToggleFeatures } from '@/shared/lib/features';
+import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { AppImage } from '@/shared/ui/redesigned/AppImage/AppImage';
-import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 
 interface ArticleDetailsProps {
     className?: string
@@ -85,7 +85,9 @@ const Redesigned = () => {
             <Text size="l" bold title={article?.title} />
             <Text text={article?.subtitle} />
             <AppImage
-                fallback={<Skeleton height={420} width="100%" border="16" />}
+                fallback={
+                    <SkeletonRedesigned height={420} width="100%" border="16" />
+                }
                 src={article?.img}
                 className={cls.img}
             />
@@ -109,32 +111,34 @@ export const ArticleDetails: FC<ArticleDetailsProps> = memo(
 
         let content;
 
+        const Skeleton = toggleFeatures({
+            name: 'isAppRedesigned',
+            on: () => SkeletonRedesigned,
+            off: () => SkeletonDeprecated,
+        });
+
         if (isLoading) {
             content = (
                 // eslint-disable-next-line
                 <>
-                    <SkeletonDeprecated
+                    <Skeleton
                         className={cls.avatar}
                         height={200}
                         width={200}
                         border="50%"
                     />
-                    <SkeletonDeprecated
-                        className={cls.title}
-                        height={32}
-                        width={300}
-                    />
-                    <SkeletonDeprecated
+                    <Skeleton className={cls.title} height={32} width={300} />
+                    <Skeleton
                         className={cls.skeleton}
                         height={24}
                         width={600}
                     />
-                    <SkeletonDeprecated
+                    <Skeleton
                         className={cls.skeleton}
                         height={200}
                         width="100%"
                     />
-                    <SkeletonDeprecated
+                    <Skeleton
                         className={cls.skeleton}
                         height={200}
                         width="100%"
