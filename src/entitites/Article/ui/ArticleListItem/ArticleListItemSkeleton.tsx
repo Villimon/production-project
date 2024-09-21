@@ -5,7 +5,7 @@ import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton'
 import { ArticleView } from '../../model/consts/consts';
 import cls from './ArticleListItem.module.scss';
 import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
-import { toggleFeatures } from '@/shared/lib/features';
+import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
 import { Card as CardRedesigned } from '@/shared/ui/redesigned/Card';
 
 interface ArticleListItemProps {
@@ -33,63 +33,90 @@ export const ArticleListItemSkeleton: FC<ArticleListItemProps> = memo(
         });
 
         if (view === ArticleView.BIG) {
-            return (
-                <div
-                    className={classNames(mainClass, {}, [
-                        className,
-                        cls[view],
-                    ])}
-                >
-                    <Card className={cls.card}>
-                        <div className={cls.header}>
-                            <Skeleton height={30} width={30} border="50%" />
-                            <Skeleton
-                                className={cls.username}
-                                width={150}
-                                height={16}
-                            />
-                            <Skeleton
-                                width={150}
-                                height={16}
-                                className={cls.date}
-                            />
-                        </div>
-
+            const cardContent = (
+                <>
+                    <div className={cls.header}>
+                        <Skeleton height={30} width={30} border="50%" />
                         <Skeleton
-                            width={250}
-                            height={24}
-                            className={cls.title}
+                            className={cls.username}
+                            width={150}
+                            height={16}
                         />
+                        <Skeleton
+                            width={150}
+                            height={16}
+                            className={cls.date}
+                        />
+                    </div>
+                    <Skeleton width={250} height={24} className={cls.title} />
+                    <Skeleton height={200} className={cls.img} />
+                    <div className={cls.footer}>
+                        <Skeleton width={200} height={36} />
+                    </div>
+                </>
+            );
 
-                        <Skeleton height={200} className={cls.img} />
-
-                        <div className={cls.footer}>
-                            <Skeleton width={200} height={36} />
-                        </div>
-                    </Card>
-                </div>
+            return (
+                <ToggleFeatures
+                    name="isAppRedesigned"
+                    on={(
+                        <CardRedesigned border="round" className={cls.card}>
+                            {cardContent}
+                        </CardRedesigned>
+                    )}
+                    off={(
+                        <CardDeprecated className={cls.card}>
+                            {cardContent}
+                        </CardDeprecated>
+                    )}
+                />
             );
         }
 
-        return (
-            <div className={classNames(mainClass, {}, [className, cls[view]])}>
-                <Card className={cls.card}>
-                    <div className={cls.imageWrapper}>
+        const cardContent = (
+            <>
+                <ToggleFeatures
+                    name="isAppRedesigned"
+                    on={(
                         <Skeleton
                             className={cls.img}
-                            width={200}
-                            height={200}
+                            width="100%"
+                            height={150}
+                            border="32px"
                         />
-                    </div>
-                    <div className={cls.infoWrapper}>
-                        <Skeleton width={130} height={16} />
-                    </div>
-                    <Skeleton
-                        width={150}
-                        height={16}
-                        className={cls.infoWrapper}
-                    />
-                </Card>
+                    )}
+                    off={(
+                        <div className={cls.imageWrapper}>
+                            <Skeleton
+                                className={cls.img}
+                                width={200}
+                                height={200}
+                            />
+                        </div>
+                    )}
+                />
+                <div className={cls.infoWrapper}>
+                    <Skeleton width={130} height={16} />
+                </div>
+                <Skeleton width={150} height={16} className={cls.infoWrapper} />
+            </>
+        );
+
+        return (
+            <div className={classNames(mainClass, {}, [className, cls[view]])}>
+                <ToggleFeatures
+                    name="isAppRedesigned"
+                    on={(
+                        <CardRedesigned border="round" className={cls.card}>
+                            {cardContent}
+                        </CardRedesigned>
+                    )}
+                    off={(
+                        <CardDeprecated className={cls.card}>
+                            {cardContent}
+                        </CardDeprecated>
+                    )}
+                />
             </div>
         );
     },
