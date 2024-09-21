@@ -11,6 +11,8 @@ import { PageLoader } from '@/widgets/PageLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { MainLayout } from '@/shared/layouts/MainLayout';
 import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
+import { useAppToolbar } from './lib/useAppToolbar';
+import { useVisibleAppToolbar } from './lib/useVisibleAppToolbar';
 
 // Расширение в браузер pixel perfect plugin
 // !!!TODO
@@ -23,6 +25,8 @@ const App = () => {
     const { theme } = useTheme();
     const dispatch = useAppDispatch();
     const inited = useSelector(getUserInited);
+    const toolbar = useAppToolbar();
+    const visibleToolbar = useVisibleAppToolbar();
 
     useEffect(() => {
         dispatch(initAuthData());
@@ -58,6 +62,7 @@ const App = () => {
                             content={<AppRouter />}
                             header={<Navbar />}
                             sidebar={<Sidebar />}
+                            toolbar={visibleToolbar ? toolbar : undefined}
                         />
                     </Suspense>
                 </div>

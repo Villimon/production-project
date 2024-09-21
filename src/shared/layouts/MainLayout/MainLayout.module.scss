@@ -1,7 +1,7 @@
 .MainLayout {
     min-height: 100vh;
     display: grid;
-    grid-template-areas: "sidebar content rightbar";
+    grid-template-areas: 'sidebar content rightbar';
     grid-template-columns: min-content 1fr 100px;
 }
 
@@ -35,4 +35,5 @@
 
 .toolbar {
     height: 100%;
+    width: 100%;
 }
