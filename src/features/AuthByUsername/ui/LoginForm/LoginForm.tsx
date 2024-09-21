@@ -25,6 +25,7 @@ import { Text } from '@/shared/ui/redesigned/Text';
 import { Input } from '@/shared/ui/redesigned/Input';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { VStack } from '@/shared/ui/redesigned/Stack';
+import { useForceUpdate } from '@/shared/lib/render/renderUpdate';
 
 export interface LoginFormProps {
     className?: string
@@ -42,6 +43,7 @@ const LoginForm: FC<LoginFormProps> = memo(({ className, onSuccess }) => {
     const password = useSelector(getLoginPassword);
     const isLoading = useSelector(getLoginIsLoading);
     const error = useSelector(getLoginError);
+    const forceUpdate = useForceUpdate();
 
     const onChangeUsername = useCallback(
         (value: string) => {
@@ -61,6 +63,8 @@ const LoginForm: FC<LoginFormProps> = memo(({ className, onSuccess }) => {
         const result = await dispatch(loginByUsername({ username, password }));
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
+            // Если при смене пользователя будет непонтно отрисовываться интерфейс между новым и старым, то включить эту функцию
+            // forceUpdate()
         }
     }, [dispatch, username, password, onSuccess]);
 
