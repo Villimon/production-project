@@ -31,10 +31,6 @@
     width: 100%;
     color: var(--text-redesigned);
     background: none;
-
-    &:focus {
-        color: var(--hint-redesigned);
-    }
 }
 
 .focused {

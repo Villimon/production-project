@@ -6,7 +6,7 @@ import { Theme } from '@/shared/constants/theme';
 import { useJsonSettings } from '@/entitites/User';
 import { LOCAL_STORAGE_THEME_KEY } from '@/shared/constants/localstorage';
 
-const themeForLocalstorage = localStorage.getItem(LOCAL_STORAGE_THEME_KEY);
+const fallback = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme;
 
 interface ThemeProviderProps {
     initialTheme?: Theme
@@ -17,19 +17,19 @@ const ThemeProvider = ({ children, initialTheme }: ThemeProviderProps) => {
     const { theme: defaultTheme } = useJsonSettings();
     const [isThemeInited, setThemeInited] = useState(false);
     const [theme, setTheme] = useState<Theme>(
-        initialTheme || defaultTheme || Theme.LIGHT,
+        initialTheme || fallback || Theme.LIGHT,
     );
 
-    // TODO не работает инициализация темы
     useEffect(() => {
-        if (!defaultTheme && themeForLocalstorage) {
-            setTheme(themeForLocalstorage as Theme);
-        }
         if (!isThemeInited && defaultTheme) {
             setTheme(defaultTheme);
             setThemeInited(true);
         }
     }, [defaultTheme, isThemeInited]);
+
+    useEffect(() => {
+        localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
+    }, [theme]);
 
     const defaultProps = useMemo(
         () => ({
