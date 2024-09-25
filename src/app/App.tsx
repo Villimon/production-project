@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense, memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
@@ -13,7 +13,12 @@ import { MainLayout } from '@/shared/layouts/MainLayout';
 import { AppLoaderLayout } from '@/shared/layouts/AppLoaderLayout';
 import { useAppToolbar } from './lib/useAppToolbar';
 import { useVisibleAppToolbar } from './lib/useVisibleAppToolbar';
+import { withTheme } from './providers/ThemeProvider/ui/withTheme';
 
+// Сделать так чтобы деплой проходил успешно
+// Поправить все тесты, линты.
+// Документация и сторикейсы
+// Обновить наш плагин еслинта до 0.0.10
 // Расширение в браузер pixel perfect plugin
 // !!!TODO
 // 1.Урок 63 Виртуализация
@@ -21,7 +26,7 @@ import { useVisibleAppToolbar } from './lib/useVisibleAppToolbar';
 // Можно использовать react-virtuoso (урок 63)
 // 2.Сделать добавление и обновление статей
 // Вернуться к 45 уроку, чтобы настроить удобную штуку в проекте
-const App = () => {
+const App = memo(() => {
     const { theme } = useTheme();
     const dispatch = useAppDispatch();
     const inited = useSelector(getUserInited);
@@ -80,6 +85,6 @@ const App = () => {
             )}
         />
     );
-};
+});
 
-export default App;
+export default withTheme(App);

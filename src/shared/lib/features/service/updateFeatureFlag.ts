@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from '@/app/providers/StoreProvider';
 import { FeatureFlags } from '@/shared/types/featureFlags';
 import { updateFeatureFlagsMutation } from '../api/featureFlagApi';
-import { getFeatureFlags } from '../lib/setGetFeatures';
+import { getFeatureAllFlags } from '../lib/setGetFeatures';
 
 interface UpdateFeatureFlag {
     userId: string
@@ -19,7 +19,7 @@ export const updateFeatureFlag = createAsyncThunk<
             updateFeatureFlagsMutation({
                 userId,
                 features: {
-                    ...getFeatureFlags(),
+                    ...getFeatureAllFlags(),
                     ...newFeatures,
                 },
             }),
