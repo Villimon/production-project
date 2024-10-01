@@ -15,10 +15,7 @@ import { useAppToolbar } from './lib/useAppToolbar';
 import { useVisibleAppToolbar } from './lib/useVisibleAppToolbar';
 import { withTheme } from './providers/ThemeProvider/ui/withTheme';
 
-// Сделать так чтобы деплой проходил успешно
-// Поправить все тесты, линты.
 // Документация и сторикейсы
-// Обновить наш плагин еслинта до 0.0.10
 // Расширение в браузер pixel perfect plugin
 // !!!TODO
 // 1.Урок 63 Виртуализация

@@ -11,8 +11,8 @@ import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import { getUIScrollByPath } from '../model/selectors/ui';
 import { uiActions } from '../model/slice/UISlice';
 import cls from './Page.module.scss';
-import { TestProps } from '@/shared/types/test';
 import { toggleFeatures } from '@/shared/lib/features';
+import { TestProps } from '@/shared/types/tests';
 
 interface PageProps extends TestProps {
     className?: string
